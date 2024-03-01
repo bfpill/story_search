@@ -2,7 +2,7 @@ import React from "react"
 import HTMLFlipBook from "react-pageflip";
 
 const Page = React.forwardRef((props: { number, children }, ref) => (
-  <div className="demoPage bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" ref={ref}>
+  <div className="demoPage bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 page-cover" ref={ref} data-density="hard">
       <h1 className="text-xl font-bold mb-2">Page Header</h1>
       <p className="text-base">{props.children}</p>
       <p className="text-base">Page number: {props.number}</p>
@@ -22,6 +22,7 @@ const Page = React.forwardRef((props: { number, children }, ref) => (
         maxShadowOpacity={0.0} 
         disableFlipByClick={true} 
         pageFlip="single" 
+        data-density="hard"
         showCover={true}  // Ensure cover page is visible
       >
         {pageRefs.map((ref, index) => (
