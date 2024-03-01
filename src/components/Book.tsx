@@ -3,12 +3,31 @@ import { useEffect, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page";
 
+
+
 const Book = (props: { bookData }) => {
   const [pageRefs, setPageRefs] = useState(undefined)
+  const [book, setBook] = useState(props.bookData)
 
   useEffect(() => {
-    setPageRefs(Array.from({ length: props.bookData?.pages?.length }, () => React.createRef()));
-  }, [props.bookData?.pages?.length]); 
+    setPageRefs(Array.from({ length: props.bookData?.pages?.length + 2 }, () => React.createRef()));
+
+    const newBook = { ...book, pages: [...book.pages] };
+    if (newBook.pages[0]?.type !== "front_cover") {
+      newBook.pages.unshift({ type: "front_cover", text: newBook.title });
+    }
+
+    if (newBook.pages[newBook.pages.length - 1]?.type !== "back_cover") {
+      if (newBook.pages.length % 2 != 0) {
+        newBook.pages.push({ type: "back_cover", text: "" });
+      }
+    }
+
+    if (newBook !== book) {
+      setBook(newBook);
+    }
+
+  }, [props.bookData]);
 
   if (pageRefs) {
     return (
@@ -21,10 +40,10 @@ const Book = (props: { bookData }) => {
         disableFlipByClick={true}
         // pageFlip="single" 
         data-density="hard"
-        showCover={true}  // Ensure cover page is visible
+        showCover={true}
       >
         {pageRefs?.map((ref, index) => (
-          <Page key={index} number={index + 1} ref={ref} text={index < props.bookData.pages.length ? props.bookData.pages[index].text : ""}
+          <Page key={index} number={index + 1} ref={ref} page={book.pages[index]}
             images={[]}
           />
         ))}
