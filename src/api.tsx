@@ -36,3 +36,25 @@ export const getGenerateBook = async (userId: string, search: string) => {
   }
 }
 
+export const createUser = async (email: string) => {
+  const url = `${BASE_URL}/api/users`;
+  console.log("creating user")
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { email: email });
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+};
+
+export const getUser = async (email: string) => {
+  const url = `${BASE_URL}/api/users/${email}`;
+  console.log("getting user")
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET');
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+};
+
