@@ -1,4 +1,5 @@
-
+import React from "react"
+import HTMLFlipBook from "react-pageflip";
 
 const Page = React.forwardRef((props: { number, children }, ref) => (
   <div className="demoPage bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" ref={ref}>
