@@ -1,9 +1,10 @@
+import { HomeBar } from "./components/NavBar"
 
 const Home = (props: {}) => {
   return (
     <div>
-
-    </div>
+      <HomeBar/>
+   </div>
   )
 
 }
