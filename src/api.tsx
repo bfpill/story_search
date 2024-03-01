@@ -1,0 +1,39 @@
+const BASE_URL = "http://127.0.0.1:8000"; // Localhost
+
+export async function makeAuthenticatedRequest(url, method, data = null) {
+  try {
+    const options = {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: data ? JSON.stringify(data) : null,
+    };
+    if (method === 'GET') delete options.body;
+
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    console.log("this was the response", response)
+    return response.json();
+  } catch (error) {
+    console.error('Error with request:', error);
+
+    throw error;
+  }
+}
+
+export const getGenerateBook = async (userId: string, search: string) => {
+  const url = `${BASE_URL}/book`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET', { userId: userId, search: search} );
+    return responseData
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
+
+

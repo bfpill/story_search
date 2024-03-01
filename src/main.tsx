@@ -8,6 +8,7 @@ import Home from './Home.tsx';
 import { ThemeProvider } from './ThemeProvider.tsx';
 import { UserProvider } from './UserProvider.tsx';
 import BookTestPage from './BookTestPage.tsx';
+import TestBookGeneration from './TestBookGeneration.tsx';
 
 export function getNavBarType(): string {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -31,6 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/book_test" element={<BookTestPage />} />
+        <Route path="/test_book_gen" element={<TestBookGeneration/>} />
       </Routes>
     </Router>
   </UserProvider>
