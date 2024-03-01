@@ -11,7 +11,7 @@ const Page = React.forwardRef((props: { number, children }, ref) => (
   
   const Book = () => {
     // Create refs for each page
-    const pageRefs = Array.from({ length: 7 }, () => React.useRef<HTMLDivElement>(null));
+    const pageRefs = Array.from({ length: 8 }, () => React.useRef<HTMLDivElement>(null)); // Including the empty back page
   
     return (
       <HTMLFlipBook 
@@ -22,11 +22,12 @@ const Page = React.forwardRef((props: { number, children }, ref) => (
         maxShadowOpacity={0.0} 
         disableFlipByClick={true} 
         pageFlip="single" 
-        data-density="hard"
         showCover={true}  // Ensure cover page is visible
       >
         {pageRefs.map((ref, index) => (
-          <Page key={index} number={index + 1} ref={ref} >Page text</Page>
+          <Page key={index} number={index + 1} ref={ref}>
+            {index < 7 ? "Page text" : ""} {/* Display "Page text" for the first 7 pages, otherwise empty */}
+          </Page>
         ))}
       </HTMLFlipBook>
     );
