@@ -1,0 +1,18 @@
+.blue-page {
+  background-color: #C7E4EA;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+}
+
+.book-image {
+  width: 500px; /* Adjust as needed */
+  padding: 40px;
+  height: 650px; /* Adjust as needed */
+  margin: 0 10px; /* Add spacing between images */
+}
