@@ -1,0 +1,96 @@
+[
+    {
+      "title": "Book 1",
+      "id": 123,
+      "pages": [
+        {
+          "pageNum": 1,
+          "text": "Page 1 Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "images": [
+            { "src": "image1.jpg", "position": { "x": 100, "y": 100 } },
+            { "src": "image2.jpg", "position": { "x": 200, "y": 200 } }
+          ]
+        },
+        {
+          "pageNum": 2,
+          "text": "Page 2 Content: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "images": [
+            { "src": "image3.jpg", "position": { "x": 50, "y": 50 } }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Book 2",
+      "id": 456,
+      "pages": [
+        {
+          "pageNum": 1,
+          "text": "Page 1 Content: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "images": [
+            { "src": "image4.jpg", "position": { "x": 300, "y": 300 } }
+          ]
+        },
+        {
+          "pageNum": 2,
+          "text": "Page 2 Content: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+          "images": []
+        }
+      ]
+    },
+    {
+      "title": "Book 3",
+      "id": 789,
+      "pages": [
+        {
+          "pageNum": 1,
+          "text": "Page 1 Content: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "images": [
+            { "src": "image5.jpg", "position": { "x": 150, "y": 150 } }
+          ]
+        },
+        {
+          "pageNum": 2,
+          "text": "Page 2 Content: Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+          "images": [
+            { "src": "image6.jpg", "position": { "x": 250, "y": 250 } },
+            { "src": "image7.jpg", "position": { "x": 350, "y": 350 } }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Book 4",
+      "id": 101,
+      "pages": [
+        {
+          "pageNum": 1,
+          "text": "Page 1 Content: Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+          "images": []
+        }
+      ]
+    },
+    {
+      "title": "Book 5",
+      "id": 202,
+      "pages": [
+        {
+          "pageNum": 1,
+          "text": "Page 1 Content: Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+          "images": []
+        }
+      ]
+    },
+    {
+      "title": "Book 6",
+      "id": 303,
+      "pages": [
+        {
+          "pageNum": 1,
+          "text": "Page 1 Content: At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+          "images": []
+        }
+      ]
+    }
+  ]
+  
