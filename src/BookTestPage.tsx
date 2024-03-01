@@ -1,31 +1,30 @@
 import HTMLFlipBook from 'react-pageflip';
+import React from 'react';
 
-const Page = (props: { number: string }) => {
-  
-
-}
+const Page = React.forwardRef((props: { number, children }, ref) => (
+  <div className="demoPage bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" ref={ref}>
+      <h1 className="text-xl font-bold mb-2">Page Header</h1>
+      <p className="text-base">{props.children}</p>
+      <p className="text-base">Page number: {props.number}</p>
+  </div>
+));
 
 const Book = () => {
+  // Create refs for each page
+  const pageRefs = [React.useRef(null), React.useRef(null), React.useRef(null), React.useRef(null)];
+
   return (
     <HTMLFlipBook width={300}
       height={500} className={''}
-      startPage={0} size={'fixed'} minWidth={0}
-      maxWidth={0} minHeight={0} maxHeight={0}
-      drawShadow={false} flippingTime={0}
-      usePortrait={false} startZIndex={0}
-      autoSize={false} maxShadowOpacity={0}
-      showCover={false} mobileScrollSupport={false}
-      clickEventForward={false} useMouseEvents={false}
-      swipeDistance={0} showPageCorners={false}
-      disableFlipByClick={false}>
+      flippingTime={10}
+      >
 
-      <Page number="1">Page text</Page>
-      <Page number="2">Page text</Page>
-      <Page number="3">Page text</Page>
-      <Page number="4">Page text</Page>
+      {pageRefs.map((ref, index) => (
+        <Page key={index} number={`${index + 1}`} ref={ref}>Page text</Page>
+      ))}
     </HTMLFlipBook>
-  )
-}
+  );
+};
 
 const BookTestPage = (props: {}) => {
   return (
