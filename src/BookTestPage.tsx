@@ -21,7 +21,7 @@ const Page = React.forwardRef((props: { number, children }, ref) => (
         clickEventForward={false} 
         maxShadowOpacity={0.0} 
         disableFlipByClick={true} 
-        pageFlip="single" 
+        // pageFlip="single" 
         data-density="hard"
         showCover={true}  // Ensure cover page is visible
       >

@@ -29,11 +29,10 @@ export async function makeAuthenticatedRequest(url, method, data = null) {
 export const getGenerateBook = async (userId: string, search: string) => {
   const url = `${BASE_URL}/book`;
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'GET', { userId: userId, search: search} );
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search, user_id: userId} );
     return responseData
   } catch (error) {
     console.error('Error sending data:', error);
   }
 }
-
 
