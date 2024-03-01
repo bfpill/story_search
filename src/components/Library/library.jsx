@@ -1,23 +1,23 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './library.css'; // Import CSS file for styling
 
-
-import {
-  useNavigate,
-  BrowserRouter as Router,
-} from "react-router-dom";
-
-import React, { useState } from 'react';
-
-
-function Library(){
-
+function Library() {
     return (
-        <>
-        <div> powaf9qug9aegq0-f-</div>
-        <div></div>
+      <div className="full-page">
+          <div className="library-container">
+              <div className="my-library">My Library</div>
+          </div>
+
+          <div className="create-story">
             
-        
-        
-        </>
-    )
+            <div className='inside-create-story'>
+              Create a new Story
+              
+            </div>
+          </div>
+        </div>
+    );
 }
+
 export default Library;
