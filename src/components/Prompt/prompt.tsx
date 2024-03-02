@@ -9,6 +9,7 @@ import { Button } from '../ui/button';
 import { InputIcon } from '@radix-ui/react-icons';
 import { getGenerateSearchOptions } from '@/image_api';
 import Book from '../Book';
+import BookTitlePage from '../BookTitlePage';
 
 function Prompt() {
   const [search, setSearch] = useState("");
@@ -71,10 +72,8 @@ function Prompt() {
         <div className="grid grid-cols-3 w-2/3 gap-10 mt-10">
           {searchResults?.map(title => {
             return (
-              <div onClick={() => { }} className="h-[320px] w-[240px] flex items-center justify-center bg-blue-300 col-span-1" >
-                <h1 className="w-2/3">
-                  {title}
-                </h1>
+              <div onClick={() => { }} className="h-[320px] w-[240px] flex text-sm items-center justify-center bg-blue-300 col-span-1" >
+                <BookTitlePage complementaryColor={"blue"} page={{text: title}} />
               </div>
             )
           })

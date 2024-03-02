@@ -99,8 +99,8 @@ const DummyBook = {
       "background_image_query": "Steel Rails"
     }
   ],
-  "color": "Black",
-  "complementaryColor":"Yellow"
+  "color": "fushsia",
+  "complementaryColor":"Azure"
 }
 
 
@@ -117,13 +117,13 @@ const dummy_search = "trains"
       setGeneratingBook(true);
 
     // REAL
-    const data = await getGenerateBook(dummy_user_id, dummy_search);
-    console.log(data);
-    setBook(data);
+    // const data = await getGenerateBook(dummy_user_id, dummy_search);
+    // console.log(data);
+    // setBook(data);
 
       // // testing
-      // setBook(DummyBook);
-      // setGeneratingBook(false);
+      setBook(DummyBook);
+      setGeneratingBook(false);
       
     }
     
