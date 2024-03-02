@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
-import Library from './components/Library/library.js'
+import Library from './components/Library/library.jsx'
 import Login from './components/Login/login.jsx'
 import Prompt from './components/Prompt/prompt.jsx'
 import SignUp from './components/SignUp/signup.jsx'
@@ -34,7 +34,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/book_test" element={<BookTestPage/>} />
-        <Route path="/login" element={<Login/>} />
         <Route path="/sign_up" element={<SignUp/>} />
         <Route path='/library' element={<Library />} />
         <Route path='/login' element={<Login />} />
