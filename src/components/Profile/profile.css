@@ -60,8 +60,7 @@
     color: #555; /* Grey color for the label */
   }
   
-  .input-wrapper input[type="email"],
-  .input-wrapper input[type="password"] {
+  .input-wrapper input[type="text"] {
     font-size: 24px; /* Adjust size as needed */
     max-width: 500px; /* Set max-width to 500px */
     width: 100%; /* Take full width of the container */
@@ -71,7 +70,7 @@
     border-radius: 10px; /* Rounded corners */
     margin: 0 auto; /* Center horizontally */
     display: block; /* Ensure it takes the full width */
-  }
+}
 
   .input-wrapper output {
     display: block;
@@ -94,7 +93,7 @@
   .slider .increase {
     width: 60px; /* Adjust width as needed */
     height: 60px; /* Adjust height as needed */
-    background-color: #ff69b4; /* Pink color */
+    background-color: #BF67A6; /* Pink color */
     color: white;
     color: white;
     font-size: 36px;
@@ -109,7 +108,8 @@
   
   .slider .decrease:hover,
   .slider .increase:hover {
-    background-color: #ff1493; /* Darker pink on hover */
+    background-color: #8d4378; /* Darker pink on hover */
+
   }
   
   .slider .age {
@@ -129,7 +129,7 @@
   .avatar-options img {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
+    border-radius: 100%;
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
   }
@@ -140,7 +140,12 @@
   }
   
   .avatar-options img.selected {
-    border: 2px solid #ff69b4; /* Pink color */
+    filter: brightness(65%); /* Darken the selected image */
+    transition: filter 0.2s ease; /* Smooth transition effect */
+  }
+
+  .avatar-options img.selected:hover {
+    transform: scale(1.1); /* Add scale effect on hover */
   }
   
 
@@ -161,7 +166,7 @@
     background-color: #BF67A6; /* Darker green */
   }
   
-  .my-login {
+  .my-name {
     font-family: 'Cherry Bomb', cursive;
     font-size: 80px; /* Adjust size as needed */
     text-align: center; /* Center align the text */
@@ -172,38 +177,24 @@
     /* Add any other styling properties you desire */
   }
   
-  
-  
-  .no-account {
-    margin-top: 40px;
-    text-align: center;
+  .input-wrapper {
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    align-items: center; /* Center children horizontally */
   }
   
-  .no-account p {
-    color: #555;
-    font-size: 24px; /* Adjust size as needed */
-    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
-  }
-  
-  
-  .create-account {
-    text-align: center;
-  }
-  
-  .create-account p {
-    color: #FFAE42;
-    font-size: 24px;
-    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
-  }
-  
-  .sign-in-button {
-    width: 100%;
+  .generate-profile-button {
+    width: 200px;
     padding: 10px;
-    background-color: #BF67A6; /* Green */
+    background-color: #BF67A6;
     color: white;
     border: none;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
     cursor: pointer;
-    font-family: 'Cherry Bomb', cursive; /* Set font family */
-    font-size: 24px; /* Set font size */
+    margin-top: 20px;
+  }
+  
+  .generate-profile-button:hover {
+    background-color: #853d71;
   }
