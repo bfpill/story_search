@@ -3,7 +3,6 @@ import starImage from './assets/star.png';
 import triangleImage from './assets/triangle.png';
 import swirlyImage from './assets/swirly.png';
 
-// Definethe swirly animation
 const swirlyAnimation = `
 @keyframes swirly {
   0% {
