@@ -1,0 +1,82 @@
+.full-pages{
+    height: 100vh;
+    width: 100vw;
+    background-color: #FAF9F6;
+    overflow: hidden;
+}
+.statement{
+    color: #2c2c2c;
+    padding-top: 10vh;
+
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 6vw;
+    display: block;
+    height: 20vh;
+    width: 40vw;
+    font-size: 4vw;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+
+}
+.statement:hover{
+    transform:scale(1.1);
+}
+.under-statement{
+    color: #2c2c2c;
+
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 6vw;
+    display: block;
+    height: 20vh;
+    width: 40vw;
+    font-size: 1vw;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+    padding-top: 35vh;
+
+}
+.img-container1{
+    display: block;
+    height: 25vh;
+    width: 30vw;
+    opacity: 0.9;
+    position: absolute;
+    left: 67vw; /* Adjust this value to your preference */
+    top: 10vh; /* Adjust this value to your preference */
+}
+.img-container2{
+    display: block;
+
+    height: 30vh;
+    width: 30vw;
+    z-index: 1;
+    position: absolute;
+    left: 50vw; /* Adjust this value to your preference */
+    top: 20vh; /* Adjust this value to your preference */
+}
+img{
+    border-radius: 5%;
+}
+.img-container3{
+    display: block;
+    height: 30vh;
+    
+   
+    width: 30vw;
+    
+    position: absolute;
+    left: 60vw; /* Adjust this value to your preference */
+    top: 50vh; /* Adjust this value to your preference */
+}
+.img-container4{
+    display: block;
+    height: 10vh;
+    width: 15vw;
+    z-index: 2;
+    opacity: 0.9;
+    position: absolute;
+    left: 55svw; /* Adjust this value to your preference */
+    top: 63vh; /* Adjust this value to your preference */
+}

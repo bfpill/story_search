@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
 import { getAllBooks, getAllUserBooks, getUser } from "./api";
-
+import Landing from "./components/Landing/Landing";
 const dummyUser = {
   id: 123,
   name: "John Doe",
@@ -65,7 +65,8 @@ const Home = (props: {}) => {
       <HomeBar onSearchChange={function (event: any): unknown {
         throw new Error("Function not implemented.")
       }} />
-      <UserLibraryDummy />
+      {/* <UserLibraryDummy /> */}
+      <Landing/>
     </div>
   )
 
