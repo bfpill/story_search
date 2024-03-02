@@ -66,7 +66,7 @@ function SignUp() {
       }} />
       <div className="flex w-full h-full absolute top-0">
         <div className="left">
-          <img src={bookAnimation} alt="Book Placeholder" className="centered-image" />
+          <img src={bookAnimation} alt="Book Placeholder" style={{ width: '800px' }} />
         </div>
         <div className="right">
           <div className="form-container">

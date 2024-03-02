@@ -53,6 +53,17 @@ export const createUser = async (email: string) => {
   }
 }
 
+export const updateUser = async (email, newData) => {
+  // console.log("getting user")
+  const url = `${BASE_URL}/api/user/${email}`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'PUT', { new_data: newData });
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+};
+
 export const getUser = async (email) => {
   // console.log("getting user")
   const url = `${BASE_URL}/api/get_user/${encodeEmail(email)}`;
@@ -69,7 +80,7 @@ export const addBookToUser = async (userId: string, bookId: string, book: any) =
   const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
   // console.log(url);
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'POST', {book: book});
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { book: book });
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);

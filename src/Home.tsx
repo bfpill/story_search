@@ -26,6 +26,7 @@ const Home = (props: {}) => {
   useEffect(() => {
     const initializeBooks = async () => {
       const allBooks = await getAllUserBooks(user.email)
+      setHoveredColor(allBooks[0].color)
       if (allBooks) {
         setUserBooks(allBooks)
         console.log(allBooks)
@@ -53,7 +54,8 @@ const Home = (props: {}) => {
   };
 
   return (
-    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center"
+    <div
+      className="transition-colors duration-300 h-screen w-screen relative p-4 flex flex-col justify-center items-center"
       style={{ backgroundColor: hoveredColor }}
     >
       <div className="w-full flex items-center justify-center">
