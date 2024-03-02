@@ -43,12 +43,14 @@ const Book = (props: { bookData }) => {
         showCover={true}
       >
         {pageRefs?.map((ref, index) => (
-          <Page key={index} 
-          number={index + 1} 
-          ref={ref} 
-          page={book.pages[index]} 
-          complementaryColor={book.complementaryColor }
-          />
+          <div className="text-3xl">
+            <Page key={index}
+              number={index + 1}
+              ref={ref}
+              page={book.pages[index]}
+              complementaryColor={book.complementaryColor}
+            />
+          </div>
         ))}
       </HTMLFlipBook>
     );
