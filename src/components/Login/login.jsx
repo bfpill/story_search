@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './login.css'; // Import the CSS file
 import bookPlaceholder from '../../assets/book_placeholder.png'
 
+import { auth } from '../../firebase-config';
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -15,10 +18,22 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Email:", email);
     console.log("Password:", password);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("User signed in:", userCredential.user, userCredential);
+      setUser(userCredential.user)
+      navigate("/lockerroom")
+    } catch (error) {
+      loginForm.setError("email", {
+        type: "manual",
+        message: "Email doesn't exist! Create an account below"
+      });
+    }
   };
 
   return (
