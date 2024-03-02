@@ -3,6 +3,7 @@ import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
 import { getAllBooks, getAllUserBooks, getUser } from "./api";
 import BookTitlePage from "./components/BookTitlePage";
+import { useNavigate } from 'react-router-dom';
 
 const dummyUser = {
   id: 123,
@@ -22,7 +23,7 @@ const dummyUser = {
 const UserLibraryDummy = () => {
   const { user } = useContext(CurrentUserContext)
   const [userBooks, setUserBooks] = useState([])
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const initializeBooks = async () => {
@@ -42,7 +43,9 @@ const UserLibraryDummy = () => {
         <div className="grid grid-cols-4 grid-rows-2 gap-10">
           {userBooks?.map(book => {
             return (
-              <div className="h-64 w-48 bg-blue-300 text-xs leading-1">
+              <div className="h-64 w-48 bg-blue-300 text-xs leading-1"
+                onClick={() => navigate(`books/${book.bookId}`)}
+              >
                 <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
               </div>
             )
