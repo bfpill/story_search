@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
-import { HomeBar } from "./components/NavBar"
-import { CurrentUserContext } from "./UserProvider"
-import { getAllUserBooks } from "./api";
-import BookTitlePage from "./components/BookTitlePage";
+import { HomeBar } from "../components/NavBar"
+import { CurrentUserContext } from "../UserProvider"
+import { getAllBooks } from "../api";
+import BookTitlePage from "../components/BookTitlePage";
 import { useNavigate } from 'react-router-dom';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../components/ui/carousel";
 
-const Home = (props: {}) => {
+const Library = (props: {}) => {
   const { user } = useContext(CurrentUserContext)
   const [userBooks, setUserBooks] = useState([])
   const [hoveredColor, setHoveredColor] = useState("")
@@ -15,10 +15,11 @@ const Home = (props: {}) => {
 
   useEffect(() => {
     const initializeBooks = async () => {
-      const allBooks = await getAllUserBooks(user.email)
-      setHoveredColor(allBooks?.[0].color)
+      const allBooks = await getAllBooks()
+
+      // setHoveredColor(allBooks?.[0].color)
       if (allBooks) {
-        setUserBooks(allBooks)
+        // setUserBooks(allBooks)
         console.log(allBooks)
       }
     }
@@ -58,7 +59,7 @@ const Home = (props: {}) => {
         </div>
       </div>
       <div className="w-screen h-full flex justify-center items-center">
-        <div className="w-screen h-full flex justify-center items-center z-50">
+        {/* <div className="w-screen h-full flex justify-center items-center z-50">
           {
             user ?
               <Carousel
@@ -91,7 +92,7 @@ const Home = (props: {}) => {
               </div>
           }
 
-        </div>
+        </div> */}
       </div>
     </div>
   )
@@ -99,4 +100,4 @@ const Home = (props: {}) => {
 }
 
 
-export default Home
+export default Library 

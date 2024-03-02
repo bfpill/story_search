@@ -26,19 +26,18 @@ export const ReactiveAvatar = (props: { size?: number, unclickable?: boolean }) 
     localStorage.removeItem("user")
   }
 
-  const handleOpenProfile = () => {
-    navigate("/profile")
-  }
 
   if (!props.unclickable) {
     return (
       <DropdownMenu>
-        <Avatar>
-          <AvatarImage className={`w-full h-full cursor-pointer`} src={user.avatar} onClick={() => navigate('/profile')}/>
-          <AvatarFallback>{user.name}</AvatarFallback>
-        </Avatar>
-        <DropdownMenuContent onCloseAutoFocus={() => { }} className="w-[200px]" align="end">
-          <DropdownMenuLabel onClick={() => handleOpenProfile()}>My Account</DropdownMenuLabel>
+        <DropdownMenuTrigger className="rounded-full">
+          <Avatar>
+            <AvatarImage className={`w-full h-full cursor-pointer`} src={user.avatar} />
+            <AvatarFallback>{user.name}</AvatarFallback>
+          </Avatar>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent onCloseAutoFocus={() => { }} className="w-[200px] cursor-pointer" align="end">
+          <DropdownMenuLabel onClick={() => navigate('/profile')} >My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {/* <DropdownMenuItem onSelect={event => event.preventDefault()} onClick={() => {theme == "dark" ? setTheme("light") : setTheme("dark")}}>
             <div className="w-full flex justify-between text-center items-center">
@@ -48,7 +47,6 @@ export const ReactiveAvatar = (props: { size?: number, unclickable?: boolean }) 
               </div>
             </div>
           </DropdownMenuItem> */}
-          <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem className="text-red-500" onClick={() => handleLogUserOut()}>Log Out</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

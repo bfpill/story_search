@@ -18,9 +18,12 @@
 
 .search-bar.move-to-top {
   padding: 20px 0; /* Move to top */
+  
 }
 
+
 .search-container {
+  
   position: relative; /* Set position relative for absolute positioning of the icon */
 }
 
@@ -79,6 +82,7 @@
   font-size: 30px; /* Adjust the font size to make it smaller */
   padding-top: 10px; /* Adjusted padding for smaller input */
   padding-bottom: 10px; /* Adjusted padding for smaller input */
+  
 }
 
 .generate-button {
