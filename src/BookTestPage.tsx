@@ -46,7 +46,7 @@ const BookTestPage = () => {
       <div className="w-full h-full flex justify-center items-center">
         <div className="w-[800px] h-[580px] justify-center" style={{ zIndex: 1 }}>
           {book ? (
-            <Book bookData={book} />
+           <Book bookData={book} coverImage={book.coverImage} coverColor={book.color} />
           ) : generatingBook ? (
             <div className="flex justify-center items-center" style={{ backgroundColor: complementaryColor }}>
               Generating book...
