@@ -16,36 +16,41 @@ const handleLoginClick = (navigate) => {
   navigate('/login');
 };
 
-export function HomeBar(props: { onSearchChange: (event) => unknown }) {
+export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boolean }) {
   const navigate = useNavigate();
   const { user } = useContext(CurrentUserContext)
   const { theme } = useTheme()
 
+
   return (
-    <div className="h-10 items-center justify-center min-w-[500px]">
-    <div className="flex ml-4 mr-2 md:relative">
-      <div className="flex w-full flex-row justify-between items-center">
-        <div onClick={() => handleImageClick(navigate)} className="cursor-pointer">
-          <LogoSVG theme={theme} />
-        </div>
-        <div className="flex w-full flex-row justify-end items-center gap-3">
-          <Button className="rounded-full mt-[-1rem]" onClick={() => navigate('/create_book')}>
-            New Book
-          </Button>
-          <Button className="rounded-full mt-[-1rem]" onClick={() => navigate('/library')}>
-            Library 
-          </Button>
-          {
-            user ?
-              <ReactiveAvatar />
-              :
-              <Button variant="ghost" className="text-s  mt-[-1rem]" onClick={() => handleLoginClick(navigate)}>Login</Button>
-          }
+    <div className="p-1 flex items-center" style={{ justifyContent: "space-between" }}>
+      <div className={`h-full w-full flex items-center justify-center transition-all duration-500 ease-in-out`}>
+        <div className={`h-full flex items-center rounded-full justify-center transition-all duration-500 ease-in-out shadow-border
+         ${props.expand ? 'w-[90%] border-none' : 'w-[400px] border'}`}
+        >
+          <div onClick={() => navigate('/')} className="cursor-pointer mt-1.5 ml-2">
+            <LogoSVG theme={theme} />
+          </div>
+          <div className="flex w-full flex-row justify-end items-center gap-3 mr-2 p-2">
+            <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/create_book')}>
+              New Book
+            </Button>
+            <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/library')}>
+              Library
+            </Button>
+            {
+              user ?
+                <ReactiveAvatar />
+                :
+                <Button variant="ghost" className="rounded-full h-full" onClick={() => navigate('/login')}>
+                  Login
+                </Button>
+            }
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  )
+  );
 }
 
 export function DefaultBar() {
@@ -54,27 +59,23 @@ export function DefaultBar() {
   const { theme } = useTheme()
 
   return (
-    <div className="h-12 p-3 items-center justify-center border border-transparent border">
-      <div className="h-10 items-center justify-center">
-        <div className="flex ml-4 mr-4 mt-2 md:relative">
-          <div className="flex w-full flex-row justify-between items-center">
-            <div onClick={() => handleImageClick(navigate)} className="cursor-pointer">
-              <LogoSVG theme={theme} />
-            </div>
-            <div className="flex w-full flex-row justify-end items-center">
-              {/* <Button variant="ghost" className="text-s mr-4" onClick={() => handleLockerroomClick(navigate)}>
-                Dashboard
-              </Button> */}
-
-              {
-                user ?
-                  <ReactiveAvatar />
-                  :
-                  <Button variant="ghost" className="text-s" onClick={() => handleLoginClick(navigate)}>Login</Button>
-              }
-            </div>
-          </div>
-        </div>
+    <div className="flex w-full h-min flex-row justify-between items-center px-8 py-3 justify-center">
+      <div onClick={() => handleImageClick(navigate)} className="cursor-pointer mt-2">
+        <LogoSVG theme={theme} />
+      </div>
+      <div className="flex w-full flex-row justify-end items-center gap-3 mr-2 p-2">
+        <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/create_book')}>
+          New Book
+        </Button>
+        <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/library')}>
+          Library
+        </Button>
+        {
+          user ?
+            <ReactiveAvatar />
+            :
+            <Button variant="ghost" className="rounded-full h-full" onClick={() => handleLoginClick(navigate)}>Login</Button>
+        }
       </div>
     </div >
   )

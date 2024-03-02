@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import './signup.css';
-import bookAnimation from '../../assets/bookAnimation.gif'; 
+import bookAnimation from '../../assets/bookAnimation.gif';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { createUser } from '@/api';
 import { auth } from '../../firebase-config.js'
 import { CurrentUserContext } from '@/UserProvider';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { HomeBar } from '../NavBar.js';
 
@@ -62,11 +61,9 @@ function SignUp() {
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
-      <div className="border p-2 rounded-full flex items-center justify-center z-20 absolute top-4 bg-white">
-        <HomeBar onSearchChange={function (event: any): unknown {
-          throw new Error("Function not implemented.")
-        }} />
-      </div>
+      <HomeBar onSearchChange={function (event: any): unknown {
+        throw new Error("Function not implemented.")
+      }} />
       <div className="flex w-full h-full absolute top-0">
         <div className="left">
           <img src={bookAnimation} alt="Book Placeholder" className="centered-image" />

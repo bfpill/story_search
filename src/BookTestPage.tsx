@@ -108,9 +108,9 @@ const DummyBook = {
       "background_image_query": "Steel Rails"
     }
   ],
-  "color": "fushsia",
-  "complementaryColor":"Azure"
-}
+  "color": "Black",
+  "complementaryColor":"Yellow"
+};
 
 
 const BookTestPage = () => {
@@ -149,15 +149,6 @@ const BookTestPage = () => {
       100% {
         transform: rotate(360deg);
       }
-    // REAL
-    // const data = await getGenerateBook(dummy_user_id, dummy_search);
-    // console.log(data);
-    // setBook(data);
-
-      // // testing
-      setBook(DummyBook);
-      setGeneratingBook(false);
-      
     }
   `;
   const starAnimation = `
@@ -282,7 +273,7 @@ const BookTestPage = () => {
 
         /* Define the swirly animation */
         .swirly {
-          animation: swirly 5s linear infinite;
+          animation: swirly 3s linear infinite;
         }
 
         @keyframes swirly {

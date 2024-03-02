@@ -2,11 +2,10 @@ import React, { useContext, useState } from 'react';
 import './login.css'; // Import the CSS file
 import bookAnimation from '../../assets/bookAnimation.gif'; 
 import { auth } from '../../firebase-config';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '@/UserProvider';
-import { DefaultBar, HomeBar } from '../NavBar';
-import { Button } from '../ui/button';
+import { HomeBar } from '../NavBar';
 
 
 function Login() {
@@ -41,10 +40,10 @@ function Login() {
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
-      <div className="border p-2 rounded-full flex items-center justify-center z-20 absolute top-4 bg-white">
+      <div className="z-20 absolute top-4 rounded-full">
         <HomeBar onSearchChange={function (event: any): unknown {
-          throw new Error("Function not implemented.")
-        }} />
+          throw new Error("Function not implemented.");
+        } } expand={false} />
       </div>
       <div className="flex w-full h-full absolute top-0">
       <div className="left">

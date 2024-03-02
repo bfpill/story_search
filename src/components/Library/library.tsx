@@ -8,7 +8,7 @@ import './library.css';
 class Library extends Component {
   state = {
     goToSlide: 0,
-    offsetRadius: 4, // Adjusted offsetRadius to accommodate 5 books
+    offsetRadius: 4,
     showNavigation: false,
     config: config.gentle,
     hoveredIndex: -1
@@ -35,7 +35,7 @@ class Library extends Component {
           <div className="my-library">My Library</div>
         </div>
         <div className="image-containers">
-          <div style={{ width: "60%", height: "700px", margin: "0 auto" }}> {/* Adjusted width to accommodate 5 books */}
+          <div style={{ width: "60%", height: "700px", margin: "0 auto" }}> 
             <Carousel
               slides={this.slides}
               goToSlide={this.state.goToSlide}
