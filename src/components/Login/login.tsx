@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '@/UserProvider';
 import { DefaultBar } from '../NavBar';
+import { Button } from '../ui/button';
 
 
 function Login() {
@@ -75,16 +76,14 @@ function Login() {
               <button type="submit">Login</button>
             </form>
             <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }}>Sign In</button>
-
-
             <div className="forget-password">
               <p>Forgot Password?</p>
             </div>
             <div className="no-account">
               <p>Don't Have an Account?</p>
             </div>
-            <div className="create-account">
-              <p>Create Account?</p>
+            <div onClick={() => {navigate("/sign_up")}} className="create-account mt-3">
+            <p>Create Account</p>
             </div>
           </div>
         </div>

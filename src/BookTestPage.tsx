@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { getGenerateBook } from "./api";
 import { Button } from "./components/ui/button";
 import Book from "./components/Book";
-import { DefaultBar } from "./components/NavBar";
+import { DefaultBar, HomeBar } from "./components/NavBar";
 
 // const books = [
 //   {
@@ -125,13 +125,13 @@ const BookTestPage = () => {
   }
 
   return (
-    <div className="h-screen w-screen relative p-10 flex justify-center items-center"
-      style={{ backgroundColor: book?.color }}
-    >
-      <div className="absolute top-0 right-0 w-full">
-        <DefaultBar />
+    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
+      <div className="border p-2 rounded-full flex items-center justify-center">
+        <HomeBar onSearchChange={function (event: any): unknown {
+          throw new Error("Function not implemented.")
+        }} />
       </div>
-      <div className="w-full h-full flex justify-center items-center scale-125">
+      <div className="w-full h-full flex justify-center items-center">
         <div className="w-[800px] h-[580px] justify-center">
           {book !== undefined ?
             <Book bookData={book} />
@@ -150,14 +150,12 @@ const BookTestPage = () => {
       <div className="absolute bottom-20 w-full">
         <div className="w-full flex justify-center">
           <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
-            <div className="gap-4 flex">
-              <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
-                Generate Book
-              </Button>
-              <Button className="rounded-full" variant="outline">
-                Generate Background Image
-              </Button>
-            </div>
+            <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
+              Generate Book
+            </Button>
+            <Button className="rounded-full" variant="outline">
+              Generate Background Image
+            </Button>
           </div>
         </div>
       </div>

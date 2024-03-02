@@ -21,6 +21,7 @@
     "firebase": "^10.8.1",
     "firebase-auth": "^0.1.2",
     "firebase-config": "^1.0.0",
+    "lucide-react": "^0.344.0",
     "openai": "^4.28.4",
     "process": "^0.11.10",
     "react": "^18.2.0",

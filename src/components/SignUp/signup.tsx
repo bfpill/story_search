@@ -99,8 +99,8 @@ function SignUp() {
             />
           </div>
           {passwordMismatchError && <div className="error">{passwordMismatchError}</div>}
-          <Button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }} 
-          type="submit" onClick={(e) => handleSubmit(e)}>Sign Up</Button>
+          <div className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }} 
+          type="submit" onClick={(e) => handleSubmit(e)}>Sign Up</div>
         </div>
       </div>
     </div>
