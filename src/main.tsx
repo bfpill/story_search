@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
+
 import Library from './components/Library/library.tsx'
 import Login from './components/Login/login.tsx'
 import Prompt from './components/Prompt/prompt.tsx'
@@ -11,6 +12,7 @@ import Home from './Home.tsx';
 import { ThemeProvider } from './ThemeProvider.tsx';
 import { UserProvider } from './UserProvider.tsx';
 import BookTestPage from './BookTestPage.tsx';
+import FullLibrary from './components/FullLibrary.tsx'
 
 export function getNavBarType(): string {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -39,6 +41,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/login' element={<Login />} />
         <Route path='/create_book' element={<Prompt />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/full_library' element={<FullLibrary />} />
+
       </Routes>
     </Router>
   </UserProvider>
