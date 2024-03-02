@@ -84,6 +84,9 @@
   .profile-pic{
     padding-top: 5vh;
     padding-left: 30vw;
-    height: 150px;
+    height: 100px;
 
+  }
+  .profile-pic:hover{
+    transform: scale(1.2);
   }

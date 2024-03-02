@@ -65,7 +65,7 @@ class Library extends Component {
           </div>
 
           <div className="create-story">
-            <div className="inside-create-story">Create a new story</div>
+            <a href="/create_book"><div className="inside-create-story">Create a new story</div></a>
             
 
           </div>
