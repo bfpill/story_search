@@ -1,75 +1,83 @@
 @font-face {
-    font-family: "Cherry bomb";
+    font-family: "Cherry Bomb";
     src: local("GilroyRegular"),
       url("../fonts/cherrybombone-regular.ttf") format("truetype");
     font-weight: normal;
   }
-
-.library-container {
+  
+  .library-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh; /* Set height to viewport height for vertical centering */
-}
-
-.my-library {
+  }
+  
+  .my-library {
     font-family: 'Cherry Bomb', cursive;
-    font-size: 74px; /* Adjust size as needed */
+    font-size: 5.5vw; /* Adjust size as needed */
+    padding-bottom:40px; /* Adjust size as needed */
     /* Add any other styling properties you desire */
-}
-.full-page{
+  }
+  
+  .carousel-slide {
+    margin-right: 1vw; /* Adjust the margin to increase/decrease the spacing between items */
+  }
+  
+  .full-page {
     background-color: #C7E4EA;
     width: 100vw;
-    height: 100vh    ;
-}
-.create-story {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .create-story {
     position: absolute;
-    top: 50%; /* Adjust top position as needed */
-    right: 10%; /* Position it to the right of the page */
-    transform: translateY(-50%); /* Center vertically */
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
     background-color: white;
-    /* Add any other styling properties you desire */
-    height: 45vh;
+    height: 95vh;
     width: 15vw;
     border-radius: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.inside-create-story{
-    font-family: 'CherryBomb', cursive;
+  }
+  
+  .inside-create-story {
+    font-family: 'Cherry Bomb', cursive;
     font-size: 20px;
     font-weight: bold;  
-   
-
-}
-
-.book-images:hover {
-    opacity: 1; 
-    transform: scale(1.2); /* Enlarge the image on hover */
-}
-
-.book-images:not(:hover) {
-    opacity: 1; 
-}
-.book-images:not(:first-child) {
-    margin-left: -140px; 
-}  
-
-.image-containers {
+  }
+  
+  .book-images {
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transition for smooth hover effect */
+  }
+  
+  .book-images:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Adjusted scale on hover */
+  }
+  
+  .carousel-container {
+    margin: 0 auto;
+  }
+  
+  .carousel-content {
+    overflow: hidden;
+  }
+  
+  .image-containers {
     display: flex;
-    width: 60vw;
-    white-space: nowrap;
-    height: 60vh;
-    margin-top: 5vh;
-    margin-left: 8vw;
-}
-
-.book-images {
-    width: 250px;
-    height: 400px;
-    margin-right: 10px; /* Adjust margin between images */
-    transition: opacity 0.3s ease; /* Add transition for smooth opacity change */
-    filter: drop-shadow(40px 40px 40px rgba(0, 0, 0, 0.2));
+    justify-content: center;
+    align-items: center;
+    width: 70%; /* Adjusted width to accommodate larger images */
+  }
+  
+  .carousel-slide {
     
-}
+  }
+  
