@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
-import { getGenerateBook } from "./api";
+import React, { useContext, useEffect, useState } from "react"
+import { getGenerateBook, addBookToUser } from "./api";
 import { Button } from "./components/ui/button";
 import Book from "./components/Book";
 import { DefaultBar, HomeBar } from "./components/NavBar";
+import { CurrentUserContext } from "./UserProvider";
 
 // const books = [
 //   {
@@ -109,16 +110,16 @@ const dummy_search = "trains"
 
   const BookTestPage = () => {
 
-    const [book, setBook] = useState(undefined);
-    const [generatingBook, setGeneratingBook] = useState(false);
+  const [book, setBook] = useState(undefined);
+  const [generatingBook, setGeneratingBook] = useState(false);
 
     const handleGenClick = async () => {
       setGeneratingBook(true);
 
-      // REAL
-      // const data = await getGenerateBook(dummy_user_id, dummy_search);
-      // console.log(data);
-      // setBook(data);
+    // REAL
+    const data = await getGenerateBook(dummy_user_id, dummy_search);
+    console.log(data);
+    setBook(data);
 
       // // testing
       setBook(DummyBook);

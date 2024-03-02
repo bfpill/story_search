@@ -36,8 +36,7 @@ function SignUp() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("created User cred")
-      const user_id = "123"
-      createUser(user_id, email)
+      createUser(email)
 
       console.log("User created:", userCredential.user);
 

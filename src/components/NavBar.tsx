@@ -30,7 +30,7 @@ export function HomeBar(props: { onSearchChange: (event) => unknown }) {
           </div>
           <div className="flex w-full flex-row justify-end items-center gap-3">
             {/* <Input className="h-8 mr-2 w-80 text-s tracking-tight" placeholder="Search..." onChange={props.onSearchChange} /> */}
-            <Button className="rounded-full" onClick={() => navigate('/book_test')}>
+            <Button className="rounded-full" onClick={() => navigate('/create_book')}>
               New Book
             </Button>
             <Button className="rounded-full" onClick={() => navigate('/library')}>
