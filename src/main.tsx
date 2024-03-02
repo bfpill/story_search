@@ -31,8 +31,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/book_test" element={<BookTestPage />} />
-        <Route path="/test_book_gen" element={<TestBookGeneration/>} />
       </Routes>
     </Router>
   </UserProvider>
