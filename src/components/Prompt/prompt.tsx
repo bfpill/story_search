@@ -8,6 +8,7 @@ import Book from '../Book';
 import BookTitlePage from '../BookTitlePage';
 import { DummyBook } from '@/lib/utils';
 import { Search } from 'lucide-react';
+import { start } from 'repl';
 
 function Prompt() {
   const [search, setSearch] = useState("");
@@ -28,9 +29,9 @@ function Prompt() {
     console.log("searching for ", search)
     if (search !== "") {
       setIsNavExpanded(true)
-      setIsSearching(true)
       setStartTimerForImages(true)
-      
+      setIsSearching(true)
+
       console.log("search", search)
       const results = await getGenerateSearchOptions(search)
       console.log("rss", results)
@@ -40,7 +41,6 @@ function Prompt() {
         setSearchResults(possible_titles)
       }
 
-     
       setShowGenerateButton(false);
     }
   }
@@ -54,7 +54,7 @@ function Prompt() {
     setTimeout(() => {
       setShowImages(true);
     }, 1500)
-  }, [startTimerForImages])
+  }, [isSearching])
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -106,9 +106,10 @@ function Prompt() {
           </Button>
         </div>
       </div>
-      {showImages && searchResults && (
-        <div className={`transition-all duration-500 ${showImages ? 'h-full' : 'h-0'} top-[300px] absolute grid grid-cols-3 w-2/3 gap-10 mt-10`}>
-          {searchResults?.map(title => {
+
+      {isSearching && !hasChosenBook && (
+        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 gap-10 mt-10`}>
+          {(searchResults ?? ["", "", ""]).map(title => {
             return (
               <div onClick={() => handleSetChosenBook(title)} className="h-[320px] w-[240px] flex text-sm items-center justify-center bg-blue-300 col-span-1" >
                 <BookTitlePage complementaryColor={"blue"} page={{ text: title }} />

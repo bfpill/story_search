@@ -24,6 +24,19 @@
   position: relative; /* Set position relative for absolute positioning of the icon */
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.initial-fade-in {
+  animation: fadeIn 1500ms forwards;
+}
+
 .search-icon {
   position: absolute; /* Position the icon absolutely */
   top: 50%; /* Position vertically at the center */
