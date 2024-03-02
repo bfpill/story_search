@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
-import { getAllUserBooks } from "./api";
+import { getAllBooks, getAllUserBooks, getUser } from "./api";
 import BookTitlePage from "./components/BookTitlePage";
 import { useNavigate } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
@@ -11,7 +11,7 @@ import squiggleImage from './assets/squiggle.png';
 import starImage from './assets/star.png';
 import triangleImage from './assets/triangle.png';
 import swirlyImage from './assets/swirly.png'
-
+import Landing from "./components/Landing/Landing";
 
 const Home = (props: {}) => {
   const { user } = useContext(CurrentUserContext)
