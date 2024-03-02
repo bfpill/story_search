@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { HomeBar } from "./components/NavBar";
-import { CurrentUserContext } from "./UserProvider";
-import { getAllUserBooks } from "./api";
+import { useContext, useEffect, useState } from "react"
+import { HomeBar } from "./components/NavBar"
+import { CurrentUserContext } from "./UserProvider"
+import { getAllBooks, getAllUserBooks, getUser } from "./api";
 import BookTitlePage from "./components/BookTitlePage";
 import { useNavigate } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
@@ -10,11 +10,12 @@ import RenderShakingImages from "./ShakingImages";
 import squiggleImage from './assets/squiggle.png';
 import starImage from './assets/star.png';
 import triangleImage from './assets/triangle.png';
-import swirlyImage from './assets/swirly.png';
+import swirlyImage from './assets/swirly.png'
+import Landing from "./components/Landing/Landing";
 
-const UserLibraryDummy = () => {
-  const { user } = useContext(CurrentUserContext);
-  const [userBooks, setUserBooks] = useState([]);
+const UserLibraryDummy = (props: {}) => {
+  const { user } = useContext(CurrentUserContext)
+  const [userBooks, setUserBooks] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const UserLibraryDummy = () => {
         onMouseOut={() => setIsHovered(false)}
         onClick={() => navigate(`books/${book.bookId}`)}
       >
-        <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
+        <BookTitlePage complementaryColor={undefined} page={book.pages[0]} coverImage={book.coverImage} coverColor={book.color} />
       </div>
     );
   };
@@ -84,19 +85,24 @@ const UserLibraryDummy = () => {
 };
 
 const Home = (props: {}) => {
+  const [hoveredColor, setHoveredColor] = useState(""); // Define hoveredColor state variable
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
-      <div className="w-full flex items-center justify-center">
-        <div className={`z-50 transition-all duration-500 top-4 absolute w-full rounded-full`}
-          style={{ "zIndex": "9999" }}
-        >
-          <HomeBar onSearchChange={function (event: any): unknown {
-            throw new Error("Function not implemented.");
-          }} />
+      <div className="w-screen h-full relative p-4 flex flex-col justify-center items-center"
+        style={{ backgroundColor: hoveredColor }}
+      >
+        <div className="w-full flex items-center justify-center">
+          <div className={`z-50 transition-all duration-500 top-4 absolute w-full rounded-full`}
+            style={{ "zIndex": "9999" }}
+          >
+            <HomeBar onSearchChange={function (event: any): unknown {
+              throw new Error("Function not implemented.");
+            }} />
+          </div>
         </div>
+        <UserLibraryDummy setHoveredColor={setHoveredColor} /> {/* Pass setHoveredColor to UserLibraryDummy */}
       </div>
-      <UserLibraryDummy />
       <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
         {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 4)}
       </div>

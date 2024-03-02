@@ -6,13 +6,30 @@ import { Button } from '../ui/button';
 import { getGenerateSearchOptions } from '@/image_api';
 import Book from '../Book';
 import BookTitlePage from '../BookTitlePage';
-import { DummyBook, dummy_search, dummy_user_id } from '@/lib/utils';
+import { DummyBook, dummy_search, dummy_user_id, getRandomColor, getRandomCover } from '@/lib/utils';
 import { Search } from 'lucide-react';
-import { start } from 'repl';
 import { addBookToUser, getGenerateBook } from '@/api';
 import { v4 as uuid4 } from 'uuid'
 import { CurrentUserContext } from '@/UserProvider';
 
+
+
+const OptionCard = ({ title, handleSetChosenBook, setCoverImage, setCoverImageColor }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const baseStyle = "h-96 w-64 text-3xl leading-1 cursor-pointer transition-all duration-300 ease-in-out";
+  const hoverStyle = "scale-105 shadow-2xl";
+
+  return (
+    <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'} h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
+      onClick={() => handleSetChosenBook(title)}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+    >
+      <BookTitlePage complementaryColor={"blue"} page={{ text: title }} setCover={() => setCoverImage()} setCoverColor={() => setCoverImageColor()} />
+    </div>
+  );
+}
 function Prompt() {
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState<boolean>(false)
@@ -24,6 +41,7 @@ function Prompt() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [chosenTitle, setChosenTitle] = useState("");
   const [generatingBook, setGeneratingBook] = useState(false);
+
   const [coverImage, setCoverImage] = useState(undefined)
   const [coverImageColor, setCoverImageColor] = useState(undefined)
 
@@ -58,28 +76,37 @@ function Prompt() {
     }
   };
 
-  useEffect(() => {
-    console.log("cover image changed", coverImage, coverImageColor)
-  }, [coverImage, coverImageColor])
-
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
   }
 
-  const handleSetChosenBook = async (title) => {
+  const handleSetChosenBook = async (title, image, color) => {
     setChosenTitle(title)
     setHasChosenBook(true)
     setGeneratingBook(true);
+
+    setCoverImage(image)
+    setCoverImageColor(color)
 
     // TEST
     // setBook(DummyBook);
 
     // REAL 
     const gendBook = await getGenerateBook(user.email, search);
+
     const newBookId = uuid4()
-    const newBook = { ...gendBook, pages: [...gendBook.pages], bookId: newBookId};
+
+    console.log("STUFF:L ", image, color)
+
+    const newBook = {
+      ...gendBook, pages: [...gendBook.pages], bookId: newBookId,
+    };
+
+    newBook.coverImage = image
+    newBook.color = color
+
     if (newBook.pages[0]?.type !== "front_cover") {
-      newBook.pages.unshift({ type: "front_cover", text: newBook.title, });
+      newBook.pages.unshift({ type: "front_cover", text: newBook.title });
     }
 
     if (newBook.pages[newBook.pages.length - 1]?.type !== "back_cover") {
@@ -148,17 +175,17 @@ function Prompt() {
         <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 min-w-[800px] gap-10 mt-20`}>
           {(searchResults ?? ["", "", ""]).map(title => {
             return (
-              <div onClick={() => handleSetChosenBook(title)}
-                className="h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-2xl" >
-                <BookTitlePage complementaryColor={"blue"} page={{ text: title }} setCover={setCoverImage} setCoverColor={setCoverImageColor} />
+              <div className={`h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
+              >
+                <BookTitlePage complementaryColor={"blue"} page={{ text: title }} handleBookClick={handleSetChosenBook} />
               </div>
             )
           })}
         </div>
       )}
       {hasChosenBook && generatingBook ? (
-        <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] bg-blue-300 flex" >
-          <BookTitlePage complementaryColor={"blue"} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
+        <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] bg-blue-300 flex">
+          <BookTitlePage complementaryColor={() => getRandomColor()} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
         </div>
       ) : (
         book &&

@@ -7,6 +7,7 @@
   
   
   .container {
+    background-color: #FAF9F6;
     display: flex;
     height: 100vh; /* Set height to 100% of the viewport height */
   }
@@ -39,7 +40,7 @@
   
   
   .right {
-    background-color: white; /* Right half is white */
+    background-color: #FAF9F6; /* Right half is white */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,8 +95,8 @@
     width: 60px; /* Adjust width as needed */
     height: 60px; /* Adjust height as needed */
     background-color: #BF67A6; /* Pink color */
-    color: white;
-    color: white;
+    color: #FAF9F6;
+    
     font-size: 36px;
     border: none;
     border-radius: 50%;
@@ -148,6 +149,19 @@
     transform: scale(1.1); /* Add scale effect on hover */
   }
   
+
+
+  /* button {
+    width: 30px;
+    padding: 10px;
+    background-color: #C7E4EA;
+    color: white;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+  } */
+
+  
   button:hover,
   .sign-in-button:hover {
     background-color: #BF67A6; /* Darker green */
@@ -175,7 +189,7 @@
     width: 200px;
     padding: 10px;
     background-color: #BF67A6;
-    color: white;
+    color: #FAF9F6;
     border: none;
     border-radius: 10px;
     cursor: pointer;
