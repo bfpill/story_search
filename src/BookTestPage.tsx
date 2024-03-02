@@ -3,7 +3,6 @@ import { getGenerateBook } from "./api";
 import { Button } from "./components/ui/button";
 import Book from "./components/Book";
 import { DefaultBar } from "./components/NavBar";
-import { getGenerateBackgroundImage } from "./image_api";
 
 // const books = [
 //   {
@@ -56,89 +55,50 @@ import { getGenerateBackgroundImage } from "./image_api";
 // ]
 
 const DummyBook = {
-  "title": "The Great Train Journey",
+  "title": "Whistles and Wheels: A Train Tale",
   "pages": [
-    {
-      "pageNum": 1,
-      "text": "In the small town of Railville, an old steam train, puffing and hissing, waited at the station. Jamie and his dog, Bolt, watched in awe.",
-      "images": [
-        "Old Steam Train at Railville Station",
-        "Jamie and Bolt"
-      ]
-    },
-    {
-      "pageNum": 2,
-      "text": "The conductor, Mr. Whistler, invited them aboard. Today, they'd learn about trains, traveling from steam to electric innovations.",
-      "images": [
-        "Conductor Whistler",
-        "Boarding the Train"
-      ]
-    },
-    {
-      "pageNum": 3,
-      "text": "First stop: the Steam Age. Mr. Whistler explained, \"Steam trains, powered by coal, changed how we travel and trade.\"",
-      "images": [
-        "The Steam Age Exhibit",
-        "Coal-Powered Steam Train"
-      ]
-    },
-    {
-      "pageNum": 4,
-      "text": "Next, they zoomed to the Diesel Era. \"Diesel trains, more efficient than steam, became the backbone of transportation,\" Mr. Whistler noted.",
-      "images": [
-        "The Diesel Era Exhibit",
-        "A Diesel Train"
-      ]
-    },
-    {
-      "pageNum": 5,
-      "text": "Electric trains stole the show at the third stop. \"Electricity powers these trains, making them faster and cleaner,\" the conductor beamed.",
-      "images": [
-        "Electric Train Exhibit",
-        "Fast Electric Train"
-      ]
-    },
-    {
-      "pageNum": 6,
-      "text": "The fourth stop presented the marvel of bullet trains. Mr. Whistler exclaimed, \"These can travel up to 320 km/h!\"",
-      "images": [
-        "Bullet Train Exhibit",
-        "Speeding Bullet Train"
-      ]
-    },
-    {
-      "pageNum": 7,
-      "text": "Innovation continued with the Maglev train display. \"Magnetic levitation lets these trains float above tracks, reducing friction,\" Mr. Whistler elucidated.",
-      "images": [
-        "Maglev Train Exhibit",
-        "Floating Maglev Train"
-      ]
-    },
-    {
-      "pageNum": 8,
-      "text": "Their last stop was the future of trains. With eyes wide, they viewed concepts of solar-powered and hyperloop trains.",
-      "images": [
-        "Future of Trains Exhibit",
-        "Concept Hyperloop Train"
-      ]
-    },
-    {
-      "pageNum": 9,
-      "text": "As the journey ended, Jamie and Bolt were amazed. Trains had evolved greatly, connecting the world in ways once unimaginable.",
-      "images": [
-        "Jamie and Bolt Amazed",
-        "World Connected by Trains"
-      ]
-    },
-    {
-      "pageNum": 10,
-      "text": "Stepping off the train, Jamie looked up at Mr. Whistler, \"Thank you, I'll never look at trains the same way again.\"",
-      "images": [
-        "Grateful Jamie",
-        "Mr. Whistler's Smile"
-      ]
-    }
-  ]
+      {
+          "pageNum": 1,
+          "text": "In Whistleville, trains weren't just a mode of transport; they were beloved members of the community.",
+          "images": [
+              "Whistleville Station",
+              "Happy Train"
+          ],
+          "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/7e829a68-7616-4f6b-aa3c-fe228c050c1e",
+          "background_image_query": "Countryside Tracks"
+      },
+      {
+          "pageNum": 2,
+          "text": "Benny, a bright blue engine, loved racing down the tracks, breezing past mountains and meadows.",
+          "images": [
+              "Benny the Engine",
+              "Mountains and Meadows"
+          ],
+          "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/53ed3459-feb1-47fc-8382-cdc87bcdddaf",
+          "background_image_query": "Countryside Tracks"
+      },
+      {
+          "pageNum": 3,
+          "text": "He knew every twist and turn, thanks to the steel rails guiding his wheels, a brilliant invention enhancing travel.",
+          "images": [
+              "Steel Rails",
+              "Twists and Turns"
+          ],
+          "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/3125bed6-395e-41a7-a3aa-d34a289fa5bc",
+          "background_image_query": "Steel Rails"
+      },
+      {
+          "pageNum": 4,
+          "text": "One day, Benny set a record, cheered on by townsfolk, embodying the spirit of Whistleville's train heritage.",
+          "images": [
+              "Record Setting Day",
+              "Cheering Townsfolk"
+          ],
+          "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/dab51f7a-4a61-4ee8-a98d-9352b5205f57",
+          "background_image_query": "Steel Rails"
+      }
+  ],
+  "color": "Azure"
 }
 
 
@@ -150,7 +110,6 @@ const BookTestPage = () => {
 
   const [book, setBook] = useState(undefined);
   const [generatingBook, setGeneratingBook] = useState(false);
-  const [bgArray, setBgArray] = useState(undefined)
 
   const handleGenClick = async () => {
     setGeneratingBook(true);
@@ -160,17 +119,19 @@ const BookTestPage = () => {
     console.log(data);
     setBook(data);
     
-    // testing
+    // // testing
     // setBook(DummyBook);
-    setGeneratingBook(false);
+    // setGeneratingBook(false);
   }
 
   return (
-    <div className="h-screen w-screen bg-neutral-100 relative p-10 flex justify-center items-center">
+    <div className="h-screen w-screen relative p-10 flex justify-center items-center"
+      style={{backgroundColor: book?.color}}
+      >
       <div className="absolute top-0 right-0 w-full">
         <DefaultBar />
       </div>
-      <div className="w-full h-full flex justify-center items-center">
+      <div className="w-full h-full flex justify-center items-center scale-125">
         <div className="w-[800px] h-[580px] justify-center">
           {book !== undefined ?
             <Book bookData={book} />
@@ -186,8 +147,7 @@ const BookTestPage = () => {
           }
         </div>
       </div>
-      <div className="hover-trigger absolute bottom-0 w-full h-20"></div> {/* Invisible area to trigger hover */}
-      <div className="hover-target absolute bottom-20 w-full opacity-0 hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute bottom-20 w-full">
         <div className="w-full flex justify-center">
           <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
             <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
