@@ -5,7 +5,7 @@ import Page from "./Page";
 import "./BookTestPage.css"
 
 
-const Book = (props: { bookData, coverImage?}) => {
+const Book = (props: { bookData, coverImage?, coverColor?}) => {
   const [pageRefs, setPageRefs] = useState(undefined)
   const [book, setBook] = useState(props.bookData)
 
@@ -14,7 +14,7 @@ const Book = (props: { bookData, coverImage?}) => {
 
     const newBook = { ...book, pages: [...book.pages] };
     if (newBook.pages[0]?.type !== "front_cover") {
-      newBook.pages.unshift({ type: "front_cover", text: newBook.title });
+      newBook.pages.unshift({ type: "front_cover", text: newBook.title, });
     }
 
     if (newBook.pages[newBook.pages.length - 1]?.type !== "back_cover") {
@@ -47,6 +47,8 @@ const Book = (props: { bookData, coverImage?}) => {
             ref={ref}
             page={book.pages[index]}
             complementaryColor={book.complementaryColor}
+            coverImage={props.coverImage}
+            coverColor={props.coverColor}
           />
         ))}
       </HTMLFlipBook>

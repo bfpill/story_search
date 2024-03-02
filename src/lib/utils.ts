@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const DummyBook = {
   "title": "Whistles and Wheels: A Train Tale",
+  "category": "Science",
   "pages": [
     {
       "pageNum": 1,

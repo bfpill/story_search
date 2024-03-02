@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './prompt.css';
 import { DefaultBar, HomeBar } from '../NavBar';
 import { Input } from '../ui/input';
@@ -9,7 +9,9 @@ import BookTitlePage from '../BookTitlePage';
 import { DummyBook, dummy_search, dummy_user_id } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import { start } from 'repl';
-import { getGenerateBook } from '@/api';
+import { addBookToUser, getGenerateBook } from '@/api';
+import { v4 as uuid4 } from 'uuid'
+import { CurrentUserContext } from '@/UserProvider';
 
 function Prompt() {
   const [search, setSearch] = useState("");
@@ -24,6 +26,8 @@ function Prompt() {
   const [generatingBook, setGeneratingBook] = useState(false);
   const [coverImage, setCoverImage] = useState(undefined)
   const [coverImageColor, setCoverImageColor] = useState(undefined)
+
+  const { user } = useContext(CurrentUserContext)
 
   const searchBarRef = useRef()
 
@@ -68,11 +72,12 @@ function Prompt() {
     setGeneratingBook(true);
 
     // TEST
-    // setBook(DummyBook);
+    setBook(DummyBook);
 
     //REAL 
-    const data = await getGenerateBook(dummy_user_id, dummy_search);
-    setBook(data);
+    // const data = await getGenerateBook(dummy_user_id, dummy_search);
+    // setBook(data);
+    addBookToUser(user.email, uuid4(), DummyBook)
 
     setGeneratingBook(false);
   }
@@ -136,13 +141,15 @@ function Prompt() {
         </div>
       )}
       {hasChosenBook && generatingBook ? (
-        <div className="transition-all duration-2000 initial-fade-in h-[600px] w-[450px] bg-blue-300 flex" >
+        <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] bg-blue-300 flex" >
           <BookTitlePage complementaryColor={"blue"} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
         </div>
       ) : (
         book &&
-        <div className={`transition-all duration-2000 initial-fade-in min-w-[800px]`}>
-          <Book bookData={book} coverImage={coverImage} />
+        <div className={`transition-all duration-2000 initial-fade-in h-[600px] w-[1200px] flex justify-center`}>
+          <div className="w-[790px]">
+            <Book bookData={book} coverImage={coverImage} coverColor={coverImageColor} />
+          </div>
         </div>
       )
       }

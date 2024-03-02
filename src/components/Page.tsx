@@ -2,12 +2,12 @@ import React from "react";
 import "./BookTestPage.css"
 import BookTitlePage from "./BookTitlePage";
 
-const PageInternals = (props: { page, complementaryColor }) => {
+const PageInternals = (props: { page, complementaryColor, coverImage?, coverColor? }) => {
   console.log(props.complementaryColor);
   if (props.page.type == "front_cover" || props.page.type == "back_cover") {
     return (
       <div className="text-3xl h-full w-full">
-        <BookTitlePage complementaryColor={props.complementaryColor} page={props.page} />
+        <BookTitlePage complementaryColor={props.complementaryColor} page={props.page} coverImage={props.coverImage} coverColor={props.coverColor}/>
       </div>
     )
   }
@@ -33,13 +33,13 @@ const PageInternals = (props: { page, complementaryColor }) => {
   }
 }
 
-const Page = React.forwardRef((props: { number, page, complementaryColor }, ref) => {
+const Page = React.forwardRef((props: { number, page, complementaryColor, coverImage?, coverColor? }, ref) => {
 
   return (
     <div className="demoPage shadow-xl rounded page-cover h-full w-full flex items-center justify-center"
       ref={ref} data-density="hard"
     >
-      <PageInternals page={props.page} complementaryColor={props.complementaryColor} />
+      <PageInternals page={props.page} complementaryColor={props.complementaryColor} coverImage={props.coverImage} coverColor={props.coverColor}/>
     </div>
   )
 

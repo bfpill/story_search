@@ -42,7 +42,7 @@ export const getGenerateBook = async (userId: string, search: string) => {
 }
 
 export const createUser = async (email: string) => {
-  const url = `${BASE_URL}/api/create_user/${encodeEmail(email)}`;
+  const url = `${BASE_URL}/api/create_user/${email}`;
 
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', { "og_email": email });
@@ -74,10 +74,11 @@ export const getUser = async (email) => {
 // }
 
 export const addBookToUser = async (userId: string, bookId: string, book: any) => {
+  console.log("sending this", book)
   const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
   // console.log(url);
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'POST', book);
+    const responseData = await makeAuthenticatedRequest(url, 'POST', {book: book});
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);
