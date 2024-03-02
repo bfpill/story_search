@@ -1,10 +1,11 @@
 import React from "react";
 
-const PageInternals = (props: { page }) => {
+const PageInternals = (props: { page, complementaryColor }) => {
+  console.log(props.complementaryColor);
   if (props.page.type == "front_cover" || props.page.type == "back_cover") {
     return (
       <div className="h-full px-8 pt-6 pb-8 mb-4"
-        style={{backgroundColor: "Snow"}}>
+        style={{backgroundColor: props.complementaryColor}}>
         <div className="h-1/3 bg-blue" />
         <div className="h-min relative text-center select-none">
           {props.page.text}
@@ -34,13 +35,13 @@ const PageInternals = (props: { page }) => {
   }
 }
 
-const Page = React.forwardRef((props: { number, page }, ref) => {
+const Page = React.forwardRef((props: { number, page, complementaryColor }, ref) => {
 
   return (
     <div className="demoPage shadow-xl rounded page-cover h-full w-full flex items-center justify-center"
       ref={ref} data-density="hard"
     >
-      <PageInternals page={props.page} />
+      <PageInternals page={props.page} complementaryColor={props.complementaryColor} />
     </div>
   )
 

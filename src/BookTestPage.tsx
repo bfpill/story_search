@@ -98,7 +98,8 @@ const DummyBook = {
       "background_image_query": "Steel Rails"
     }
   ],
-  "color": "Azure"
+  "color": "Black",
+  "complementaryColor":"Yellow"
 }
 
 
@@ -106,62 +107,66 @@ const dummy_user_id = "dummy"
 const dummy_search = "trains"
 
 
-const BookTestPage = () => {
+  const BookTestPage = () => {
 
-  const [book, setBook] = useState(undefined);
-  const [generatingBook, setGeneratingBook] = useState(false);
+    const [book, setBook] = useState(undefined);
+    const [generatingBook, setGeneratingBook] = useState(false);
 
-  const handleGenClick = async () => {
-    setGeneratingBook(true);
+    const handleGenClick = async () => {
+      setGeneratingBook(true);
 
-    // REAL
-    const data = await getGenerateBook(dummy_user_id, dummy_search);
-    console.log(data);
-    setBook(data);
+      // REAL
+      // const data = await getGenerateBook(dummy_user_id, dummy_search);
+      // console.log(data);
+      // setBook(data);
 
-    // // testing
-    // setBook(DummyBook);
-    // setGeneratingBook(false);
-  }
+      // // testing
+      setBook(DummyBook);
+      setGeneratingBook(false);
+      
+    }
+    
+    const complementaryColor = DummyBook.complementaryColor || 'white';
 
-  return (
-    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
-      <div className="border p-2 rounded-full flex items-center justify-center">
-        <HomeBar onSearchChange={function (event: any): unknown {
-          throw new Error("Function not implemented.")
-        }} />
-      </div>
-      <div className="w-full h-full flex justify-center items-center">
-        <div className="w-[800px] h-[580px] justify-center">
-          {book !== undefined ?
-            <Book bookData={book} />
-            :
-            generatingBook ?
-              <div className="flex justify-center items-center">
-                Generating book...
-              </div>
-              :
-              <div className="flex justify-center items-center">
-                Generate a book to start!!
-              </div>
-          }
+    const bg_color=DummyBook.color || 'white'
+    return (
+      <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center" style={{ backgroundColor: bg_color }}>
+        <div className="border p-2 rounded-full flex items-center justify-center">
+          <HomeBar onSearchChange={function (event: any): unknown {
+            throw new Error("Function not implemented.")
+          }} />
         </div>
-      </div>
-      <div className="absolute bottom-20 w-full">
-        <div className="w-full flex justify-center">
-          <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
-            <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
-              Generate Book
-            </Button>
-            <Button className="rounded-full" variant="outline">
-              Generate Background Image
-            </Button>
+        <div className="w-full h-full flex justify-center items-center" >
+          <div className="w-[800px] h-[580px] justify-center">
+            {book !== undefined ?
+              <Book bookData={book} />
+              :
+              generatingBook ?
+                <div className="flex justify-center items-center" style={{ backgroundColor: complementaryColor }}>
+                  Generating book...
+                </div>
+                :
+                <div className="flex justify-center items-center">
+                  Generate a book to start!!
+                </div>
+            }
+          </div>
+        </div>
+        <div className="absolute bottom-20 w-full">
+          <div className="w-full flex justify-center">
+            <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
+              <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
+                Generate Book
+              </Button>
+              <Button className="rounded-full" variant="outline">
+                Generate Background Image
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 
-export default BookTestPage;
+  export default BookTestPage;
