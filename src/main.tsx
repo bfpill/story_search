@@ -30,30 +30,34 @@ export function getNavBarType(): string {
     return "home"
   }
 }
-function isMobile(){
+
+function isMobile() {
   return /Android|iPhone/i.test(navigator.userAgent)
 }
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  // <React.StrictMode>
-  <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-  <UserProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={isMobile()?<DummyPage/>:<Home/>} />
-        <Route path="/book_test" element={<BookTestPage/>} />
-        <Route path="/books/:bookId" element={<BookTestPage/>} />
-        <Route path="/sign_up" element={<SignUp/>} />
-        <Route path='/library' element={<Library />} />
-        <Route path='/login' element={isMobile()?<DummyPage/>:<Login/>} />
-        <Route path='/create_book' element={<Prompt />} />
-        <Route path='/signup' element={isMobile()?<DummyPage/>:<SignUp/>} />
-        <Route path='/full_library' element={<FullLibrary />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/landing' element={<Landing />} />
 
-      </Routes>
-    </Router>
-  </UserProvider>
+function MobileWrapper({ component: Component }) {
+  const isMobileDevice = isMobile();
+  return isMobileDevice ? <DummyPage /> : <Component />;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MobileWrapper component={Home} />} />
+          <Route path="/book_test" element={<BookTestPage />} />
+          <Route path="/books/:bookId" element={<BookTestPage />} />
+          <Route path="/sign_up" element={<SignUp />} />
+          <Route path='/library' element={<Library />} />
+          <Route path='/login' element={<MobileWrapper component={Login} />} />
+          <Route path='/create_book' element={<Prompt />} />
+          <Route path='/signup' element={<MobileWrapper component={SignUp} />} />
+          <Route path='/full_library' element={<FullLibrary />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/landing' element={<Landing />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   </ThemeProvider>
-  // </React.StrictMode>
-)
+);
