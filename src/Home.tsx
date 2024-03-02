@@ -11,7 +11,7 @@ import squiggleImage from './assets/squiggle.png';
 import starImage from './assets/star.png';
 import triangleImage from './assets/triangle.png';
 import swirlyImage from './assets/swirly.png'
-
+import Landing from "./components/Landing/Landing";
 
 const UserLibraryDummy = () => {
   const { user } = useContext(CurrentUserContext)
@@ -92,7 +92,10 @@ const Home = (props: {}) => {
       <HomeBar onSearchChange={function (event: any): unknown {
         throw new Error("Function not implemented.")
       }} />
-      <UserLibraryDummy />
+      {/* <UserLibraryDummy /> */}
+      <Landing/>
+      
+     
     </div>
   )
 
