@@ -1,3 +1,5 @@
+
+
 import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
