@@ -17,7 +17,7 @@ export async function makeAuthenticatedRequest(url, method, data = null) {
       throw new Error(`Error: ${response.status}`);
     }
 
-    console.log("this was the response", response)
+    // console.log("this was the response", response)
     return response.json();
   } catch (error) {
     console.error('Error with request:', error);
@@ -53,8 +53,8 @@ export const createUser = async (email: string) => {
 }
 
 export const getUser = async (email) => {
+  // console.log("getting user")
   const url = `${BASE_URL}/api/get_user/${encodeEmail(email)}`;
-  console.log("getting user")
   try {
     const responseData = await makeAuthenticatedRequest(url, 'GET');
     return responseData;
@@ -63,15 +63,15 @@ export const getUser = async (email) => {
   }
 };
 
-export const getBook = async (bookId: string, email: string) => {
-  const url = `${BASE_URL}/api/get_book/${encodeEmail(email)}/${bookId}`;
-  try {
-    const responseData = await makeAuthenticatedRequest(url, 'GET');
-    return responseData;
-  } catch (error) {
-    console.error('Error sending data:', error);
-  }
-}
+// export const getBook = async (bookId: string, email: string) => {
+//   const url = `${BASE_URL}/api/get_book/${encodeEmail(email)}/${bookId}`;
+//   try {
+//     const responseData = await makeAuthenticatedRequest(url, 'GET');
+//     return responseData;
+//   } catch (error) {
+//     console.error('Error sending data:', error);
+//   }
+// }
 
 export const addBookToUser = async (userId: string, bookId: string, book: any) => {
   const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;

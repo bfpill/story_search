@@ -8,25 +8,33 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { InputIcon } from '@radix-ui/react-icons';
 import { getGenerateSearchOptions } from '@/image_api';
+import Book from '../Book';
 
 function Prompt() {
   const [search, setSearch] = useState("");
+  const [isSearching, setIsSearching] = useState<boolean>(false)
+
   const [showImages, setShowImages] = useState(false);
   const [showGenerateButton, setShowGenerateButton] = useState(true);
-  const [searchResults, setSearchResults] = useState(undefined);
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = async () => {
     console.log("searching for ", search)
-    const results = await getGenerateSearchOptions(search) 
+    if (search != "") {
+      setIsSearching(true)
+      console.log("search", search)
+      const results = await getGenerateSearchOptions(search)
+      console.log("rss", results)
+      const possible_titles = results.titles ?? []
 
-    console.log("rss", results)
+      if (results) {
+        setSearchResults(possible_titles)
+      }
 
-    if(results) { 
-      setSearchResults(results)
+      setShowImages(true);
+      setShowGenerateButton(false);
     }
 
-    setShowImages(true);
-    setShowGenerateButton(false);
   }
 
   const handleKeyPress = (event) => {
@@ -39,7 +47,7 @@ function Prompt() {
     setSearch(e.target.value)
   }
 
-  const handleSetChosenBook = () => { 
+  const handleSetChosenBook = () => {
 
   }
 
@@ -59,12 +67,18 @@ function Prompt() {
         />
         <Button className="h-full p-6 rounded-full" onClick={handleSearch}>Search</Button>
       </div>
-      {showImages && (
-        <div className="grid grid-cols-3 w-2/3 bg-blue-100 gap-10 mt-10">
-          <img onClick={() => {}}
-          src={bookImage} alt="Book" className="h-full" />
-          <img src={bookImage} alt="Book" className="h-full" />
-          <img src={bookImage} alt="Book" className="h-full" />
+      {showImages && searchResults && (
+        <div className="grid grid-cols-3 w-2/3 gap-10 mt-10">
+          {searchResults?.map(title => {
+            return (
+              <div onClick={() => { }} className="h-[320px] w-[240px] flex items-center justify-center bg-blue-300 col-span-1" >
+                <h1 className="w-2/3">
+                  {title}
+                </h1>
+              </div>
+            )
+          })
+          }
         </div>
       )}
     </div>

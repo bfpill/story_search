@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
-import { getUser } from "./api";
+import { getAllBooks, getAllUserBooks, getUser } from "./api";
 
 const dummyUser = {
   id: 123,
@@ -20,15 +20,15 @@ const dummyUser = {
 
 const UserLibraryDummy = () => {
   const { user } = useContext(CurrentUserContext)
-  const [books, setBooks] = useState([])
+  const [userBooks, setUserBooks] = useState([])
+
 
   useEffect(() => {
     const initializeBooks = async () => {
-      console.log(user)
-      const userData = await getUser(user.userId)
-
-      if (userData.books) {
-        setBooks(userData.books)
+      const userData = await getAllUserBooks(user.email)
+      if (userData) {
+        setUserBooks(userData)
+        console.log(userData)
       }
     }
     
@@ -39,10 +39,10 @@ const UserLibraryDummy = () => {
     <div className="w-full h-full flex justify-center items-center">
       {dummyUser ?
         <div className="grid grid-cols-4 grid-rows-2 gap-10">
-          {dummyUser.books.map(book => {
+          {Object.keys(userBooks.books ?? [])?.map(book_id => {
             return (
               <div className="h-64 w-48 bg-blue-300">
-                {book.title}
+                {userBooks.books[book_id].title}
               </div>
             )
 

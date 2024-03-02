@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
-import Library from './components/Library/library.jsx'
-import Login from './components/Login/login.jsx'
-import Prompt from './components/Prompt/prompt.js'
-import SignUp from './components/SignUp/signup.jsx'
+import Library from './components/Library/library.tsx'
+import Login from './components/Login/login.tsx'
+import Prompt from './components/Prompt/prompt.tsx'
+import SignUp from './components/SignUp/signup.tsx'
 import { useLocation } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home.tsx';
