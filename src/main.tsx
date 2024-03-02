@@ -49,11 +49,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/book_test" element={<BookTestPage />} />
           <Route path="/books/:bookId" element={<BookTestPage />} />
           <Route path="/sign_up" element={<SignUp />} />
-          <Route path='/library' element={<Library />} />
           <Route path='/login' element={<MobileWrapper component={Login} />} />
           <Route path='/create_book' element={<Prompt />} />
           <Route path='/signup' element={<MobileWrapper component={SignUp} />} />
-          <Route path='/full_library' element={<FullLibrary />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/landing' element={<Landing />} />
         </Routes>
