@@ -25,7 +25,7 @@ export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boo
   return (
     <div className="p-1 flex items-center" style={{ justifyContent: "space-between" }}>
       <div className={`h-full w-full flex items-center justify-center transition-all duration-500 ease-in-out`}>
-        <div className={`h-full flex items-center rounded-full justify-center transition-all duration-500 ease-in-out shadow-border
+        <div className={`h-full flex items-center rounded-full bg-white justify-center transition-all duration-500 ease-in-out shadow-border
          ${props.expand ? 'w-[90%] border-none' : 'w-[400px] border'}`}
         >
           <div onClick={() => navigate('/')} className="cursor-pointer mt-1.5 ml-2">

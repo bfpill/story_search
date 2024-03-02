@@ -64,22 +64,22 @@ export const getUser = async (email) => {
   }
 };
 
-// export const getBook = async (bookId: string, email: string) => {
-//   const url = `${BASE_URL}/api/get_book/${encodeEmail(email)}/${bookId}`;
-//   try {
-//     const responseData = await makeAuthenticatedRequest(url, 'GET');
-//     return responseData;
-//   } catch (error) {
-//     console.error('Error sending data:', error);
-//   }
-// }
-
 export const addBookToUser = async (userId: string, bookId: string, book: any) => {
   console.log("sending this", book)
   const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
   // console.log(url);
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', {book: book});
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
+
+export const getBook = async (email: string, bookId: string) => {
+  const url = `${BASE_URL}/api/${email}/${bookId}`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET');
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);
@@ -97,9 +97,9 @@ export const getAllBooks = async () => {
 }
 
 export const getAllUserBooks = async (email: string) => {
-  const url = `${BASE_URL}/api/get_all_user_books/${encodeEmail(email)}`;
+  const url = `${BASE_URL}/api/user_books/${email}`;
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'GET');
+    const responseData = await makeAuthenticatedRequest(url, 'POST');
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);
