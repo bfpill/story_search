@@ -4,7 +4,8 @@ import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from 'uuid';
 import bookImage from '../../assets/book.png';
 import './library.css'; 
-
+import profilelogo from"./dog_profile.png"
+// import addImage from './add_story.jpg'
 class Library extends Component {
   state = {
     goToSlide: 0,
@@ -33,8 +34,10 @@ class Library extends Component {
       <div className="full-page">
         <div className="library-container">
           <div className="my-library">My Library</div>
+          <a href="/profile"><img  className= "profile-pic" src={profilelogo} alt="profile" /></a>
         </div>
         <div className="image-containers">
+
           <div style={{ width: "60%", height: "700px", margin: "0 auto" }}> 
             <Carousel
               slides={this.slides}
@@ -59,6 +62,12 @@ class Library extends Component {
                 justifyContent: "space-around"
               }}
             ></div>
+          </div>
+
+          <div className="create-story">
+            <div className="inside-create-story">Create a new story</div>
+            
+
           </div>
         </div>
       </div>

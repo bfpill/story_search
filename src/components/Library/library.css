@@ -7,19 +7,19 @@
   
   .library-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+  
   }
   
   .my-library {
     font-family: 'Cherry Bomb', cursive;
     font-size: 5.5vw; /* Adjust size as needed */
-    padding-bottom:40px; /* Adjust size as needed */
+    padding-bottom:1px; /* Adjust size as needed */
     /* Add any other styling properties you desire */
+    padding-left: 12vw;
   }
   
   .carousel-slide {
-    margin-right: 1vw; /* Adjust the margin to increase/decrease the spacing between items */
+    margin-right: 0.5vw; /* Adjust the margin to increase/decrease the spacing between items */
   }
   
   .full-page {
@@ -34,11 +34,11 @@
   
   .create-story {
     position: absolute;
-    top: 50%;
-    right: 0%;
+    top: 60%;
+    right: 10%;
     transform: translateY(-50%);
     background-color: white;
-    height: 95vh;
+    height: 45vh;
     width: 15vw;
     border-radius: 15%;
     display: flex;
@@ -48,8 +48,11 @@
   
   .inside-create-story {
     font-family: 'Cherry Bomb', cursive;
-    font-size: 20px;
-    font-weight: bold;  
+    font-size: 2vw;
+    font-weight: bold;
+    align-items: center;
+    padding-left: 30px;
+    
   }
   
   .book-images {
@@ -58,8 +61,8 @@
   }
   
   .book-images:hover {
-    opacity: 1;
-    transform: scale(1.1); /* Adjusted scale on hover */
+    opacity: 1.1;
+    transform: scale(1.2); /* Adjusted scale on hover */
   }
   
   .carousel-container {
@@ -74,7 +77,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%; /* Adjusted width to accommodate larger images */
+    margin-left: -15vw;
+    width: 60%; /* Adjusted width to accommodate larger images */
   }
-  
- 
+
+  .profile-pic{
+    padding-top: 5vh;
+    padding-left: 30vw;
+    height: 150px;
+
+  }
