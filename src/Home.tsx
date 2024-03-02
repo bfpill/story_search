@@ -25,6 +25,7 @@ const Home = (props: {}) => {
       const allBooks = await getAllUserBooks(user.email)
       setHoveredColor(allBooks[0].color)
       if (allBooks) {
+        setUserBooks(allBooks)
         console.log(allBooks)
       }
     }
