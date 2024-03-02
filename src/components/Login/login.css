@@ -74,17 +74,6 @@
 }
 
 
-
-button {
-  width: 30px;
-  padding: 10px;
-  background-color: #C7E4EA;
-  color: white;
-  border: none;
-  border-radius: 10px; /* Rounded corners */
-  cursor: pointer;
-}
-
 .sign-in-button {
   width: 100%;
   padding: 10px;

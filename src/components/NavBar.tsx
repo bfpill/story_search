@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from "./ui/button";
 import { CurrentUserContext } from "@/UserProvider";
 import { useContext } from "react";
 import { ReactiveAvatar } from "./Avatar";
 import { useTheme } from '@/ThemeProvider';
 import { LogoSVG } from './LogoSVG'
 import { Input } from './ui/input';
+import { Button } from './ui/button';
 
 const handleImageClick = (navigate) => {
   navigate('/');

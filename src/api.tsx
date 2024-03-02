@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:8000"; // Localhost
+export const BASE_URL = "http://127.0.0.1:8000"; // Localhost
 
 export async function makeAuthenticatedRequest(url, method, data = null) {
   try {
@@ -57,4 +57,7 @@ export const getUser = async (email: string) => {
     console.error('Error sending data:', error);
   }
 };
+
+
+
 

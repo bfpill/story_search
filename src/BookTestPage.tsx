@@ -3,6 +3,7 @@ import { getGenerateBook } from "./api";
 import { Button } from "./components/ui/button";
 import Book from "./components/Book";
 import { DefaultBar } from "./components/NavBar";
+import { getGenerateBackgroundImage } from "./image_api";
 
 // const books = [
 //   {
@@ -149,15 +150,18 @@ const BookTestPage = () => {
 
   const [book, setBook] = useState(undefined);
   const [generatingBook, setGeneratingBook] = useState(false);
+  const [bgArray, setBgArray] = useState(undefined)
 
   const handleGenClick = async () => {
     setGeneratingBook(true);
-    // UNCOMMENT WHEN NOT TESTING
-    // const data = await getGenerateBook(dummy_user_id, dummy_search);
-
-    // console.log(data);
-    // setBook(data);
-    setBook(DummyBook);
+    
+    // REAL
+    const data = await getGenerateBook(dummy_user_id, dummy_search);
+    console.log(data);
+    setBook(data);
+    
+    // testing
+    // setBook(DummyBook);
     setGeneratingBook(false);
   }
 
@@ -185,9 +189,12 @@ const BookTestPage = () => {
       <div className="hover-trigger absolute bottom-0 w-full h-20"></div> {/* Invisible area to trigger hover */}
       <div className="hover-target absolute bottom-20 w-full opacity-0 hover:opacity-100 transition-opacity duration-300">
         <div className="w-full flex justify-center">
-          <div className="w-1/3 bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
+          <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
             <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
               Generate Book
+            </Button>
+            <Button className="rounded-full" variant="outline"> 
+              Generate Background Image
             </Button>
           </div>
         </div>
