@@ -76,8 +76,8 @@ function Prompt() {
 
     // REAL 
     const gendBook = await getGenerateBook(user.email, search);
-
-    const newBook = { ...gendBook, pages: [...gendBook.pages] };
+    const newBookId = uuid4()
+    const newBook = { ...gendBook, pages: [...gendBook.pages], bookId: newBookId};
     if (newBook.pages[0]?.type !== "front_cover") {
       newBook.pages.unshift({ type: "front_cover", text: newBook.title, });
     }
@@ -93,7 +93,7 @@ function Prompt() {
       setBook(newBook);
     }
 
-    addBookToUser(user.email, uuid4(), newBook)
+    addBookToUser(user.email, newBookId, newBook)
 
     setGeneratingBook(false);
   }
