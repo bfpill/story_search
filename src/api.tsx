@@ -78,3 +78,13 @@ export const setBook = async (userId: string, bookId: string, book: any) => {
     console.error('Error sending data:', error);
   }
 }
+
+export const getAllBooks = async () => {
+  const url = `${BASE_URL}/api/get_all_books'`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET');
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
