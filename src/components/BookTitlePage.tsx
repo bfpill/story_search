@@ -21,8 +21,8 @@ const BookTitlePage = (props: { complementaryColor, page }) => {
   }, []);
 
   return (
-    <div className="h-full px-8 pt-6 pb-8 mb-4 flex items-center justify-center bookcover relative">
-      <img src={coverImage} alt="Book Cover" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0" />
+    <div className=" px-8 pt-6 pb-8 mb-4 flex items-center justify-center bookcover relative h-full">
+      <img src={coverImage} alt="Book Cover" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 h-full" />
       <div className="absolute top-0 left-0 w-full h-full z-10" style={{ backgroundColor: overlayColor }}></div>
       <div className="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
         <div className="text-4xl font-bold">{props.page.text}</div>
