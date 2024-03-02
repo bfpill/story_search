@@ -44,6 +44,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/create_book' element={<Prompt />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/full_library' element={<FullLibrary />} />
+        <Route path='/profile' element={<Profile />} />
 
       </Routes>
     </Router>
