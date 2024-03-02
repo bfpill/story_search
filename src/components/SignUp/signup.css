@@ -46,7 +46,8 @@
 }
 
 .form-container {
-  width: 800px; /* Set a specific width for the form container */
+  width: 300px; /* Set a specific width for the form container */
+  width: 500px; /* Set a specific width for the form container */
 }
 
 .input-wrapper {
@@ -61,8 +62,8 @@
 
 .input-wrapper input[type="email"],
 .input-wrapper input[type="password"] {
-  font-size: 27px; /* Adjust size as needed */
-  max-width: 800px; /* Set max-width to 500px */
+  font-size: 24px; /* Adjust size as needed */
+  max-width: 500px; /* Set max-width to 500px */
   width: 100%; /* Take full width of the container */
   padding: 10px; /* Add padding for spacing */
   background-color: #f0f0f0; /* Grey background for the input */

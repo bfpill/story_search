@@ -2,17 +2,61 @@
   background-color: #C7E4EA;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
 }
+.search-bar {
+  width: 1600px; /* Check parent container width */
+  padding: 120px 0 100px; /* Adjust top padding as needed */
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+
+
+.search-container {
+  position: relative; /* Set position relative for absolute positioning of the icon */
+}
+
+.search-icon {
+  position: absolute; /* Position the icon absolutely */
+  top: 50%; /* Position vertically at the center */
+  right: 60px; /* Add padding to the right of the icon */
+  transform: translateY(-50%); /* Center the icon vertically */
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+}
+
+.search-input {
+  width: calc(100% - 80px); /* Adjusted width considering padding and icon */
+  padding-right: 40px; /* Adjust to accommodate the icon */
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  border-radius: 40px; /* Make the input box rounded */
+  border: none;
+  outline: none;
+  font-size: 26px;
+}
+
+
+
 
 .image-container {
   display: flex;
 }
 
+
 .book-image {
-  width: 500px; /* Adjust as needed */
+  width: 500px;
   padding: 40px;
-  height: 650px; /* Adjust as needed */
-  margin: 0 10px; /* Add spacing between images */
+  height: 700px;
+  margin: 0 21px;
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+  filter: drop-shadow(7px 9px 6px rgba(0, 0, 0, 0.2)); /* Add drop shadow */
+}
+
+.book-image:hover {
+  transform: scale(1.1); /* Enlarge the image on hover */
+  filter: drop-shadow(13px 17px 12px rgba(0, 0, 0, 0.4));
 }

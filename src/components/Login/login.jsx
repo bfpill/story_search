@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './login.css'; // Import the CSS file
-import bookPlaceholder from '/Users/cher/Desktop/story_search/src/assets/book_placeholder.png'; // Import the image
+import bookPlaceholder from '../../assets/book_placeholder.png'; // Import the image
 
 
 function Login() {
@@ -50,7 +50,6 @@ function Login() {
                 required
               />
             </div>
-            <button type="submit">Login</button>
           </form>
           <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px'}}>Sign In</button>
 
@@ -62,7 +61,7 @@ function Login() {
             <p>Don't Have an Account?</p>
           </div>
           <div className="create-account">
-            <p>Create Account?</p>
+            <p>Create Account</p>
           </div>
         </div>
       </div>
