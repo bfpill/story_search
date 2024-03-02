@@ -26,6 +26,11 @@ export async function makeAuthenticatedRequest(url, method, data = null) {
   }
 }
 
+// Function to encode email
+function encodeEmail(email) {
+  return email.replace('.', ',');
+}
+
 export const getGenerateBook = async (userId: string, search: string) => {
   const url = `${BASE_URL}/book`;
   try {
@@ -36,19 +41,19 @@ export const getGenerateBook = async (userId: string, search: string) => {
   }
 }
 
-export const createUser = async (userId: string, email: string) => {
-  const url = `${BASE_URL}/api/create_user/${userId}`;
+export const createUser = async (email: string) => {
+  const url = `${BASE_URL}/api/create_user/${encodeEmail(email)}`;
 
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'POST', { "email": email });
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { "og_email": email });
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);
   }
 }
 
-export const getUser = async (userId: number) => {
-  const url = `${BASE_URL}/api/get_user/${userId}`;
+export const getUser = async (email) => {
+  const url = `${BASE_URL}/api/get_user/${encodeEmail(email)}`;
   console.log("getting user")
   try {
     const responseData = await makeAuthenticatedRequest(url, 'GET');
@@ -58,8 +63,8 @@ export const getUser = async (userId: number) => {
   }
 };
 
-export const getBook = async (bookId: string, userId) => {
-  const url = `${BASE_URL}/api/get_book/${userId}/${bookId}`;
+export const getBook = async (bookId: string, email: string) => {
+  const url = `${BASE_URL}/api/get_book/${encodeEmail(email)}/${bookId}`;
   try {
     const responseData = await makeAuthenticatedRequest(url, 'GET');
     return responseData;
@@ -68,8 +73,8 @@ export const getBook = async (bookId: string, userId) => {
   }
 }
 
-export const setBook = async (userId: string, bookId: string, book: any) => {
-  const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
+export const setBook = async (email: string, bookId: string, book: any) => {
+  const url = `${BASE_URL}/api/set_book/${encodeEmail(email)}/${bookId}`;
   // console.log(url);
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', book);
@@ -88,3 +93,19 @@ export const getAllBooks = async () => {
     console.error('Error sending data:', error);
   }
 }
+
+export const getAllUserBooks = async (email: string) => {
+  const url = `${BASE_URL}/api/get_all_user_books/${encodeEmail(email)}`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET');
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
+
+
+// // Function to decode email
+// function decodeEmail(encodedEmail) {
+//     return encodedEmail.replace(',', '.');
+// }
