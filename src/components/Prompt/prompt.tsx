@@ -14,7 +14,7 @@ import { CurrentUserContext } from '@/UserProvider';
 
 
 
-const OptionCard = ({ title, handleSetChosenBook, setCoverImage, setCoverImageColor }) => {
+const OptionCard = ({ title, handleSetChosenBook }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const baseStyle = "h-96 w-64 text-3xl leading-1 cursor-pointer transition-all duration-300 ease-in-out";
@@ -22,11 +22,10 @@ const OptionCard = ({ title, handleSetChosenBook, setCoverImage, setCoverImageCo
 
   return (
     <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'} h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
-      onClick={() => handleSetChosenBook(title)}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
-      <BookTitlePage complementaryColor={"blue"} page={{ text: title }} setCover={() => setCoverImage()} setCoverColor={() => setCoverImageColor()} />
+      <BookTitlePage complementaryColor={"blue"} page={{ text: title }} handleBookClick={handleSetChosenBook} />
     </div>
   );
 }
@@ -175,10 +174,7 @@ function Prompt() {
         <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 min-w-[800px] gap-10 mt-20`}>
           {(searchResults ?? ["", "", ""]).map(title => {
             return (
-              <div className={`h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
-              >
-                <BookTitlePage complementaryColor={"blue"} page={{ text: title }} handleBookClick={handleSetChosenBook} />
-              </div>
+             <OptionCard title={title} handleSetChosenBook={handleSetChosenBook}/>
             )
           })}
         </div>

@@ -5,13 +5,6 @@ import { getAllBooks, getAllUserBooks, getUser } from "./api";
 import BookTitlePage from "./components/BookTitlePage";
 import { useNavigate } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
-import RenderShakingImages from "./ShakingImages";
-
-import squiggleImage from './assets/squiggle.png';
-import starImage from './assets/star.png';
-import triangleImage from './assets/triangle.png';
-import swirlyImage from './assets/swirly.png'
-import Landing from "./components/Landing/Landing";
 
 const Home = (props: {}) => {
   const { user } = useContext(CurrentUserContext)
@@ -23,7 +16,7 @@ const Home = (props: {}) => {
   useEffect(() => {
     const initializeBooks = async () => {
       const allBooks = await getAllUserBooks(user.email)
-      setHoveredColor(allBooks[0].color)
+      setHoveredColor(allBooks?.[0].color)
       if (allBooks) {
         setUserBooks(allBooks)
         console.log(allBooks)
