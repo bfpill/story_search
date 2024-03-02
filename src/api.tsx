@@ -1,4 +1,4 @@
-export const BASE_URL = "http://127.0.0.1:8000"; // Localhost
+const BASE_URL = "http://127.0.0.1:8000"; // Localhost
 
 export async function makeAuthenticatedRequest(url, method, data = null) {
   try {
@@ -58,6 +58,25 @@ export const getUser = async (email: string) => {
   }
 };
 
+export const getBook = async (bookId: string, userId) => {
+  const url = `${BASE_URL}/api/get_book/${userId}/${bookId}`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET');
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
 
 
+export const setBook = async (userId: string, bookId: string, book: any) => {
+  const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
+  // console.log(url);
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'POST', book);
+    return responseData;
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
 
