@@ -32,10 +32,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+<<<<<<< HEAD
         <Route path='/library' element={<Library />} />
         <Route path='/login' element={<Login />} />
         <Route path='/prompt' element={<Prompt />} />
         <Route path='/signup' element={<SignUp />} />
+=======
+>>>>>>> 3677a6dfa933987556f41e6423264e494349594c
       </Routes>
     </Router>
   </UserProvider>
