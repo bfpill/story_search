@@ -37,7 +37,7 @@ const PageInternals = (props: { page }) => {
 const Page = React.forwardRef((props: { number, page }, ref) => {
 
   return (
-    <div className="demoPage shadow-md rounded page-cover h-full w-full flex items-center justify-center"
+    <div className="demoPage shadow-xl rounded page-cover h-full w-full flex items-center justify-center"
       ref={ref} data-density="hard"
     >
       <PageInternals page={props.page} />

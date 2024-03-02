@@ -22,7 +22,7 @@ function Profile() {
 
   const handleAgeDecrease = () => {
     setAge((prevAge) => Math.max(prevAge - 1, 3)); // Minimum age = 3
-  };
+  }; 
 
   const handleAvatarSelect = (selectedAvatar) => {
     setAvatar(selectedAvatar);
@@ -49,7 +49,7 @@ function Profile() {
       </div>
       <div className="right">
         <div className="form-container">
-          <div className="my-login">About me</div>
+          <div className="my-name">About me</div>
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="input-wrapper">
               <label style={{ fontSize: "28px" }}>What is your name?</label>

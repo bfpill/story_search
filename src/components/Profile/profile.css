@@ -109,6 +109,7 @@
   .slider .decrease:hover,
   .slider .increase:hover {
     background-color: #8d4378; /* Darker pink on hover */
+
   }
   
   .slider .age {
@@ -165,7 +166,7 @@
     background-color: #BF67A6; /* Darker green */
   }
   
-  .my-login {
+  .my-name {
     font-family: 'Cherry Bomb', cursive;
     font-size: 80px; /* Adjust size as needed */
     text-align: center; /* Center align the text */
@@ -197,4 +198,3 @@
   .generate-profile-button:hover {
     background-color: #853d71;
   }
-  

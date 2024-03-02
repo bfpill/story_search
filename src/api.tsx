@@ -29,18 +29,18 @@ export async function makeAuthenticatedRequest(url, method, data = null) {
 export const getGenerateBook = async (userId: string, search: string) => {
   const url = `${BASE_URL}/book`;
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search, user_id: userId} );
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search, user_id: userId });
     return responseData
   } catch (error) {
     console.error('Error sending data:', error);
   }
 }
 
-export const createUser = async (userId: string, username: string, email: string) => {
+export const createUser = async (userId: string, email: string) => {
   const url = `${BASE_URL}/api/create_user/${userId}`;
-  
+
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'POST', {"email": email, "username": username });
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { "email": email });
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);
@@ -68,14 +68,23 @@ export const getBook = async (bookId: string, userId) => {
   }
 }
 
-
 export const setBook = async (userId: string, bookId: string, book: any) => {
   const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
   // console.log(url);
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', book);
     return responseData;
-  } catch (error) { 
+  } catch (error) {
+    console.error('Error sending data:', error);
+  }
+}
+
+export const getAllBooks = async () => {
+  const url = `${BASE_URL}/api/get_all_books'`;
+  try {
+    const responseData = await makeAuthenticatedRequest(url, 'GET');
+    return responseData;
+  } catch (error) {
     console.error('Error sending data:', error);
   }
 }

@@ -50,8 +50,8 @@ const UserLibraryDummy = () => {
 const Home = (props: {}) => {
 
   return (
-    <div className="h-screen w-screen bg-neutral-100 relative p-10 flex justify-center items-center">
-      <div className="absolute top-0 right-0 w-full">
+    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
+      <div className="border p-2 rounded-full flex items-center justify-center">
         <HomeBar onSearchChange={function (event: any): unknown {
           throw new Error("Function not implemented.")
         }} />
