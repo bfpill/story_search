@@ -14,8 +14,10 @@
 
 .my-library {
   font-family: 'Cherry Bomb', cursive;
+  align-items: center;
   font-size: 5.5vw; /* Adjust size as needed */
   padding-bottom: 80px; /* Adjust size as needed */
+  margin-right: 300px; /* Adjust size as needed */
   /* Add any other styling properties you desire */
   height: 10vh;
   z-index: 2; 
@@ -54,11 +56,9 @@
   font-size: 50px;
   text-align: center; /* Center text */
   margin-bottom: 20px; /* Adjust margin as needed */
-  margin-right: 20px; 
 }
 
 .type-another-book {
-
   font-family:"Andika-Bold"; 
   font-size: 50px;
   text-align: left; /* Center text */

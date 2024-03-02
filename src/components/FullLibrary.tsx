@@ -16,7 +16,7 @@ function FullLibrary() {
 
   return (
     <div className="full-page">
-      <div className="my-library">Full Library</div> {/* Moved my-library here */}
+      <div className="my-library" >Full Library</div> {/* Moved my-library here */}
        <div className="blue-container"></div> {/* Added blue-container */}
         <div className="full-body">
         <div className="type-another-book">AI   🤖</div>
