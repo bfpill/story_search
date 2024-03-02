@@ -13,9 +13,11 @@ import triangleImage from './assets/triangle.png';
 import swirlyImage from './assets/swirly.png'
 
 
-const UserLibraryDummy = () => {
+const Home = (props: {}) => {
   const { user } = useContext(CurrentUserContext)
   const [userBooks, setUserBooks] = useState([])
+  const [hoveredColor, setHoveredColor] = useState("")
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,53 +44,15 @@ const UserLibraryDummy = () => {
         onMouseOut={() => setIsHovered(false)}
         onClick={() => navigate(`books/${book.bookId}`)}
       >
-        <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
+        <BookTitlePage complementaryColor={undefined} page={book.pages[0]} coverImage={book.coverImage} coverColor={book.color} />
       </div>
     );
   };
 
   return (
-    <div className="w-screen h-full flex justify-center items-center">
-      <div className="w-screen h-full flex justify-center items-center z-50">
-        {
-          user ?
-            <Carousel
-              opts={{
-                align: "center",
-                dragFree: true,
-              }}
-              className="w-3/4"
-            >
-              <CarouselContent className="w-full h-full p-20">
-                {userBooks?.map((book, index) => {
-                  return (
-                    <CarouselItem key={index} className="basis-1/3">
-                      <BookCard book={book} />
-                    </CarouselItem>
-                  )
-                })}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-            :
-            <div className="">
-              Login to see your books!
-            </div>
-        }
-
-      </div>
-      <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
-        {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 3)}
-      </div>
-    </div>
-  )
-}
-
-const Home = (props: {}) => {
-
-  return (
-    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
+    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center"
+      style={{ backgroundColor: hoveredColor }}
+    >
       <div className="w-full flex items-center justify-center">
         <div className={`z-50 transition-all duration-500 top-4 absolute w-full rounded-full`}
           style={{ "zIndex": "9999" }}
@@ -98,7 +62,45 @@ const Home = (props: {}) => {
           }} />
         </div>
       </div>
-      <UserLibraryDummy />
+      <div className="w-screen h-full flex justify-center items-center">
+        <div className="w-screen h-full flex justify-center items-center z-50">
+          {
+            user ?
+              <Carousel
+                opts={{
+                  align: "center",
+                  dragFree: true,
+                }}
+                className="w-3/4"
+              >
+                <CarouselContent className="w-full h-full p-20">
+                  {userBooks?.map((book, index) => {
+                    return (
+                      <div
+                        onMouseOver={() => setHoveredColor(book.color)}
+                      >
+
+                        <CarouselItem key={index} className="basis-1/3">
+                          <BookCard book={book} />
+                        </CarouselItem>
+                      </div>
+                    )
+                  })}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+              :
+              <div className="">
+                Login to see your books!
+              </div>
+          }
+
+        </div>
+        <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
+          {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 3)}
+        </div>
+      </div>
     </div>
   )
 

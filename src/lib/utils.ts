@@ -9,7 +9,7 @@ export const DummyBook = {
   "title": "Whistles and Wheels: A Train Tale",
   "category": "Science",
   "pages": [
-    
+
     {
       "pageNum": 1,
       "text": "In Whistleville, trains weren't just a mode of transport; they were beloved members of the community.",
@@ -52,8 +52,24 @@ export const DummyBook = {
     }
   ],
   "color": "fushsia",
-  "complementaryColor":"Azure"
+  "complementaryColor": "Azure"
 }
 
 export const dummy_user_id = "dummy"
 export const dummy_search = "trains"
+
+import image1 from '../assets/book_covers/img1.jpg';
+import image3 from '../assets/book_covers/img3.jpg';
+
+import image5 from '../assets/book_covers/img5.jpg';
+import image6 from '../assets/book_covers/img6.jpg';
+
+export const getRandomColor = () => `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.6)`;
+
+export const getRandomCover = () => {
+  const images = [image1, image3, image5, image6];
+  const randomIndex = Math.floor(Math.random() * images.length);
+  const randomImage = images[randomIndex];
+
+  return randomImage
+}
