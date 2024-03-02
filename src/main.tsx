@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import Library from './components/Library/library.jsx'
 import Login from './components/Login/login.jsx'
+import Prompt from './components/Prompt/prompt.jsx'
+import SignUp from './components/SignUp/signup.jsx'
 import Profile from './components/Profile/profile.jsx'
 import { useLocation } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -33,7 +35,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<Home />} />
         <Route path='/library' element={<Library />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/prompt' element={<Prompt />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/profile' element={<Profile />} />
+
       </Routes>
     </Router>
   </UserProvider>
