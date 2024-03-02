@@ -5,6 +5,7 @@ import Book from "./components/Book";
 import { DefaultBar, HomeBar } from "./components/NavBar";
 import { CurrentUserContext } from "./UserProvider";
 import "./components/BookTestPage.css"
+import { DummyBook } from "./lib/utils";
 // const books = [
 //   {
 //     "title": "Book 1",
@@ -55,121 +56,73 @@ import "./components/BookTestPage.css"
 
 // ]
 
-const DummyBook = {
-  "title": "Whistles and Wheels: A Train Tale",
-  "pages": [
-    {
-      "pageNum": 1,
-      "text": "In Whistleville, trains weren't just a mode of transport; they were beloved members of the community.",
-      "images": [
-        "Whistleville Station",
-        "Happy Train"
-      ],
-      "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/7e829a68-7616-4f6b-aa3c-fe228c050c1e",
-      "background_image_query": "Countryside Tracks"
-    },
-    {
-      "pageNum": 2,
-      "text": "Benny, a bright blue engine, loved racing down the tracks, breezing past mountains and meadows.",
-      "images": [
-        "Benny the Engine",
-        "Mountains and Meadows"
-      ],
-      "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/53ed3459-feb1-47fc-8382-cdc87bcdddaf",
-      "background_image_query": "Countryside Tracks"
-    },
-    {
-      "pageNum": 3,
-      "text": "He knew every twist and turn, thanks to the steel rails guiding his wheels, a brilliant invention enhancing travel.",
-      "images": [
-        "Steel Rails",
-        "Twists and Turns"
-      ],
-      "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/3125bed6-395e-41a7-a3aa-d34a289fa5bc",
-      "background_image_query": "Steel Rails"
-    },
-    {
-      "pageNum": 4,
-      "text": "One day, Benny set a record, cheered on by townsfolk, embodying the spirit of Whistleville's train heritage.",
-      "images": [
-        "Record Setting Day",
-        "Cheering Townsfolk"
-      ],
-      "background_image": "https://storage.googleapis.com/baggetters-38a7c.appspot.com/dab51f7a-4a61-4ee8-a98d-9352b5205f57",
-      "background_image_query": "Steel Rails"
-    }
-  ],
-  "color": "fushsia",
-  "complementaryColor":"Azure"
-}
 
 
-const dummy_user_id = "dummy"
-const dummy_search = "trains"
 
 
-  const BookTestPage = () => {
+
+
+const BookTestPage = () => {
 
   const [book, setBook] = useState(undefined);
   const [generatingBook, setGeneratingBook] = useState(false);
 
-    const handleGenClick = async () => {
-      setGeneratingBook(true);
+  const handleGenClick = async () => {
+    setGeneratingBook(true);
 
     // REAL
     // const data = await getGenerateBook(dummy_user_id, dummy_search);
     // console.log(data);
     // setBook(data);
 
-      // // testing
-      setBook(DummyBook);
-      setGeneratingBook(false);
-      
-    }
-    
-    const complementaryColor = DummyBook.complementaryColor || 'white';
+    // // testing
+    setBook(DummyBook);
+    setGeneratingBook(false);
 
-    const bg_color=DummyBook.color || 'white'
-    return (
-      <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center" style={{ backgroundColor: bg_color }}>
-        <div className="border p-2 rounded-full flex items-center justify-center">
-          <HomeBar onSearchChange={function (event: any): unknown {
-            throw new Error("Function not implemented.")
-          }} />
-        </div>
-        <div className="w-full h-full flex justify-center items-center" >
-          <div className="w-[800px] h-[580px] justify-center">
-            {book !== undefined ?
-              <Book bookData={book} />
+  }
+
+
+  const bg_color = DummyBook.color || 'white'
+  return (
+    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center" style={{ backgroundColor: bg_color }}>
+      <HomeBar onSearchChange={function (event: any): unknown {
+        throw new Error("Function not implemented.")
+      }} />
+      <div className="w-full h-full flex justify-center items-center" >
+        <div className="w-[800px] h-[580px] justify-center">
+          {book !== undefined ?
+            <Book bookData={book} />
+            :
+            generatingBook ?
+              <div className="flex justify-center items-center "
+                style={{
+                  backgroundColor: DummyBook.complementaryColor || 'white',
+                }}
+              >
+                Generating book...
+              </div>
               :
-              generatingBook ?
-                <div className="flex justify-center items-center " style={{ backgroundColor: complementaryColor,
-                  
-                }}>
-                  Generating book...
-                </div>
-                :
-                <div className="flex justify-center items-center">
-                  Generate a book to start!!
-                </div>
-            }
-          </div>
+              <div className="flex justify-center items-center">
+                Generate a book to start!!
+              </div>
+          }
         </div>
-        <div className="absolute bottom-20 w-full">
-          <div className="w-full flex justify-center">
-            <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
-              <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
-                Generate Book
-              </Button>
-              <Button className="rounded-full" variant="outline">
-                Generate Background Image
-              </Button>
-            </div>
+      </div>
+      <div className="absolute bottom-20 w-full">
+        <div className="w-full flex justify-center">
+          <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
+            <Button className="rounded-full" variant="outline" onClick={() => handleGenClick()}>
+              Generate Book
+            </Button>
+            <Button className="rounded-full" variant="outline">
+              Generate Background Image
+            </Button>
           </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 
-  export default BookTestPage;
+export default BookTestPage;

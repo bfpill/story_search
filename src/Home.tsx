@@ -31,7 +31,7 @@ const UserLibraryDummy = () => {
         console.log(userData)
       }
     }
-    
+
     initializeBooks()
   }, [user])
 
@@ -62,11 +62,9 @@ const Home = (props: {}) => {
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
-      <div className="border p-2 rounded-full flex items-center justify-center">
-        <HomeBar onSearchChange={function (event: any): unknown {
-          throw new Error("Function not implemented.")
-        }} />
-      </div>
+      <HomeBar onSearchChange={function (event: any): unknown {
+        throw new Error("Function not implemented.")
+      }} />
       <UserLibraryDummy />
     </div>
   )
