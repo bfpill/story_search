@@ -41,3 +41,19 @@
   color: #888;
 }
 
+.dummypage{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 6vw;
+  font-weight: bold;
+
+}
+svg{
+  margin-top: -20vh;
+  height: 60vh;
+  width: 70vw;
+}
