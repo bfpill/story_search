@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
+import { getUser } from "./api";
 
 const dummyUser = {
   id: 123,
@@ -19,9 +20,19 @@ const dummyUser = {
 
 const UserLibraryDummy = () => {
   const { user } = useContext(CurrentUserContext)
+  const [books, setBooks] = useState([])
 
   useEffect(() => {
-    console.log(user)
+    const initializeBooks = async () => {
+      console.log(user)
+      const userData = await getUser(user.userId)
+
+      if (userData.books) {
+        setBooks(userData.books)
+      }
+    }
+    
+    initializeBooks()
   }, [user])
 
   return (

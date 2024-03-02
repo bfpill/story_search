@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import Library from './components/Library/library.jsx'
 import Login from './components/Login/login.jsx'
-import Prompt from './components/Prompt/prompt.jsx'
+import Prompt from './components/Prompt/prompt.js'
 import SignUp from './components/SignUp/signup.jsx'
 import { useLocation } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/sign_up" element={<SignUp/>} />
         <Route path='/library' element={<Library />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/prompt' element={<Prompt />} />
+        <Route path='/create_book' element={<Prompt />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>
     </Router>

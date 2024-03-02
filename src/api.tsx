@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:8000"; // Localhost
+export const BASE_URL = "http://127.0.0.1:8000"; // Localhost
 
 export async function makeAuthenticatedRequest(url, method, data = null) {
   try {
@@ -73,8 +73,8 @@ export const getBook = async (bookId: string, email: string) => {
   }
 }
 
-export const setBook = async (email: string, bookId: string, book: any) => {
-  const url = `${BASE_URL}/api/set_book/${encodeEmail(email)}/${bookId}`;
+export const addBookToUser = async (userId: string, bookId: string, book: any) => {
+  const url = `${BASE_URL}/api/set_book/${userId}/${bookId}`;
   // console.log(url);
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', book);
