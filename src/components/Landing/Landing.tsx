@@ -1,8 +1,8 @@
 import './Landing.css'
-import kidPicture1 from './tiktok-kig.jpg'
-import kidPicture2 from './yo-kid.jpg'
-import kidPicture3 from './ticktok-kids2.jpg'
-import kidPicture4 from './tiktok-addict.png'
+import kidPicture1 from './How-Reading-Can-Help-Your-Child-Be-More-Happy-and-Healthy-01.jpg'
+import kidPicture2 from './article_142_width_710_height_340_crop_true_center_true_quality_75.jpg'
+import kidPicture3 from './best-ipad-apps-for-kids-1.jpg'
+import kidPicture4 from './ipad_kid.png'
 
 
 function Landing(){
