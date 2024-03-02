@@ -19,8 +19,10 @@
 }
 
 .centered-image {
-  width: 900px;
-  height: 600px;
+  max-width: 800px; /* Set the maximum width */
+  height: 1200px; /* Maintain aspect ratio */
+  padding-right: 40px; 
+  padding-bottom: 50px;
 }
 
 

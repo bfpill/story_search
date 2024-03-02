@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './login.css'; // Import the CSS file
-import bookPlaceholder from '../../assets/book_placeholder.png'; // Import the image
+import bookAnimation from '../../assets/bookAnimation.gif'; // Import the animated GIF
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -23,14 +23,14 @@ function Login() {
   return (
     <div className="container">
       <div className="left">
-      <img src={bookPlaceholder} alt="Book Placeholder" className="centered-image" />
+        <img src={bookAnimation} alt="Book Animation" className="centered-image" />
       </div>
       <div className="right">
         <div className="form-container">
           <div className="my-login">Hello !</div>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-            <label style={{ fontSize: '28px'}}>Email</label>
+              <label style={{ fontSize: '28px'}}>Email</label>
               <input
                 type="email"
                 value={email}
@@ -51,7 +51,6 @@ function Login() {
           </form>
           <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px'}}>Sign In</button>
 
-
           <div className="forget-password">
             <p>Forgot Password?</p>
           </div>
@@ -68,5 +67,3 @@ function Login() {
 }
 
 export default Login;
-
-

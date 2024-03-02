@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css'; // Import the CSS file
-import bookPlaceholder from '../../assets/book_placeholder.png'; // Import the image
+import bookAnimation from '../../assets/bookAnimation.gif'; // Import the animated GIF
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -35,7 +35,7 @@ function SignUp() {
   return (
     <div className="container">
       <div className="left">
-        <img src={bookPlaceholder} alt="Book Placeholder" className="centered-image" />
+        <img src={bookAnimation} alt="Book Placeholder" className="centered-image" />
       </div>
       <div className="right">
         <div className="form-container">
