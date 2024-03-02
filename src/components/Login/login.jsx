@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './login.css'; // Import the CSS file
-import bookPlaceholder from '/Users/cher/Desktop/story_search/src/assets/book_placeholder.png'; // Import the image
+import bookPlaceholder from '../../assets/book_placeholder.png'
 
 
 function Login() {
@@ -17,7 +17,6 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can add your login logic here, e.g., calling an authentication API
     console.log("Email:", email);
     console.log("Password:", password);
   };
