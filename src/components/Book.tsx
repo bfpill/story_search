@@ -5,7 +5,7 @@ import Page from "./Page";
 import "./BookTestPage.css"
 
 
-const Book = (props: { bookData }) => {
+const Book = (props: { bookData, coverImage?}) => {
   const [pageRefs, setPageRefs] = useState(undefined)
   const [book, setBook] = useState(props.bookData)
 
@@ -38,19 +38,16 @@ const Book = (props: { bookData }) => {
         clickEventForward={false}
         maxShadowOpacity={0.0}
         disableFlipByClick={true}
-        // pageFlip="single" 
         data-density="hard"
         showCover={true}
       >
         {pageRefs?.map((ref, index) => (
-          <div className="text-3xl">
-            <Page key={index}
-              number={index + 1}
-              ref={ref}
-              page={book.pages[index]}
-              complementaryColor={book.complementaryColor}
-            />
-          </div>
+          <Page key={index}
+            number={index + 1}
+            ref={ref}
+            page={book.pages[index]}
+            complementaryColor={book.complementaryColor}
+          />
         ))}
       </HTMLFlipBook>
     );
