@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './prompt.css';
 import { DefaultBar, HomeBar } from '../NavBar';
 import { Input } from '../ui/input';
@@ -13,23 +13,19 @@ import { start } from 'repl';
 function Prompt() {
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState<boolean>(false)
-  const [showImages, setShowImages] = useState(false);
 
-  const [showGenerateButton, setShowGenerateButton] = useState(true);
   const [hasChosenBook, setHasChosenBook] = useState(false);
 
   const [book, setBook] = useState(undefined);
-  const [generatingBook, setGeneratingBook] = useState(false);
-  const [startTimerForImages, setStartTimerForImages] = useState(false);
   const [searchResults, setSearchResults] = useState(undefined);
   const [isNavExpanded, setIsNavExpanded] = useState(false);
-  const [componentDidMount, setComponentDidMount] = useState(false);
+
+  const searchBarRef = useRef()
 
   const handleSearch = async () => {
     console.log("searching for ", search)
     if (search !== "") {
       setIsNavExpanded(true)
-      setStartTimerForImages(true)
       setIsSearching(true)
 
       console.log("search", search)
@@ -41,23 +37,14 @@ function Prompt() {
         setSearchResults(possible_titles)
       }
 
-      setShowGenerateButton(false);
     }
   }
 
-  useEffect(() => {
-    setComponentDidMount(true)
-  }, [])
-
-  useEffect(() => {
-    console.log("hitting timeout")
-    setTimeout(() => {
-      setShowImages(true);
-    }, 1500)
-  }, [isSearching])
-
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
+      if (searchBarRef.current) {
+        searchBarRef.current.blur();
+      }
       handleSearch()
     }
   };
@@ -80,6 +67,21 @@ function Prompt() {
     setGeneratingBook(false);
   }
 
+  const handleRefocusSearch = () => {
+    setIsSearching(false)
+    setHasChosenBook(false)
+    setSearchResults(undefined)
+  }
+
+  const handleSearchButtonClicked = () => {
+    if(isSearching) { 
+      handleRefocusSearch()
+    }
+    else { 
+      handleSearch()
+    }
+  }
+
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
       <div className="w-full flex items-center justify-center">
@@ -89,29 +91,31 @@ function Prompt() {
           }} expand={isNavExpanded} />
         </div>
       </div>
-      <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px]' : 'top-0'} mb-10 w-[800px] flex justify-end items-center relative`}>
-        <div className={`w-[800px] h-[60px] absolute right-0 overflow-hidden p-1`}>
+      <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px]' : 'top-0'} mb-10 w-2/3 flex justify-end items-center relative`}>
+        <div className={`w-full h-[60px] absolute right-0 overflow-hidden p-1`}>
           <Input
             type="text"
             className="w-full h-full px-6 text-xl rounded-full"
             placeholder="Search..."
             onChange={handleSearchChange}
             onKeyDown={handleKeyPress}
-            onFocus={() => setShowImages(false)}
+            onFocus={() => handleRefocusSearch()}
+            ref={searchBarRef}
           />
         </div>
         <div className="rounded-full z-30 mr-1">
-          <Button className="rounded-full h-12 w-15" variant='ghost' onClick={handleSearch}>
+          <Button className="rounded-full h-12 w-15" variant='ghost' onClick={handleSearchButtonClicked}>
             <Search className='h-full w-full' />
           </Button>
         </div>
       </div>
 
       {isSearching && !hasChosenBook && (
-        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 gap-10 mt-10`}>
+        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 gap-10 mt-20`}>
           {(searchResults ?? ["", "", ""]).map(title => {
             return (
-              <div onClick={() => handleSetChosenBook(title)} className="h-[320px] w-[240px] flex text-sm items-center justify-center bg-blue-300 col-span-1" >
+              <div onClick={() => handleSetChosenBook(title)}
+                className="h-[360px] w-full flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-2xl" >
                 <BookTitlePage complementaryColor={"blue"} page={{ text: title }} />
               </div>
             )
@@ -119,7 +123,9 @@ function Prompt() {
         </div>
       )}
       {hasChosenBook && book !== undefined &&
-        <Book bookData={book} />
+        <div className={`transition-all duration-2000 initial-fade-in`}>
+          <Book bookData={book} />
+        </div>
       }
     </div>
 

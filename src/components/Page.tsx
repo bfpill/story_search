@@ -6,7 +6,7 @@ const PageInternals = (props: { page, complementaryColor }) => {
   console.log(props.complementaryColor);
   if (props.page.type == "front_cover" || props.page.type == "back_cover") {
     return (
-      <div className="text-lg h-full w-full">
+      <div className="text-3xl h-full w-full">
         <BookTitlePage complementaryColor={props.complementaryColor} page={props.page} />
       </div>
     )

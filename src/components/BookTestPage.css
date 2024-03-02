@@ -12,11 +12,9 @@
   
   .bookcover{
     font-family:"Andika-Bold"; 
-    font-size: 30px;
   }
   .bookpages{
     font-family:"Andika-Regular"; 
-    font-size:20px ;
   }
   .squiggly-image {
     animation: shake 1.5s ease-in-out infinite;
