@@ -12,6 +12,7 @@ export const getGenerateBackgroundImage = async (userId: string, search: string,
 
 export const getGenerateSearchOptions = async (search_query: string) => {
   const url = `${BASE_URL}/search`;
+  console.log("sending titles req")
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search_query });
     return responseData
