@@ -1,11 +1,12 @@
 import React from "react";
 
 const PageInternals = (props: { page }) => {
-  if (props.page.type == "front_cover") {
+  if (props.page.type == "front_cover" || props.page.type == "back_cover") {
     return (
-      <div className="h-full w-full bg-blue-100 px-8 pt-6 pb-8 mb-4">
+      <div className="h-full px-8 pt-6 pb-8 mb-4"
+        style={{backgroundColor: "Snow"}}>
         <div className="h-1/3 bg-blue" />
-        <div className="h-min relative text-center">
+        <div className="h-min relative text-center select-none">
           {props.page.text}
         </div>
       </div>
@@ -13,13 +14,22 @@ const PageInternals = (props: { page }) => {
   }
   else {
     return (
-      <div className="h-full w-full bg-white px-8 pt-6 pb-8 mb-4 relative">
-        <div className="h-1/3 bg-blue"></div>
-        <div className="h-min relative text-center z-10">
-          {props.page.text}
+      <div
+        className="h-full px-8 pt-6 pb-8 mb-4 flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${props.page.background_image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="h-1/3"></div>
+        <div className="relative text-center  rounded-full">
+          <div className="absolute inset-0 bg-white/90 shadow-lg blur-xl"></div>
+          <div className="relative p-12">
+            {props.page.text}
+          </div>
         </div>
       </div>
-
     )
   }
 }
