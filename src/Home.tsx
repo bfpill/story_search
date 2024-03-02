@@ -1,24 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
-import { getAllBooks, getAllUserBooks, getUser } from "./api";
+import { getAllUserBooks } from "./api";
 import BookTitlePage from "./components/BookTitlePage";
 import { useNavigate } from 'react-router-dom';
-
-const dummyUser = {
-  id: 123,
-  name: "John Doe",
-  books: [
-    { title: "Book One", id: 1 },
-    { title: "Book Two", id: 2 },
-    { title: "Book Three", id: 3 },
-    { title: "Book Four", id: 4 },
-    { title: "Book Five", id: 5 },
-    { title: "Book Six", id: 6 },
-    { title: "Book Seven", id: 7 },
-    { title: "Book Eight", id: 8 },
-  ]
-};
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
 
 const UserLibraryDummy = () => {
   const { user } = useContext(CurrentUserContext)
@@ -37,25 +23,38 @@ const UserLibraryDummy = () => {
     initializeBooks()
   }, [user])
 
-  return (
-    <div className="w-full h-full flex justify-center items-center">
-      {dummyUser ?
-        <div className="grid grid-cols-4 grid-rows-2 gap-10">
-          {userBooks?.map(book => {
-            return (
-              <div className="h-64 w-48 bg-blue-300 text-xs leading-1"
-                onClick={() => navigate(`books/${book.bookId}`)}
-              >
-                <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
-              </div>
-            )
 
-          })
-          }
-        </div> :
-        <div className="">
-          Login to see your books!
-        </div>
+  return (
+    <div className="w-screen h-full flex justify-center items-center">
+      {
+        user ?
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-3/4"
+          >
+            <CarouselContent className="w-full h-full p-10">
+              {userBooks?.map((book, index) => {
+                return (
+                  <CarouselItem key={index} className="basis-1/3">
+                    <div className="h-[430px] w-[300px] text-xs leading-1 cursor-pointer shadow-xl"
+                      onClick={() => navigate(`books/${book.bookId}`)}
+                    >
+                      <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
+
+                    </div>
+                  </CarouselItem>
+                )
+              })}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          :
+          <div className="">
+            Login to see your books!
+          </div>
       }
 
     </div>
@@ -66,9 +65,15 @@ const Home = (props: {}) => {
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
-      <HomeBar onSearchChange={function (event: any): unknown {
-        throw new Error("Function not implemented.")
-      }} />
+      <div className="w-full flex items-center justify-center">
+        <div className={`z-50 transition-all duration-500 top-4 absolute w-full rounded-full`}
+          style={{ "zIndex": "9999" }}
+        >
+          <HomeBar onSearchChange={function (event: any): unknown {
+            throw new Error("Function not implemented.");
+          }} />
+        </div>
+      </div>
       <UserLibraryDummy />
     </div>
   )
