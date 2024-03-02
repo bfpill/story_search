@@ -43,3 +43,33 @@
    
 
 }
+
+.book-images:hover {
+    opacity: 1; 
+    transform: scale(1.2); /* Enlarge the image on hover */
+}
+
+.book-images:not(:hover) {
+    opacity: 1; 
+}
+.book-images:not(:first-child) {
+    margin-left: -140px; 
+}  
+
+.image-containers {
+    display: flex;
+    width: 60vw;
+    white-space: nowrap;
+    height: 60vh;
+    margin-top: 5vh;
+    margin-left: 8vw;
+}
+
+.book-images {
+    width: 250px;
+    height: 400px;
+    margin-right: 10px; /* Adjust margin between images */
+    transition: opacity 0.3s ease; /* Add transition for smooth opacity change */
+    filter: drop-shadow(40px 40px 40px rgba(0, 0, 0, 0.2));
+    
+}
