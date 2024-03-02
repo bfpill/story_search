@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Cherry bomb";
+    src: local("GilroyRegular"),
+      url("../fonts/cherrybombone-regular.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+.library-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; /* Set height to viewport height for vertical centering */
+}
+
+.my-library {
+    font-family: 'Cherry Bomb', cursive;
+    font-size: 74px; /* Adjust size as needed */
+    /* Add any other styling properties you desire */
+}
+.full-page{
+    background-color: #C7E4EA;
+    width: 100vw;
+    height: 100vh    ;
+}
+.create-story {
+    position: absolute;
+    top: 50%; /* Adjust top position as needed */
+    right: 10%; /* Position it to the right of the page */
+    transform: translateY(-50%); /* Center vertically */
+    background-color: white;
+    /* Add any other styling properties you desire */
+    height: 45vh;
+    width: 15vw;
+    border-radius: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inside-create-story{
+    font-family: 'CherryBomb', cursive;
+    font-size: 20px;
+    font-weight: bold;  
+   
+
+}

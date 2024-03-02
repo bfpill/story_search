@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
-import Library from './components/Library/library.js'
+import Library from './components/Library/library.jsx'
+import Login from './components/Login/login.jsx'
 import { useLocation } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home.tsx';
