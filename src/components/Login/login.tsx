@@ -1,13 +1,11 @@
 import React, { useContext, useState } from 'react';
 import './login.css'; // Import the CSS file
-import bookPlaceholder from '../../assets/book_placeholder.png'
-
-
+import bookAnimation from '../../assets/bookAnimation.gif'; 
 import { auth } from '../../firebase-config';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '@/UserProvider';
-import { DefaultBar } from '../NavBar';
+import { DefaultBar, HomeBar } from '../NavBar';
 import { Button } from '../ui/button';
 
 
@@ -34,7 +32,7 @@ function Login() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in:", userCredential.user, userCredential);
       setUser(userCredential.user)
-      
+
       navigate("/lockerroom")
     } catch (error) {
       console.log("couldn't login")
@@ -42,13 +40,15 @@ function Login() {
   };
 
   return (
-    <div className="h-screen w-screen bg-neutral-100 relative">
-      <div className="absolute top-0 right-0 w-full">
-        <DefaultBar />
+    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
+      <div className="border p-2 rounded-full flex items-center justify-center z-20 absolute top-4 bg-white">
+        <HomeBar onSearchChange={function (event: any): unknown {
+          throw new Error("Function not implemented.")
+        }} />
       </div>
-      <div className="flex w-full h-full">
-        <div className="left">
-          <img src={bookPlaceholder} alt="Book Placeholder" className="centered-image" />
+      <div className="flex w-full h-full absolute top-0">
+      <div className="left">
+          <img src={bookAnimation} alt="Book Placeholder" className="centered-image" />
         </div>
         <div className="right">
           <div className="form-container">
@@ -82,8 +82,8 @@ function Login() {
             <div className="no-account">
               <p>Don't Have an Account?</p>
             </div>
-            <div onClick={() => {navigate("/sign_up")}} className="create-account mt-3">
-            <p>Create Account</p>
+            <div onClick={() => { navigate("/sign_up") }} className="create-account mt-3">
+              <p>Create Account</p>
             </div>
           </div>
         </div>
