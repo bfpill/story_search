@@ -9,7 +9,7 @@ import { ThemeProvider } from './ThemeProvider.tsx';
 import { UserProvider } from './UserProvider.tsx';
 import BookTestPage from './BookTestPage.tsx';
 import TestBookGeneration from './TestBookGeneration.tsx';
-import Login from "./components/Login/login"
+import Login from "./components/Login/login.tsx"
 
 export function getNavBarType(): string {
   // eslint-disable-next-line react-hooks/rules-of-hooks
