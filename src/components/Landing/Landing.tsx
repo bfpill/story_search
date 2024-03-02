@@ -5,6 +5,7 @@ import kidPicture1 from './How-Reading-Can-Help-Your-Child-Be-More-Happy-and-Hea
 import kidPicture2 from './article_142_width_710_height_340_crop_true_center_true_quality_75.jpg'
 import kidPicture3 from './best-ipad-apps-for-kids-1.jpg'
 import kidPicture4 from './ipad_kid.png'
+import { HomeBar } from "../NavBar"
 
 
 function Landing(){
@@ -26,7 +27,14 @@ function Landing(){
     }, [visibleLetters]);
 
     return(
+        <>
+        <div className="z-20 absolute top-4 rounded-full navbar-landing">
+        <HomeBar onSearchChange={function (event: any): unknown {
+          throw new Error("Function not implemented.");
+        } } expand={false} />
+      </div>
         <div className="full-pages">
+
             <div className='statement'>
                 {text.split('').slice(0, visibleLetters).join('')}
             </div>
@@ -50,6 +58,7 @@ function Landing(){
 
 
         </div>
+        </>
     )
 }
 export default Landing

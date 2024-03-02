@@ -4,6 +4,9 @@
     background-color: #FAF9F6;
     overflow: hidden;
 }
+.navbar-landing{
+    left: 40%;
+}
 .statement {
     color: #2c2c2c;
     padding-top: 10vh;
