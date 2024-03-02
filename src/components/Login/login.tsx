@@ -33,7 +33,7 @@ function Login() {
       console.log("User signed in:", userCredential.user, userCredential);
       setUser(userCredential.user)
 
-      navigate("/lockerroom")
+      navigate("/")
     } catch (error) {
       console.log("couldn't login")
     }
@@ -73,9 +73,8 @@ function Login() {
                   required
                 />
               </div>
-              <button type="submit">Login</button>
             </form>
-            <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }}>Sign In</button>
+            <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }} onClick={handleSubmit}>Sign In</button>
             <div className="forget-password">
               <p>Forgot Password?</p>
             </div>

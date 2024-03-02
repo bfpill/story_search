@@ -3,6 +3,8 @@ import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
 import { getAllBooks, getAllUserBooks, getUser } from "./api";
 import Landing from "./components/Landing/Landing";
+import BookTitlePage from "./components/BookTitlePage";
+
 const dummyUser = {
   id: 123,
   name: "John Doe",
@@ -25,10 +27,10 @@ const UserLibraryDummy = () => {
 
   useEffect(() => {
     const initializeBooks = async () => {
-      const userData = await getAllUserBooks(user.email)
-      if (userData) {
-        setUserBooks(userData)
-        console.log(userData)
+      const allBooks = await getAllUserBooks(user.email)
+      if (allBooks) {
+        setUserBooks(allBooks)
+        console.log(allBooks)
       }
     }
 
@@ -39,10 +41,10 @@ const UserLibraryDummy = () => {
     <div className="w-full h-full flex justify-center items-center">
       {dummyUser ?
         <div className="grid grid-cols-4 grid-rows-2 gap-10">
-          {Object.keys(userBooks.books ?? [])?.map(book_id => {
+          {userBooks?.map(book => {
             return (
-              <div className="h-64 w-48 bg-blue-300">
-                {userBooks.books[book_id].title}
+              <div className="h-64 w-48 bg-blue-300 text-xs leading-1">
+                <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
               </div>
             )
 
