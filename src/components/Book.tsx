@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page";
-
+import "./BookTestPage.css"
 
 
 const Book = (props: { bookData }) => {
@@ -43,7 +43,11 @@ const Book = (props: { bookData }) => {
         showCover={true}
       >
         {pageRefs?.map((ref, index) => (
-          <Page key={index} number={index + 1} ref={ref} page={book.pages[index]} complementaryColor={book.complementaryColor }
+          <Page key={index} 
+          number={index + 1} 
+          ref={ref} 
+          page={book.pages[index]} 
+          complementaryColor={book.complementaryColor }
           />
         ))}
       </HTMLFlipBook>

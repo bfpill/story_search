@@ -1,11 +1,15 @@
 import React from "react";
+import "./BookTestPage.css"
 
 const PageInternals = (props: { page, complementaryColor }) => {
   console.log(props.complementaryColor);
   if (props.page.type == "front_cover" || props.page.type == "back_cover") {
     return (
-      <div className="h-full px-8 pt-6 pb-8 mb-4"
-        style={{backgroundColor: props.complementaryColor}}>
+      <div className="h-full px-8 pt-6 pb-8 mb-4 bookcover"
+        style={{
+          backgroundColor: props.complementaryColor
+          
+          }}>
         <div className="h-1/3 bg-blue" />
         <div className="h-min relative text-center select-none">
           {props.page.text}
@@ -16,7 +20,7 @@ const PageInternals = (props: { page, complementaryColor }) => {
   else {
     return (
       <div
-        className="h-full px-8 pt-6 pb-8 mb-4 flex items-center justify-center"
+        className="h-full px-8 pt-6 pb-8 mb-4 flex items-center justify-center bookpages"
         style={{
           backgroundImage: `url(${props.page.background_image})`,
           backgroundSize: 'cover',

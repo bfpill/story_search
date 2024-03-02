@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Andika-Regular";
+    src: url("./fonts/Andika/Andika-Regular.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: "Andika-Bold";
+    src: url("./fonts/Andika/Andika-Bold.ttf") format("truetype");
+    font-weight: normal;
+  }
+  
+  .bookcover{
+    font-family:"Andika-Bold"; 
+    font-size: 30px;
+  }
+  .bookpages{
+    font-family:"Andika-Regular"; 
+    font-size:20px ;
+  }

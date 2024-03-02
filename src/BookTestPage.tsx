@@ -4,7 +4,7 @@ import { Button } from "./components/ui/button";
 import Book from "./components/Book";
 import { DefaultBar, HomeBar } from "./components/NavBar";
 import { CurrentUserContext } from "./UserProvider";
-
+import "./components/BookTestPage.css"
 // const books = [
 //   {
 //     "title": "Book 1",
@@ -122,8 +122,8 @@ const dummy_search = "trains"
     setBook(data);
 
       // // testing
-      setBook(DummyBook);
-      setGeneratingBook(false);
+      // setBook(DummyBook);
+      // setGeneratingBook(false);
       
     }
     
@@ -143,7 +143,9 @@ const dummy_search = "trains"
               <Book bookData={book} />
               :
               generatingBook ?
-                <div className="flex justify-center items-center" style={{ backgroundColor: complementaryColor }}>
+                <div className="flex justify-center items-center " style={{ backgroundColor: complementaryColor,
+                  
+                }}>
                   Generating book...
                 </div>
                 :
