@@ -23,29 +23,28 @@ export function HomeBar(props: { onSearchChange: (event) => unknown }) {
 
   return (
     <div className="h-10 items-center justify-center min-w-[500px]">
-      <div className="flex ml-4 mr-2 md:relative">
-        <div className="flex w-full flex-row justify-between items-center">
-          <div onClick={() => handleImageClick(navigate)} className="cursor-pointer">
-            <LogoSVG theme={theme} />
-          </div>
-          <div className="flex w-full flex-row justify-end items-center gap-3">
-            {/* <Input className="h-8 mr-2 w-80 text-s tracking-tight" placeholder="Search..." onChange={props.onSearchChange} /> */}
-            <Button className="rounded-full" onClick={() => navigate('/create_book')}>
-              New Book
-            </Button>
-            <Button className="rounded-full" onClick={() => navigate('/library')}>
-              Library 
-            </Button>
-            {
-              user ?
-                <ReactiveAvatar />
-                :
-                <Button variant="ghost" className="text-s" onClick={() => handleLoginClick(navigate)}>Login</Button>
-            }
-          </div>
+    <div className="flex ml-4 mr-2 md:relative">
+      <div className="flex w-full flex-row justify-between items-center">
+        <div onClick={() => handleImageClick(navigate)} className="cursor-pointer">
+          <LogoSVG theme={theme} />
+        </div>
+        <div className="flex w-full flex-row justify-end items-center gap-3">
+          <Button className="rounded-full mt-[-1rem]" onClick={() => navigate('/create_book')}>
+            New Book
+          </Button>
+          <Button className="rounded-full mt-[-1rem]" onClick={() => navigate('/library')}>
+            Library 
+          </Button>
+          {
+            user ?
+              <ReactiveAvatar />
+              :
+              <Button variant="ghost" className="text-s  mt-[-1rem]" onClick={() => handleLoginClick(navigate)}>Login</Button>
+          }
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

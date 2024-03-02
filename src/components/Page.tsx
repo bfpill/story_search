@@ -1,19 +1,13 @@
 import React from "react";
 import "./BookTestPage.css"
+import BookTitlePage from "./BookTitlePage";
 
 const PageInternals = (props: { page, complementaryColor }) => {
   console.log(props.complementaryColor);
   if (props.page.type == "front_cover" || props.page.type == "back_cover") {
     return (
-      <div className="h-full px-8 pt-6 pb-8 mb-4 bookcover"
-        style={{
-          backgroundColor: props.complementaryColor
-          
-          }}>
-        <div className="h-1/3 bg-blue" />
-        <div className="h-min relative text-center select-none">
-          {props.page.text}
-        </div>
+      <div className="text-lg h-full w-full">
+        <BookTitlePage complementaryColor={props.complementaryColor} page={props.page} />
       </div>
     )
   }
