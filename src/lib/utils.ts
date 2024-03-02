@@ -7,7 +7,9 @@ export function cn(...inputs: ClassValue[]) {
 
 export const DummyBook = {
   "title": "Whistles and Wheels: A Train Tale",
+  "category": "Science",
   "pages": [
+    
     {
       "pageNum": 1,
       "text": "In Whistleville, trains weren't just a mode of transport; they were beloved members of the community.",

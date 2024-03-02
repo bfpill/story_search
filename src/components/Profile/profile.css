@@ -148,19 +148,6 @@
     transform: scale(1.1); /* Add scale effect on hover */
   }
   
-
-
-  button {
-    width: 30px;
-    padding: 10px;
-    background-color: #C7E4EA;
-    color: white;
-    border: none;
-    border-radius: 10px; /* Rounded corners */
-    cursor: pointer;
-  }
-
-  
   button:hover,
   .sign-in-button:hover {
     background-color: #BF67A6; /* Darker green */

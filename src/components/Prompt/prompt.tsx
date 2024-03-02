@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './prompt.css';
 import { DefaultBar, HomeBar } from '../NavBar';
 import { Input } from '../ui/input';
@@ -6,9 +6,12 @@ import { Button } from '../ui/button';
 import { getGenerateSearchOptions } from '@/image_api';
 import Book from '../Book';
 import BookTitlePage from '../BookTitlePage';
-import { DummyBook } from '@/lib/utils';
+import { DummyBook, dummy_search, dummy_user_id } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import { start } from 'repl';
+import { addBookToUser, getGenerateBook } from '@/api';
+import { v4 as uuid4 } from 'uuid'
+import { CurrentUserContext } from '@/UserProvider';
 
 function Prompt() {
   const [search, setSearch] = useState("");
@@ -19,6 +22,12 @@ function Prompt() {
   const [book, setBook] = useState(undefined);
   const [searchResults, setSearchResults] = useState(undefined);
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [chosenTitle, setChosenTitle] = useState("");
+  const [generatingBook, setGeneratingBook] = useState(false);
+  const [coverImage, setCoverImage] = useState(undefined)
+  const [coverImageColor, setCoverImageColor] = useState(undefined)
+
+  const { user } = useContext(CurrentUserContext)
 
   const searchBarRef = useRef()
 
@@ -49,20 +58,42 @@ function Prompt() {
     }
   };
 
+  useEffect(() => {
+    console.log("cover image changed", coverImage, coverImageColor)
+  }, [coverImage, coverImageColor])
+
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
   }
 
-  const handleSetChosenBook = (title) => {
+  const handleSetChosenBook = async (title) => {
+    setChosenTitle(title)
     setHasChosenBook(true)
+    setGeneratingBook(true);
 
     // TEST
-    setBook(DummyBook);
+    // setBook(DummyBook);
 
-    //REAL 
-    // const data = await getGenerateBook(dummy_user_id, dummy_search);
-    // console.log(data);
-    // setBook(data);
+    // REAL 
+    const gendBook = await getGenerateBook(user.email, search);
+
+    const newBook = { ...gendBook, pages: [...gendBook.pages] };
+    if (newBook.pages[0]?.type !== "front_cover") {
+      newBook.pages.unshift({ type: "front_cover", text: newBook.title, });
+    }
+
+    if (newBook.pages[newBook.pages.length - 1]?.type !== "back_cover") {
+      if (newBook.pages.length % 2 != 0) {
+        newBook.pages.push({ type: "back_cover", text: "" });
+      }
+    }
+
+    if (newBook !== gendBook) {
+      console.log('newBook', newBook)
+      setBook(newBook);
+    }
+
+    addBookToUser(user.email, uuid4(), newBook)
 
     setGeneratingBook(false);
   }
@@ -74,10 +105,10 @@ function Prompt() {
   }
 
   const handleSearchButtonClicked = () => {
-    if(isSearching) { 
+    if (isSearching) {
       handleRefocusSearch()
     }
-    else { 
+    else {
       handleSearch()
     }
   }
@@ -91,41 +122,52 @@ function Prompt() {
           }} expand={isNavExpanded} />
         </div>
       </div>
-      <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px]' : 'top-0'} mb-10 w-2/3 flex justify-end items-center relative`}>
-        <div className={`w-full h-[60px] absolute right-0 overflow-hidden p-1`}>
-          <Input
-            type="text"
-            className="w-full h-full px-6 text-xl rounded-full"
-            placeholder="Search..."
-            onChange={handleSearchChange}
-            onKeyDown={handleKeyPress}
-            onFocus={() => handleRefocusSearch()}
-            ref={searchBarRef}
-          />
+      {
+        !hasChosenBook &&
+        <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px]' : 'top-0'} mb-10 w-2/3 flex justify-end items-center relative`}>
+          <div className={`w-full h-[60px] absolute right-0 overflow-hidden p-1`}>
+            <Input
+              type="text"
+              className="w-full h-full px-6 text-xl rounded-full"
+              placeholder="Search..."
+              onChange={handleSearchChange}
+              onKeyDown={handleKeyPress}
+              onFocus={() => handleRefocusSearch()}
+              ref={searchBarRef}
+            />
+          </div>
+          <div className="rounded-full z-30 mr-1">
+            <Button className="rounded-full h-12 w-15" variant='ghost' onClick={handleSearchButtonClicked}>
+              <Search className='h-full w-full' />
+            </Button>
+          </div>
         </div>
-        <div className="rounded-full z-30 mr-1">
-          <Button className="rounded-full h-12 w-15" variant='ghost' onClick={handleSearchButtonClicked}>
-            <Search className='h-full w-full' />
-          </Button>
-        </div>
-      </div>
+      }
 
       {isSearching && !hasChosenBook && (
-        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 gap-10 mt-20`}>
+        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 min-w-[800px] gap-10 mt-20`}>
           {(searchResults ?? ["", "", ""]).map(title => {
             return (
               <div onClick={() => handleSetChosenBook(title)}
-                className="h-[360px] w-full flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-2xl" >
-                <BookTitlePage complementaryColor={"blue"} page={{ text: title }} />
+                className="h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-2xl" >
+                <BookTitlePage complementaryColor={"blue"} page={{ text: title }} setCover={setCoverImage} setCoverColor={setCoverImageColor} />
               </div>
             )
           })}
         </div>
       )}
-      {hasChosenBook && book !== undefined &&
-        <div className={`transition-all duration-2000 initial-fade-in`}>
-          <Book bookData={book} />
+      {hasChosenBook && generatingBook ? (
+        <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] bg-blue-300 flex" >
+          <BookTitlePage complementaryColor={"blue"} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
         </div>
+      ) : (
+        book &&
+        <div className={`transition-all duration-2000 initial-fade-in h-[600px] w-[1200px] flex justify-center`}>
+          <div className="w-[790px]">
+            <Book bookData={book} coverImage={coverImage} coverColor={coverImageColor} />
+          </div>
+        </div>
+      )
       }
     </div>
 
