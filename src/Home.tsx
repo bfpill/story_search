@@ -23,6 +23,23 @@ const UserLibraryDummy = () => {
     initializeBooks()
   }, [user])
 
+  const BookCard = ({ book }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const baseStyle = "h-[430px] w-[300px] text-xs leading-1 cursor-pointer transition-all duration-300 ease-in-out";
+    const hoverStyle = "scale-105 shadow-2xl";
+
+    return (
+        <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'}`}
+            onMouseOver={() => setIsHovered(true)}
+            onMouseOut={() => setIsHovered(false)}
+            onClick={() => navigate(`books/${book.bookId}`)}
+        >
+            <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
+        </div>
+    );
+};
+
 
   return (
     <div className="w-screen h-full flex justify-center items-center">
@@ -38,12 +55,7 @@ const UserLibraryDummy = () => {
               {userBooks?.map((book, index) => {
                 return (
                   <CarouselItem key={index} className="basis-1/3">
-                    <div className="h-[430px] w-[300px] text-xs leading-1 cursor-pointer shadow-xl"
-                      onClick={() => navigate(`books/${book.bookId}`)}
-                    >
-                      <BookTitlePage complementaryColor={undefined} page={book.pages[0]} />
-
-                    </div>
+                    <BookCard book={book}/>
                   </CarouselItem>
                 )
               })}
