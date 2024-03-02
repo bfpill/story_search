@@ -9,7 +9,7 @@ function Landing(){
     return(
         <div className="full-pages">
             <div className='statement'>
-                Does your kid watch tik tok?
+            Is your little one mesmerized by endless scroll of TikTok?
             </div>
             <div className='under-statement'>
                 Get them here, we are a safe plce for kids to enjoy as well as learn something .
