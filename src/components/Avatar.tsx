@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { useContext } from "react";
 import { CurrentUserContext } from "@/UserProvider";
 import { useNavigate } from "react-router-dom";
+import profilelogo from "../assets/dog_profile.png"
 // import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "@/ThemeProvider";
 
@@ -32,12 +33,10 @@ export const ReactiveAvatar = (props: { size?: number, unclickable?: boolean }) 
   if (!props.unclickable) {
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Avatar>
-            <AvatarImage className={`w-[${props.size}px]`} src="https://ui.shadcn.com/avatars/01.png" />
-            <AvatarFallback>{user.name}</AvatarFallback>
-          </Avatar>
-        </DropdownMenuTrigger>
+        <Avatar>
+          <AvatarImage className={`w-full h-full cursor-pointer`} src={user.avatar} onClick={() => navigate('/profile')}/>
+          <AvatarFallback>{user.name}</AvatarFallback>
+        </Avatar>
         <DropdownMenuContent onCloseAutoFocus={() => { }} className="w-[200px]" align="end">
           <DropdownMenuLabel onClick={() => handleOpenProfile()}>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />

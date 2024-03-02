@@ -1,15 +1,24 @@
-import React, { useState } from "react";
-// import { useHistory } from "react-router-dom"; // Import useHistory from React Router
+import React, { useContext, useState } from "react";
 import "./profile.css";
-import profileDefault from "../../assets/profile_default.png";
 import gorillaAvatar from "../../assets/gorilla_profile.png";
 import catAvatar from "../../assets/cat_profile.png";
 import dogAvatar from "../../assets/dog_profile.png";
+import RenderShakingImages from "@/ShakingImages";
+
+import squiggleImage from '../../assets/squiggle.png';
+import starImage from '../../assets/star.png';
+import triangleImage from '../../assets/triangle.png';
+import swirlyImage from '../../assets/swirly.png'
+import { CurrentUserContext } from "@/UserProvider";
+import { updateUser } from "@/api";
 
 function Profile() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(5);
   const [avatar, setAvatar] = useState(null);
+
+  const { user, setUser } = useContext(CurrentUserContext)
+  //
   // const history = useHistory();
 
   const handleNameChange = (e) => {
@@ -17,12 +26,12 @@ function Profile() {
   };
 
   const handleAgeIncrease = () => {
-    setAge((prevAge) => Math.min(prevAge + 1, 12)); // Maximum age = 12
+    setAge((prevAge) => Math.min(prevAge + 1, 12));
   };
 
   const handleAgeDecrease = () => {
-    setAge((prevAge) => Math.max(prevAge - 1, 3)); // Minimum age = 3
-  }; 
+    setAge((prevAge) => Math.max(prevAge - 1, 3));
+  };
 
   const handleAvatarSelect = (selectedAvatar) => {
     setAvatar(selectedAvatar);
@@ -33,21 +42,18 @@ function Profile() {
     console.log("Name:", name);
     console.log("Age:", age);
     console.log("Avatar:", avatar);
-    // Here, we can add logic to save the profile details, or perform any other actions needed
-    // Navigate to another page after generating the profile:
-    // history.push("/another-page");
+
+    const newUserData = {email: user.email, uid: user.uid, name: name, age: age, avatar: avatar}
+    setUser(newUserData)
+    updateUser(user.email, newUserData)
   };
 
   return (
-    <div className="container">
-      <div className="left">
-        <img
-          src={profileDefault}
-          alt="Profile stock image"
-          className="centered-image"
-        />
+    <div className="w-full h-screen relative bg-blue-200 flex justify-center items-center">
+      <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
+        {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 3)}
       </div>
-      <div className="right">
+      <div className="w-min h-min p-10 bg-white rounded-lg z-50">
         <div className="form-container">
           <div className="my-name">About me</div>
           <form onSubmit={(e) => e.preventDefault()}>
