@@ -1,3 +1,5 @@
+
+import { useEffect,useState } from 'react'
 import './Landing.css'
 import kidPicture1 from './How-Reading-Can-Help-Your-Child-Be-More-Happy-and-Healthy-01.jpg'
 import kidPicture2 from './article_142_width_710_height_340_crop_true_center_true_quality_75.jpg'
@@ -6,13 +8,30 @@ import kidPicture4 from './ipad_kid.png'
 
 
 function Landing(){
+    const [visibleLetters, setVisibleLetters] = useState(0);
+    const text = "Is your little one mesmerized by endless scroll of TikTok?";
+    useEffect(() => {
+        
+        const interval = setInterval(() => {
+            setVisibleLetters(prevVisibleLetters => prevVisibleLetters + 1);
+        }, 40); // Adjust the interval duration as needed
+
+        // Clear interval when all letters are visible
+        if (visibleLetters === text.length) {
+            clearInterval(interval);
+        }
+
+        // Cleanup function to clear interval
+        return () => clearInterval(interval);
+    }, [visibleLetters]);
+
     return(
         <div className="full-pages">
             <div className='statement'>
-            Is your little one mesmerized by endless scroll of TikTok?
+                {text.split('').slice(0, visibleLetters).join('')}
             </div>
             <div className='under-statement'>
-                Get them here, we are a safe plce for kids to enjoy as well as learn something .
+                Get them here, we are a safe place for kids to enjoy as well as learn something .
                 </div>
             
             <div className='img-container1'>

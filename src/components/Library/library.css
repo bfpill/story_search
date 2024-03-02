@@ -12,14 +12,14 @@
   
   .my-library {
     font-family: 'Cherry Bomb', cursive;
-    font-size: 5.5vw; /* Adjust size as needed */
-    padding-bottom:1px; /* Adjust size as needed */
-    /* Add any other styling properties you desire */
+    font-size: 5.5vw; 
+    padding-bottom:1px;
+    
     padding-left: 12vw;
   }
   
   .carousel-slide {
-    margin-right: 0.5vw; /* Adjust the margin to increase/decrease the spacing between items */
+    margin-right: 0.5vw; 
   }
   
   .full-page {
@@ -62,7 +62,7 @@
   
   .book-images:hover {
     opacity: 1.1;
-    transform: scale(1.2); /* Adjusted scale on hover */
+    transform: scale(1.2); 
   }
   
   .carousel-container {

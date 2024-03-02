@@ -4,21 +4,28 @@
     background-color: #FAF9F6;
     overflow: hidden;
 }
-.statement{
+.statement {
     color: #2c2c2c;
     padding-top: 10vh;
-
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding-left: 6vw;
-    display: block;
-    height: 20vh;
+    display: block; 
     width: 42vw;
     font-size: 3vw;
     font-weight: bold;
     text-decoration: underline;
     text-transform: uppercase;
-
+    white-space: pre-wrap; 
 }
+
+.statement span {
+    display: block; 
+}
+
+
+s
+
+
 .statement:hover{
     transform:scale(1.1);
 }
@@ -32,9 +39,9 @@
     width: 40vw;
     font-size: 1vw;
     font-weight: bold;
-    text-decoration: underline;
+    
     text-transform: uppercase;
-    padding-top: 35vh;
+    padding-top: 20vh;
 
 }
 .img-container1{
