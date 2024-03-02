@@ -52,9 +52,7 @@ const Home = (props: {}) => {
         <div className={`z-50 transition-all duration-500 top-4 absolute w-full rounded-full`}
           style={{ "zIndex": "9999" }}
         >
-          <HomeBar onSearchChange={function (event: any): unknown {
-            throw new Error("Function not implemented.");
-          }} />
+          <HomeBar expand={false} />
         </div>
       </div>
       <div className="w-screen h-full flex justify-center items-center">

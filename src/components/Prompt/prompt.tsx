@@ -153,9 +153,7 @@ function Prompt() {
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
       <div className="w-full flex items-center justify-center">
         <div className={`z-20 transition-all duration-500 top-4 absolute w-full rounded-full`}>
-          <HomeBar onSearchChange={function (event: any): unknown {
-            throw new Error("Function not implemented.");
-          }} expand={isNavExpanded} />
+          <HomeBar expand={isNavExpanded} />
         </div>
       </div>
       {

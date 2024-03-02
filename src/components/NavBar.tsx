@@ -16,7 +16,7 @@ const handleLoginClick = (navigate) => {
   navigate('/login');
 };
 
-export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boolean }) {
+export function HomeBar(props: { onSearchChange?, expand: boolean }) {
   const navigate = useNavigate();
   const { user } = useContext(CurrentUserContext)
   const { theme } = useTheme()
@@ -26,7 +26,7 @@ export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boo
     <div className="p-1 flex items-center" style={{ justifyContent: "space-between" }}>
       <div className={`h-full w-full flex items-center justify-center transition-all duration-500 ease-in-out`}>
         <div className={`h-full flex items-center rounded-full bg-white justify-center transition-all duration-500 ease-in-out shadow-border
-         ${props.expand ? 'w-[90%] border-none' : 'w-[400px] border'}`}
+          ${props.expand ? (props.onSearchChange ? 'w-1/2 border' : 'w-9/10 border-none') : 'w-[400px] border'}`}
         >
           <div onClick={() => navigate('/')} className="cursor-pointer mt-1.5 ml-2">
             <LogoSVG theme={theme} />
@@ -38,6 +38,9 @@ export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boo
             <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/library')}>
               Library
             </Button>
+            {props.onSearchChange &&
+              <Input className="h-8 mr-2 w-80 text-s tracking-tight rounded-full" placeholder="Search..." onChange={props.onSearchChange} />
+            }
             {
               user ?
                 <ReactiveAvatar />

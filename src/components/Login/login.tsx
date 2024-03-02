@@ -42,9 +42,7 @@ function Login() {
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
       <div className="z-20 absolute top-4 rounded-full">
-        <HomeBar onSearchChange={function (event: any): unknown {
-          throw new Error("Function not implemented.");
-        } } expand={false} />
+        <HomeBar expand={false} />
       </div>
       <div className="flex w-full h-full absolute top-0">
       <div className="left">

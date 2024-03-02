@@ -52,9 +52,7 @@ function Profile() {
   return (
       <div className="h-screen w-screen relative p-4 flex bg-blue-300 justify-center items-center relative">
         <div className="z-20 absolute top-4 rounded-full">
-          <HomeBar onSearchChange={function (event: any): unknown {
-            throw new Error("Function not implemented.");
-          }} expand={false} />
+          <HomeBar expand={false} />
         </div>
         <div className="w-min h-min p-10 bg-white rounded-lg z-50 mt-20 scale-75">
           <div className="form-container">

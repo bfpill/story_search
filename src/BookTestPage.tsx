@@ -36,13 +36,10 @@ const BookTestPage = () => {
     initializeBook()
   }, [])
 
-  // Render multiple images with shaking animation
- 
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center overflow-hidden" style={{ backgroundColor: bg_color }}>
-      {/* Replace HomeBar component with your actual component */}
-      <HomeBar onSearchChange={() => { }} />
+      <HomeBar expand={false} />
       <div className="w-full h-full flex justify-center items-center">
         <div className="w-[800px] h-[580px] justify-center" style={{ zIndex: 1 }}>
           {book ? (
