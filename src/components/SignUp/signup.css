@@ -148,6 +148,7 @@ button:hover,
   border: none;
   border-radius: 10px; /* Rounded corners */
   cursor: pointer;
+  text-align: center;
   font-family: 'Cherry Bomb', cursive; /* Set font family */
   font-size: 24px; /* Set font size */
 }

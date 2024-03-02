@@ -1,29 +1,27 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import './prompt.css';
-import { HomeBar } from '../NavBar';
+import { DefaultBar, HomeBar } from '../NavBar';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { getGenerateSearchOptions } from '@/image_api';
+import Book from '../Book';
 import BookTitlePage from '../BookTitlePage';
-import { getRandomColor } from '@/lib/utils';
+import { DummyBook, dummy_search, dummy_user_id, getRandomColor, getRandomCover } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import { addBookToUser, getGenerateBook } from '@/api';
 import { v4 as uuid4 } from 'uuid'
 import { CurrentUserContext } from '@/UserProvider';
-import { CardBody, CardContainer } from '../ui/3dCard';
-import { Toaster } from '../ui/toaster';
-import { ToastAction } from '../ui/toast';
-import { useToast } from "../ui/use-toast"
+
+
 
 const OptionCard = ({ title, handleSetChosenBook }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const baseStyle = "h-[400px] w-full text-2xl leading-1 transition-all duration-300 ease-in-out";
-  const hoverStyle = "scale-105 shadow-xl";
+  const baseStyle = "h-96 w-64 text-3xl leading-1 cursor-pointer transition-all duration-300 ease-in-out";
+  const hoverStyle = "scale-105 shadow-2xl";
 
   return (
-    <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'} h-[360px] ${title !== "" ? "cursor-pointer": 'cursor-n'}
-    max-w-[270px] flex text-xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
+    <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'} h-[360px] max-w-[270px] flex text-2xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
@@ -47,7 +45,6 @@ function Prompt() {
   const [coverImageColor, setCoverImageColor] = useState(undefined)
 
   const { user } = useContext(CurrentUserContext)
-  const { toast } = useToast()
 
   const searchBarRef = useRef()
 
@@ -83,13 +80,6 @@ function Prompt() {
   }
 
   const handleSetChosenBook = async (title, image, color) => {
-    if (!searchResults) {
-      toast({
-        title: "Error: Still Loading Results!",
-        variant: "destructive",
-      })
-      return
-    }
     setChosenTitle(title)
     setHasChosenBook(true)
     setGeneratingBook(true);
@@ -160,11 +150,11 @@ function Prompt() {
       </div>
       {
         !hasChosenBook &&
-        <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px]' : 'top-0'} mb-10 w-[860px] flex justify-end items-center relative `}>
+        <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px] right-4' : 'top-0'} mb-10 w-2/3 flex justify-end items-center relative`}>
           <div className={`w-full h-[60px] absolute right-0 overflow-hidden p-1`}>
             <Input
               type="text"
-              className="w-full h-full text-xl rounded-full"
+              className="w-full h-full px-6 text-xl rounded-full"
               placeholder="Search..."
               onChange={handleSearchChange}
               onKeyDown={handleKeyPress}
@@ -181,40 +171,29 @@ function Prompt() {
       }
 
       {isSearching && !hasChosenBook && (
-        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-[860px] min-w-[800px] mt-20 ml-10`}>
+        <div className={`transition-all duration-1500 initial-fade-in top-[300px] absolute grid grid-cols-3 w-2/3 min-w-[800px] gap-10 mt-20`}>
           {(searchResults ?? ["", "", ""]).map(title => {
             return (
-              <OptionCard title={title} handleSetChosenBook={handleSetChosenBook} />
+             <OptionCard title={title} handleSetChosenBook={handleSetChosenBook}/>
             )
           })}
         </div>
       )}
       {hasChosenBook && generatingBook ? (
-        <div className="flex">
-          <CardContainer className="inter-var">
-            <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] w-auto h-auto p-3">
-              <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] flex">
-                <BookTitlePage complementaryColor={() => getRandomColor()} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
-              </div>
-            </CardBody>
-          </CardContainer>
-          <div>Loading...</div>
+        <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] bg-blue-300 flex">
+          <BookTitlePage complementaryColor={() => getRandomColor()} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
         </div>
       ) : (
-        <>
-        </>
-        // book &&
-        // <div className="transition-all duration-2000 initial-fade-in w-[800px] h-[580px] flex justify-center items-center">
-        //   <div className="w-[790px]">
-        //     <Book bookData={book} coverImage={coverImage} coverColor={coverImageColor} />
-        //   </div>
-        // </div>
+        book &&
+        <div className={`transition-all duration-2000 initial-fade-in h-[600px] w-[1200px] flex justify-center`}>
+          <div className="w-[790px]">
+            <Book bookData={book} coverImage={coverImage} coverColor={coverImageColor} />
+          </div>
+        </div>
       )
       }
-      <div>
-        <Toaster />
-      </div>
     </div>
+
   );
 }
 

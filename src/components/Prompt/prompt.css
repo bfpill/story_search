@@ -1,114 +1,201 @@
-.blue-page {
-  background-color: #C7E4EA;
-  height: 100vh;
+@font-face {
+  font-family: "Cherry bomb";
+  src: local("GilroyRegular"),
+    url("../fonts/cherrybombone-regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+
+.container {
+  background-color: #FAF9F6;
   display: flex;
+  height: 100vh; /* Set height to 100% of the viewport height */
+}
+
+.img_container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  height: 100vh; /* Make sure the container covers the entire viewport height */
+}
+
+.centered-image {
+  width: 500px;
+  height: 500px;
+}
+
+
+.left,
+.right {
+  flex: 1; /* Each div takes up half of the container */
+  height: 100%; /* Take full height of the container */
+}
+
+.left {
+  background-color: #C7E4EA; /* Left half is blue */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+
+.right {
+  background-color: #FAF9F6; /* Right half is white */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 300px; /* Set a specific width for the form container */
+  width: 500px; /* Set a specific width for the form container */
+}
+
+.input-wrapper {
+  margin-bottom: 35px;
+}
+
+.input-wrapper label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555; /* Grey color for the label */
+}
+
+.input-wrapper input[type="text"] {
+  font-size: 24px; /* Adjust size as needed */
+  max-width: 500px; /* Set max-width to 500px */
+  width: 100%; /* Take full width of the container */
+  padding: 10px; /* Add padding for spacing */
+  background-color: #f0f0f0; /* Grey background for the input */
+  border: none; /* Remove border */
+  border-radius: 10px; /* Rounded corners */
+  margin: 0 auto; /* Center horizontally */
+  display: block; /* Ensure it takes the full width */
+}
+
+.input-wrapper output {
+  display: block;
+  font-size: 18px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.age-slider {
+  width: 200px; /* Adjust width as needed */
+  margin: 50px auto 20px auto; /* Updated margin for slight lowering */
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+}
+
+.slider .decrease,
+.slider .increase {
+  width: 60px; /* Adjust width as needed */
+  height: 60px; /* Adjust height as needed */
+  background-color: #BF67A6; /* Pink color */
+  color: #FAF9F6;
+  
+  font-size: 36px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider .decrease:hover,
+.slider .increase:hover {
+  background-color: #8d4378; /* Darker pink on hover */
+
+}
+
+.slider .age {
+  flex: 1;
+  text-align: center;
+  font-size: 36px; /* Adjust font size */
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive; /* Fun font */
+}
+
+.avatar-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.avatar-options img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.avatar-options img:hover {
+  transform: scale(1.1);
+  filter: brightness(90%);
+}
+
+.avatar-options img.selected {
+  filter: brightness(65%); /* Darken the selected image */
+  transition: filter 0.2s ease; /* Smooth transition effect */
+}
+
+.avatar-options img.selected:hover {
+  transform: scale(1.1); /* Add scale effect on hover */
+}
+
+
+
+/* button {
+  width: 30px;
+  padding: 10px;
+  background-color: #C7E4EA;
+  color: white;
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+} */
+
+
+button:hover,
+.sign-in-button:hover {
+  background-color: #BF67A6; /* Darker green */
+}
+
+.my-name {
+  font-family: 'Cherry Bomb', cursive;
+  font-size: 80px; /* Adjust size as needed */
+  text-align: center; /* Center align the text */
+  display: flex; /* Use flexbox */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  flex-direction: column;
+  padding-bottom: 50px; 
+  /* Add any other styling properties you desire */
 }
 
-.search-bar {
-  margin-top: 130px;
-  width: 1600px; /* Check parent container width */
-  padding: 120px 0 100px; /* Adjust top padding as needed */
-  text-align: center;
-  box-sizing: border-box; /* Ensure padding is included in width */
-  transition: all 0.5s ease; /* Add transition for smooth animation */
-}
-
-.search-bar.move-to-top {
-  padding: 20px 0; /* Move to top */
-  
-}
-
-
-.search-container {
-  
-  position: relative; /* Set position relative for absolute positioning of the icon */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.initial-fade-in {
-  animation: fadeIn 1500ms forwards;
-}
-
-.search-icon {
-  position: absolute; /* Position the icon absolutely */
-  top: 50%; /* Position vertically at the center */
-  right: 60px; /* Add padding to the right of the icon */
-  transform: translateY(-50%); /* Center the icon vertically */
-  width: 30px; /* Adjust as needed */
-  height: 30px; /* Adjust as needed */
-}
-
-.search-input {
-  width: calc(100% - 80px); /* Adjusted width considering padding and icon */
-  padding-right: 40px; /* Adjust to accommodate the icon */
-  padding-top: 20px;
-  padding-left: 40px;
-  padding-bottom: 20px;
-  border-radius: 40px; /* Make the input box rounded */
-  border: none;
-  outline: none;
-  font-size: 90px;
-}
-
-.image-container {
+.input-wrapper {
+  margin-bottom: 35px;
   display: flex;
+  flex-direction: column; /* Align children vertically */
+  align-items: center; /* Center children horizontally */
 }
 
-.book-image {
-  width: 500px;
-  padding: 40px;
-  height: 700px;
-  margin: 0 21px;
-  transition: transform 0.3s ease; /* Add transition for smooth animation */
-  filter: drop-shadow(7px 9px 6px rgba(0, 0, 0, 0.2)); /* Add drop shadow */
-}
-
-.book-image:hover {
-  transform: scale(1.1); /* Enlarge the image on hover */
-  filter: drop-shadow(13px 17px 12px rgba(0, 0, 0, 0.4));
-}
-.search-input.shrink {
-  font-size: 30px; /* Adjust the font size to make it smaller */
-  padding-top: 10px; /* Adjusted padding for smaller input */
-  padding-bottom: 10px; /* Adjusted padding for smaller input */
-  
-}
-
-.generate-button {
-  background-color: #BF67A6; /* Green */
+.generate-profile-button {
+  width: 200px;
+  padding: 10px;
+  background-color: #BF67A6;
+  color: #FAF9F6;
   border: none;
-  color: white;
-  padding: 15px 32px;
-  width: 500px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 70px;
-  margin-left: 10px;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-top: 180px;
-  z-index: 1; 
+  margin-top: 20px;
 }
 
-.blue-book-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  width: 1700px; /* Adjust width as needed */
-  height: 1100px; /* Adjust height as needed */
-  opacity: 0.2; 
+.generate-profile-button:hover {
+  background-color: #853d71;
 }

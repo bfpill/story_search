@@ -13,7 +13,6 @@
 
 .img_container {
   display: flex;
-
 }
 
 
@@ -67,8 +66,16 @@
   border-radius: 10px; /* Rounded corners */
   margin: 0 auto; /* Center horizontally */
   display: block; /* Ensure it takes the full width */
+  text-align: left;
 }
 
+
+
+
+.left-aligned-label {
+  text-align: left;
+  font-size: 28px; /* You can also move the font-size to CSS */
+}
 
 .sign-in-button {
   width: 100%;

@@ -66,49 +66,53 @@ function SignUp() {
       }} />
       <div className="flex w-full h-full absolute top-0">
         <div className="left">
-          <img src={bookAnimation} alt="Book Placeholder" style={{ width: '800px' }} />
+          <img src={bookAnimation} alt="Book Placeholder" style={{ width: '600px' }} />
         </div>
         <div className="right">
-          <div className="form-container">
-            <div className="my-login">Sign Up !</div>
-            <div className="input-wrapper">
-              <label style={{ fontSize: '28px' }}>Parent email</label>
-              <Input
-                type="email"
-                value={email}
-                placeholder="example@mail.com"
-                onChange={handleEmailChange}
-                required
-              />
+          <div className="w-min h-min p-10 bg-white rounded-lg z-50 mt-20 scale-75">
+            <div className="form-container">
+              <div className="my-login">Sign Up !</div>
+              <div className="input-wrapper">
+                <label style={{ fontSize: '28px' }}>Parent email</label>
+                <Input
+                  type="email"
+                  value={email}
+                  placeholder="example@mail.com"
+                  onChange={handleEmailChange}
+                  required
+                />
+              </div>
+              <div className="input-wrapper">
+                <label style={{ fontSize: '28px' }}>Password</label>
+                <Input
+                  type="password"
+                  value={password}
+                  placeholder="****"
+                  onChange={handlePasswordChange}
+                  required
+                />
+              </div>
+              <div className="input-wrapper" style={{ paddingBottom: '50px' }}>
+                <label style={{ fontSize: '28px' }}>Confirm password</label>
+                <Input
+                  type="password"
+                  value={confirmPassword}
+                  placeholder="****"
+                  onChange={handleConfirmPasswordChange}
+                  required
+                />
+              </div>
+              {passwordMismatchError && <div className="error">{passwordMismatchError}</div>}
+              <div className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px'}}
+                type="submit" onClick={(e) => handleSubmit(e)}>Sign Up</div>
             </div>
-            <div className="input-wrapper">
-              <label style={{ fontSize: '28px' }}>Password</label>
-              <Input
-                type="password"
-                value={password}
-                placeholder="****"
-                onChange={handlePasswordChange}
-                required
-              />
-            </div>
-            <div className="input-wrapper" style={{ paddingBottom: '50px' }}>
-              <label style={{ fontSize: '28px' }}>Confirm password</label>
-              <Input
-                type="password"
-                value={confirmPassword}
-                placeholder="****"
-                onChange={handleConfirmPasswordChange}
-                required
-              />
-            </div>
-            {passwordMismatchError && <div className="error">{passwordMismatchError}</div>}
-            <div className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }}
-              type="submit" onClick={(e) => handleSubmit(e)}>Sign Up</div>
           </div>
         </div>
+        </div>
+
       </div>
-    </div>
-  );
-}
+    );
+    
+  }
 
 export default SignUp;
