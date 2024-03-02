@@ -48,14 +48,15 @@ function Login() {
       </div>
       <div className="flex w-full h-full absolute top-0">
       <div className="left">
-          <img src={bookAnimation} alt="Book Placeholder" className="centered-image" />
+          <img src={bookAnimation} alt="Book Placeholder" style={{ width: '800px' }} />
         </div>
         <div className="right">
           <div className="form-container">
             <div className="my-login">Hello !</div>
             <form onSubmit={handleSubmit}>
               <div className="input-wrapper">
-                <label style={{ fontSize: '28px' }}>Email</label>
+              <label style={{ fontSize: '28px', textAlign: 'left' }}>Email</label>
+
                 <input
                   type="email"
                   value={email}

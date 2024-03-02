@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
-import { HomeBar } from "./components/NavBar"
-import { CurrentUserContext } from "./UserProvider"
+import React, { useContext, useEffect, useState } from "react";
+import { HomeBar } from "./components/NavBar";
+import { CurrentUserContext } from "./UserProvider";
 import { getAllUserBooks } from "./api";
 import BookTitlePage from "./components/BookTitlePage";
 import { useNavigate } from 'react-router-dom';
@@ -10,25 +10,24 @@ import RenderShakingImages from "./ShakingImages";
 import squiggleImage from './assets/squiggle.png';
 import starImage from './assets/star.png';
 import triangleImage from './assets/triangle.png';
-import swirlyImage from './assets/swirly.png'
-
+import swirlyImage from './assets/swirly.png';
 
 const UserLibraryDummy = () => {
-  const { user } = useContext(CurrentUserContext)
-  const [userBooks, setUserBooks] = useState([])
+  const { user } = useContext(CurrentUserContext);
+  const [userBooks, setUserBooks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const initializeBooks = async () => {
-      const allBooks = await getAllUserBooks(user.email)
+      const allBooks = await getAllUserBooks(user.email);
       if (allBooks) {
-        setUserBooks(allBooks)
-        console.log(allBooks)
+        setUserBooks(allBooks);
+        console.log(allBooks);
       }
-    }
+    };
 
-    initializeBooks()
-  }, [user])
+    initializeBooks();
+  }, [user]);
 
   const BookCard = ({ book }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -50,31 +49,30 @@ const UserLibraryDummy = () => {
   return (
     <div className="w-screen h-full flex justify-center items-center">
       <div className="w-screen h-full flex justify-center items-center z-50">
-        {
-          user ?
-            <Carousel
-              opts={{
-                align: "center",
-                dragFree: true,
-              }}
-              className="w-3/4"
-            >
-              <CarouselContent className="w-full h-full p-20">
-                {userBooks?.map((book, index) => {
-                  return (
-                    <CarouselItem key={index} className="basis-1/3">
-                      <BookCard book={book} />
-                    </CarouselItem>
-                  )
-                })}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-            :
-            <div className="">
-              Login to see your books!
-            </div>
+        {user ?
+          <Carousel
+            opts={{
+              align: "center",
+              dragFree: true,
+            }}
+            className="w-3/4"
+          >
+            <CarouselContent className="w-full h-full p-20">
+              {userBooks?.map((book, index) => {
+                return (
+                  <CarouselItem key={index} className="basis-1/3">
+                    <BookCard book={book} />
+                  </CarouselItem>
+                )
+              })}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          :
+          <div className="">
+            Login to see your books!
+          </div>
         }
 
       </div>
@@ -82,8 +80,8 @@ const UserLibraryDummy = () => {
         {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 3)}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Home = (props: {}) => {
 
@@ -99,10 +97,58 @@ const Home = (props: {}) => {
         </div>
       </div>
       <UserLibraryDummy />
+      <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
+        {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 4)}
+      </div>
+
+      {/* Inline CSS Styles */}
+      <style>{`
+        .shaking-image {
+          animation: shake 1.5s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+          0% {
+            transform: rotate(-10deg);
+          }
+          50% {
+            transform: rotate(10deg);
+          }
+          100% {
+            transform: rotate(-10deg);
+          }
+        }
+
+        /* Define the swirly animation */
+        .swirly {
+          animation: swirly 3s linear infinite;
+        }
+
+        @keyframes swirly {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        /* Define the triangle animation */
+        .triangle {
+          animation: triangle 2s linear infinite;
+        }
+
+        @keyframes triangle {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
+      `}</style>
     </div>
-  )
+  );
+};
 
-}
-
-
-export default Home
+export default Home;
