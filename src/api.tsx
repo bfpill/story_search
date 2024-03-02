@@ -98,7 +98,7 @@ export const getBook = async (email: string, bookId: string) => {
 }
 
 export const getAllBooks = async () => {
-  const url = `${BASE_URL}/api/get_all_books'`;
+  const url = `${BASE_URL}/api/get_all_books`;
   try {
     const responseData = await makeAuthenticatedRequest(url, 'GET');
     return responseData;
@@ -111,6 +111,7 @@ export const getAllUserBooks = async (email: string) => {
   const url = `${BASE_URL}/api/user_books/${email}`;
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST');
+    console.log(responseData)
     return responseData;
   } catch (error) {
     console.error('Error sending data:', error);

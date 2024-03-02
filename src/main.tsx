@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 
 import './index.css'
 
-import Library from './components/Library/library.tsx'
+import Library from './components/Library.tsx'
 import Login from './components/Login/login.tsx'
 import Prompt from './components/Prompt/prompt.tsx'
 import SignUp from './components/SignUp/signup.tsx'
@@ -13,7 +13,6 @@ import Home from './Home.tsx';
 import { ThemeProvider } from './ThemeProvider.tsx';
 import { UserProvider } from './UserProvider.tsx';
 import BookTestPage from './BookTestPage.tsx';
-import FullLibrary from './components/FullLibrary.tsx'
 import Profile from './components/Profile/profile.tsx';
 import DummyPage from './components/dummyPage.tsx'
 
@@ -54,6 +53,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/signup' element={<MobileWrapper component={SignUp} />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/landing' element={<Landing />} />
+          <Route path='/library' element={<Library />} />
         </Routes>
       </Router>
     </UserProvider>

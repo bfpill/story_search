@@ -25,13 +25,10 @@
     display: block; 
 }
 
-
-s
-
-
 .statement:hover{
     transform:scale(1.1);
 }
+
 .under-statement{
     color: #2c2c2c;
 
@@ -54,7 +51,8 @@ s
     opacity: 0.9;
     position: absolute;
     left: 67vw; /* Adjust this value to your preference */
-    top: 10vh; /* Adjust this value to your preference */
+    top: 15vh; /* Adjust this value to your preference */
+    border-radius: "10%";
 }
 .img-container2{
     display: block;
@@ -64,21 +62,20 @@ s
     z-index: 1;
     position: absolute;
     left: 50vw; /* Adjust this value to your preference */
-    top: 20vh; /* Adjust this value to your preference */
+    top: 25vh; /* Adjust this value to your preference */
+    border-radius: "10%";
 }
-img{
-    border-radius: 5%;
-}
+
 .img-container3{
     display: block;
     height: 30vh;
-    
+
    
     width: 30vw;
     
     position: absolute;
     left: 60vw; /* Adjust this value to your preference */
-    top: 50vh; /* Adjust this value to your preference */
+    top: 55vh; /* Adjust this value to your preference */
 }
 .img-container4{
     display: block;
@@ -88,5 +85,5 @@ img{
     opacity: 0.9;
     position: absolute;
     left: 55svw; /* Adjust this value to your preference */
-    top: 63vh; /* Adjust this value to your preference */
+    top: 68vh; /* Adjust this value to your preference */
 }
