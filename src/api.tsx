@@ -35,6 +35,7 @@ export const getGenerateBook = async (userId: string, search: string) => {
   const url = `${BASE_URL}/book`;
   try {
     const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search, user_id: userId });
+    console.log(responseData)
     return responseData
   } catch (error) {
     console.error('Error sending data:', error);

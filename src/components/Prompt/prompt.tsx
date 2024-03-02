@@ -72,12 +72,28 @@ function Prompt() {
     setGeneratingBook(true);
 
     // TEST
-    setBook(DummyBook);
+    // setBook(DummyBook);
 
-    //REAL 
-    // const data = await getGenerateBook(dummy_user_id, dummy_search);
-    // setBook(data);
-    addBookToUser(user.email, uuid4(), DummyBook)
+    // REAL 
+    const gendBook = await getGenerateBook(user.email, search);
+
+    const newBook = { ...gendBook, pages: [...gendBook.pages] };
+    if (newBook.pages[0]?.type !== "front_cover") {
+      newBook.pages.unshift({ type: "front_cover", text: newBook.title, });
+    }
+
+    if (newBook.pages[newBook.pages.length - 1]?.type !== "back_cover") {
+      if (newBook.pages.length % 2 != 0) {
+        newBook.pages.push({ type: "back_cover", text: "" });
+      }
+    }
+
+    if (newBook !== gendBook) {
+      console.log('newBook', newBook)
+      setBook(newBook);
+    }
+
+    addBookToUser(user.email, uuid4(), newBook)
 
     setGeneratingBook(false);
   }
