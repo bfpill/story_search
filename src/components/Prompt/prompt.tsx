@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './prompt.css';
 import { DefaultBar, HomeBar } from '../NavBar';
 import { Input } from '../ui/input';
@@ -19,13 +19,18 @@ function Prompt() {
 
   const [book, setBook] = useState(undefined);
   const [generatingBook, setGeneratingBook] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [startTimerForImages, setStartTimerForImages] = useState(false);
+  const [searchResults, setSearchResults] = useState(undefined);
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [componentDidMount, setComponentDidMount] = useState(false);
 
   const handleSearch = async () => {
     console.log("searching for ", search)
-    if (search != "") {
+    if (search !== "") {
+      setIsNavExpanded(true)
       setIsSearching(true)
+      setStartTimerForImages(true)
+      
       console.log("search", search)
       const results = await getGenerateSearchOptions(search)
       console.log("rss", results)
@@ -35,11 +40,21 @@ function Prompt() {
         setSearchResults(possible_titles)
       }
 
-      setShowImages(true);
+     
       setShowGenerateButton(false);
     }
-
   }
+
+  useEffect(() => {
+    setComponentDidMount(true)
+  }, [])
+
+  useEffect(() => {
+    console.log("hitting timeout")
+    setTimeout(() => {
+      setShowImages(true);
+    }, 1500)
+  }, [startTimerForImages])
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -65,89 +80,49 @@ function Prompt() {
     setGeneratingBook(false);
   }
 
-  const handleExpandSearch = () => {
-
-  }
-
-
-  if (!hasChosenBook) {
-    return (
-      <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
-        <div className="w-full flex items-center justify-center">
-          <div className="z-20 absolute top-4 rounded-full w-full">
-            <HomeBar onSearchChange={function (event: any): unknown {
-              throw new Error("Function not implemented.");
-            }} expand={showImages} />
-          </div>
+  return (
+    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center">
+      <div className="w-full flex items-center justify-center">
+        <div className={`z-20 transition-all duration-500 top-4 absolute w-full rounded-full`}>
+          <HomeBar onSearchChange={function (event: any): unknown {
+            throw new Error("Function not implemented.");
+          }} expand={isNavExpanded} />
         </div>
-        <div className="flex w-2/3 h-[70px] justify-between -mt-20">
-          <Input className="h-full mr-2 w-full text-xl tracking-tight rounded-full p-6 text-2xl"
+      </div>
+      <div className={`transition-all duration-500 ${isSearching ? 'top-[-180px]' : 'top-0'} mb-10 w-[800px] flex justify-end items-center relative`}>
+        <div className={`w-[800px] h-[60px] absolute right-0 overflow-hidden p-1`}>
+          <Input
+            type="text"
+            className="w-full h-full px-6 text-xl rounded-full"
             placeholder="Search..."
             onChange={handleSearchChange}
             onKeyDown={handleKeyPress}
             onFocus={() => setShowImages(false)}
           />
-          <Button className="h-full p-6 rounded-full" onClick={handleSearch}>Search</Button>
         </div>
-        {showImages && searchResults && (
-          <div className="grid grid-cols-3 w-2/3 gap-10 mt-10">
-            {searchResults?.map(title => {
-              return (
-                <div onClick={() => handleSetChosenBook(title)} className="h-[320px] w-[240px] flex text-sm items-center justify-center bg-blue-300 col-span-1" >
-                  <BookTitlePage complementaryColor={"blue"} page={{ text: title }} />
-                </div>
-              )
-            })
-            }
-          </div>
-        )}
+        <div className="rounded-full z-30 mr-1">
+          <Button className="rounded-full h-12 w-15" variant='ghost' onClick={handleSearch}>
+            <Search className='h-full w-full' />
+          </Button>
+        </div>
       </div>
-    );
-  } else {
-    return (
-      <div className="h-screen w-screen relative flex flex-col justify-center items-center relative">
-        <div className="w-full absolute top-0">
-          <HomeBar onSearchChange={function (event: any): unknown {
-            throw new Error("Function not implemented.");
-          }} expand={!showImages} />
+      {showImages && searchResults && (
+        <div className={`transition-all duration-500 ${showImages ? 'h-full' : 'h-0'} top-[300px] absolute grid grid-cols-3 w-2/3 gap-10 mt-10`}>
+          {searchResults?.map(title => {
+            return (
+              <div onClick={() => handleSetChosenBook(title)} className="h-[320px] w-[240px] flex text-sm items-center justify-center bg-blue-300 col-span-1" >
+                <BookTitlePage complementaryColor={"blue"} page={{ text: title }} />
+              </div>
+            )
+          })}
         </div>
-        <div className="w-full h-full flex flex-col justify-center items-center" >
-          <div className="mb-10 w-[800px] flex justify-end items-center relative">
-            <div className={`transition-width duration-500 ease-out ${isSearchExpanded ? 'w-[800px]' : 'w-0'} h-[60px] absolute right-0 overflow-hidden p-1`}>
-              <Input
-                type="text"
-                className={`w-full h-full px-6 text-xl rounded-full transition-opacity duration-500 ${isSearchExpanded ? 'opacity-100' : 'opacity-0'}`}
-                placeholder="Search..."
-              >
+      )}
+      {hasChosenBook && book !== undefined &&
+        <Book bookData={book} />
+      }
+    </div>
 
-              </Input>
-            </div>
-            <div className="rounded-full z-30 mr-1">
-              <Button className="rounded-full h-12 w-15" variant='ghost' onClick={() => { setIsSearchExpanded(!isSearchExpanded) }}>
-                <Search className='h-full w-full' />
-              </Button>
-            </div>
-          </div>
-          <div className="w-[800px] h-[580px] justify-center">
-            {book !== undefined ?
-              <Book bookData={book} />
-              :
-              generatingBook ?
-                <div className="flex justify-center items-center " style={{
-                  backgroundColor: DummyBook.complementaryColor || 'white'
-                }}>
-                  Generating book...
-                </div>
-                :
-                <div className="flex justify-center items-center">
-                  Generate a book to start!!
-                </div>
-            }
-          </div>
-        </div>
-      </div>
-    )
-  }
+  );
 }
 
 export default Prompt;
