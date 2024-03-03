@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from 'react';
 import './signup.css';
 import bookAnimation from '../../assets/bookAnimation.gif';
@@ -8,7 +7,6 @@ import { auth } from '../../firebase-config.js'
 import { CurrentUserContext } from '@/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../ui/input';
-import { HomeBar } from '../NavBar.js';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -32,39 +30,29 @@ function SignUp() {
   };
 
   const handleSubmit = async (e) => {
-    console.log(email, password)
+    e.preventDefault(); // Prevent form submission
+
+    if (password !== confirmPassword) {
+      setPasswordMismatchError("Passwords do not match");
+      return;
+    }
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log("created User cred")
       createUser(email)
-
-      console.log("User created:", userCredential.user);
 
       setUser(userCredential.user)
       navigate("/library")
     } catch (error) {
-      console.error(error)
       if (error.code === 'auth/email-already-in-use') {
-        // console.error("Error signing up:", error.message);
-        // createAccountForm.setError("email", {
-        //     type: "manual",
-        //     message: "Email is already in use."
-        // });
-      } else {
-        console.error("Error signing up:", error.message);
-        // createAccountForm.setError("email", {
-        //     type: "manual",
-        //     message: error.message
-        // });
+        setPasswordMismatchError("Email is already in use");
       }
     }
   };
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
-      <HomeBar onSearchChange={function (event: any): unknown {
-        throw new Error("Function not implemented.")
-      }} />
+
       <div className="flex w-full h-full absolute top-0">
         <div className="left">
           <img src={bookAnimation} alt="Book Placeholder" style={{ width: '600px' }} />
@@ -103,7 +91,7 @@ function SignUp() {
                   required
                 />
               </div>
-              {passwordMismatchError && <div className="error">{passwordMismatchError}</div>}
+              {passwordMismatchError && <div className="error-message">{passwordMismatchError}</div>}
               <div className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px'}}
                 type="submit" onClick={(e) => handleSubmit(e)}>Sign Up</div>
             </div>
