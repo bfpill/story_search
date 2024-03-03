@@ -41,14 +41,13 @@ function Login() {
 
   return (
     <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center relative">
-      <div className="z-20 absolute top-4 rounded-full">
-        <HomeBar expand={false} />
-      </div>
+
       <div className="flex w-full h-full absolute top-0">
       <div className="left">
-          <img src={bookAnimation} alt="Book Placeholder" style={{ width: '800px' }} />
+          <img src={bookAnimation} alt="Book Placeholder" style={{ width: '600px' }} />
         </div>
-        <div className="right">
+        <div className="left">
+          <div className="w-min h-min p-10 bg-white rounded-lg z-50 mt-20 scale-75">
           <div className="form-container">
             <div className="my-login">Hello !</div>
             <form onSubmit={handleSubmit}>
@@ -86,6 +85,7 @@ function Login() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

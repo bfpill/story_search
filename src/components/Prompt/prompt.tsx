@@ -15,6 +15,7 @@ import { Toaster } from '../ui/toaster';
 import { ToastAction } from '../ui/toast';
 import { useToast } from "../ui/use-toast"
 
+
 const OptionCard = ({ title, handleSetChosenBook }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -31,6 +32,7 @@ const OptionCard = ({ title, handleSetChosenBook }) => {
     </div>
   );
 }
+
 function Prompt() {
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState<boolean>(false)
@@ -217,3 +219,4 @@ function Prompt() {
 }
 
 export default Prompt;
+
