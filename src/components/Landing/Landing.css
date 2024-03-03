@@ -1,10 +1,9 @@
 @font-face {
-    font-family: "Formular";
-    src: local("GilroyRegular"),
+  font-family: Arial, sans-serif; /* Use Arial font */
+  src: local("GilroyRegular"),
       url("../fonts/formular-black-trial.otf") format("truetype");
-    font-weight: normal;
+    font-weight: bold;
   }
-  
   
 
 
@@ -27,7 +26,6 @@
     font-size: 3vw;
     font-weight: bold;
     
-    text-transform: uppercase;
     white-space: pre-wrap; 
 }
 
@@ -42,15 +40,14 @@
 .under-statement{
     color: #2c2c2c;
 
-    font-family:"Formular";
+    font-family: "Roboto", sans-serif;
     padding-left: 6vw;
     display: block;
     height: 20vh;
     width: 40vw;
-    font-size: 1vw;
-    font-weight: bold;
+    font-size: 1.5vw;
+    font-weight: normal; /* Normal weight */
     
-    text-transform: uppercase;
     padding-top: 20vh;
 
 }
@@ -105,13 +102,13 @@
   }
   
   .content {
-    background-color: #f9f9f9;
+    background-color: #C7E4EA;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 40px;
     height: max-content;
     padding: 10vh 10vw;
-    margin-left: -16vw;
+    margin-left: -18vw;
     font-family:"Formular";
 
     
