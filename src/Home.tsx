@@ -36,7 +36,7 @@ const Home = (props: {}) => {
       <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'}`}
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
-        onClick={() => navigate(`books/${book.bookId}`)}
+        onClick={() => navigate(`/books/${book.bookId}`)}
       >
         <BookTitlePage complementaryColor={undefined} page={book.pages[0]} coverImage={book.coverImage} coverColor={book.color} />
       </div>
