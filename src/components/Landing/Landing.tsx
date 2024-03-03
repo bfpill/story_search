@@ -30,7 +30,7 @@ function Landing() {
             <div className="z-20 absolute top-4 rounded-full navbar-landing">
                 <HomeBar onSearchChange={function (event: any): unknown {
                     throw new Error("Function not implemented.");
-                }} expand={false} />
+                }} expand={true} />
             </div>
             <div className="flex flex-col mt-20">
                 <div className='statement'>

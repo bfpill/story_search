@@ -204,7 +204,7 @@ function Prompt() {
           <div>Loading...</div>
         </div>
       ) : (
-        <div className="lds-dual-ring"></div>
+        <div ></div>
 
       )
       }
