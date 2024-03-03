@@ -15,6 +15,7 @@ import { Toaster } from '../ui/toaster';
 import { ToastAction } from '../ui/toast';
 import { useToast } from "../ui/use-toast"
 
+
 const OptionCard = ({ title, handleSetChosenBook }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -199,14 +200,8 @@ function Prompt() {
           <div>Loading...</div>
         </div>
       ) : (
-        <>
-        </>
-        // book &&
-        // <div className="transition-all duration-2000 initial-fade-in w-[800px] h-[580px] flex justify-center items-center">
-        //   <div className="w-[790px]">
-        //     <Book bookData={book} coverImage={coverImage} coverColor={coverImageColor} />
-        //   </div>
-        // </div>
+        <div className="lds-dual-ring"></div>
+
       )
       }
       <div>

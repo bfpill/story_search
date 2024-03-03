@@ -78,7 +78,7 @@ function Landing() {
     
     <div className="user-experience">
       <h2>User Experience:</h2>
-      <p>   Story Search is designed to keep children engaged and motivated to learn. By providing a safe and enriching environment, we aim to instill a love for learning and empower children to become future leaders equipped to address global challenges.</p>
+      <p> Story Search is designed to keep children engaged and motivated to learn. By providing a safe and enriching environment, we aim to instill a love for learning and empower children to become future leaders equipped to address global challenges.</p>
     </div>
     
     <div className="future-endeavors">
