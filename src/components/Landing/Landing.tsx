@@ -60,14 +60,14 @@ function Landing() {
                 <div className="w-2/3">
                 <div className="container">
   <div className="content">
-    <h1 className='h1'>Story Search: Empowering Young Minds</h1>
+    <h1 className='h1'>StorySearch: Empowering Young Minds</h1>
     <p>When building this website, we openly recognised the potential of AI in shaping our world, and saw its potential educational benefits for young children. Alongside this, we considered the issues facing children in our modern world. The content that many kids consume is what is often referred to as ‘short-form’, meaning it is easy to consume and ‘snackable’. This can negatively impact their attention span, and is not as educational as it supposedly could be.</p>    <div className="mission">
        
     </div>
     
     <div className="how-it-works">
       <h2>How It Works:</h2>
-      <p>Our platform, Story Search, is designed to captivate young minds through interactive and educational content. From captivating stories to immersive learning experiences, children can engage with a wide range of topics curated to stimulate their curiosity and creativity.</p>
+      <p>Our platform, StorySearch, is designed to captivate young minds through interactive and educational content. From captivating stories to immersive learning experiences, children can engage with a wide range of topics curated to stimulate their curiosity and creativity.</p>
     </div>
     
     <div className="development-journey">
