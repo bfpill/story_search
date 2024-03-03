@@ -10,7 +10,7 @@ import { HomeBar } from "../NavBar"
 
 function Landing() {
     const [visibleLetters, setVisibleLetters] = useState(0);
-    const text = "Is your little one mesmerized by endless scroll of TikTok?";
+    const text = "A safe, familar way for kids to learn whatever they please...";
     useEffect(() => {
 
         const interval = setInterval(() => {
@@ -23,6 +23,7 @@ function Landing() {
 
         return () => clearInterval(interval);
     }, [visibleLetters]);
+
 
     return (
         <>
@@ -38,7 +39,7 @@ function Landing() {
                     </h1>
                 </div>
                 <div className='under-statement'>
-                    Get them here, we are a safe place for kids to enjoy as well as learn something .
+                    Get them here, we are a safe place for kids to reach their potential.
                 </div>
 
                 <div className='img-container1 rounded-md'>
@@ -60,10 +61,9 @@ function Landing() {
                 <div className="container">
   <div className="content">
     <h1 className='h1'>Story Search: Empowering Young Minds</h1>
-    At Story Search, we recognize the transformative potential of artificial intelligence (AI) in shaping our world. While AI has become integral to various aspects of daily life, its educational benefits for young children remain underutilized. Instead, children are often exposed to short-form content on social media platforms, which can negatively impact their attention span and hinder academic development.
-    <div className="mission">
+    <p>When building this website, we openly recognised the potential of AI in shaping our world, and saw its potential educational benefits for young children. Alongside this, we considered the issues facing children in our modern world. The content that many kids consume is what is often referred to as ‘short-form’, meaning it is easy to consume and ‘snackable’. This can negatively impact their attention span, and is not as educational as it supposedly could be.</p>    <div className="mission">
       <h2>Our Mission:</h2>
-      <p>We aim to empower the next generation by providing engaging and positive content that educates and entertains. Our platform offers children the opportunity to explore topics of interest at their own pace, fostering a sense of control over their learning journey. Similar to the adaptive nature of short-form content, our product adjusts to individual preferences, ensuring a personalized experience for every user.</p>
+      <p>We aim to empower the next generation by providing engaging and positive content that educates and entertains. Our platform offers children the opportunity to explore topics of interest at their own pace, fostering a sense of control over their learning journey. Similar to the adaptive nature of short-form content, our product adjusts to individual preferences, ensuring a personalised experience for every user.</p>
     </div>
     
     <div className="how-it-works">
@@ -73,7 +73,7 @@ function Landing() {
     
     <div className="development-journey">
       <h2>Development Journey:</h2>
-      <p>Building Story Search was a collaborative effort fueled by passion and dedication. Despite encountering challenges such as code bugs and time constraints, our team persevered to deliver a high-quality product. Through late-night coding sessions and relentless problem-solving, we overcame obstacles to create a platform that inspires learning and explorati</p>
+      <p>Building Story Search was a collaborative effort fueled by passion and dedication. Despite encountering challenges such as code bugs and time constraints, our team persevered to deliver a high-quality product. Through late-night coding sessions and relentless problem-solving, we overcame obstacles to create a platform that inspires learning and exploration.</p>
     </div>
     
     <div className="user-experience">
@@ -83,7 +83,7 @@ function Landing() {
     
     <div className="future-endeavors">
       <h2>Future Endeavors:</h2>
-      <p>As we reflect on our journey, we are grateful for the invaluable lessons learned and experiences gained. Moving forward, we are committed to further enhancing Story Search with additional features such as image search, parental moderation options, and 3D storytelling capabilities. While monetization is not currently a priority, we aspire to explore opportunities for growth and sustainability as we continue to develop our product.</p>
+      <p>As we reflect on our journey, we are grateful for the invaluable lessons learned and experiences gained. Moving forward, we are committed to further enhancing Story Search with additional features such as image search, parental moderation options, and 3D storytelling capabilities. While monetisation is not currently a priority, we aspire to explore opportunities for growth and sustainability as we continue to develop our product.</p>
     </div>
     
     
