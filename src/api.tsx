@@ -32,10 +32,10 @@ function encodeEmail(email) {
   return email.replace('.', ',');
 }
 
-export const getGenerateBook = async (userId: string, search: string) => {
+export const getGenerateBook = async (userId: string, search: string, title: string) => {
   const url = `${BASE_URL}/book`;
   try {
-    const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search, user_id: userId });
+    const responseData = await makeAuthenticatedRequest(url, 'POST', { search_query: search, user_id: userId, title: title});
     console.log(responseData)
     return responseData
   } catch (error) {

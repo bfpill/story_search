@@ -3,15 +3,10 @@ import "./profile.css";
 import gorillaAvatar from "../../assets/gorilla_profile.png";
 import catAvatar from "../../assets/cat_profile.png";
 import dogAvatar from "../../assets/dog_profile.png";
-import RenderShakingImages from "@/ShakingImages";
-
-import squiggleImage from '../../assets/squiggle.png';
-import starImage from '../../assets/star.png';
-import triangleImage from '../../assets/triangle.png';
-import swirlyImage from '../../assets/swirly.png'
 import { CurrentUserContext } from "@/UserProvider";
 import { updateUser } from "@/api";
 import { HomeBar } from "../NavBar";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [name, setName] = useState("");
@@ -19,6 +14,8 @@ function Profile() {
   const [avatar, setAvatar] = useState(null);
 
   const { user, setUser } = useContext(CurrentUserContext)
+
+  const navigate = useNavigate();
   //
   // const history = useHistory();
 
@@ -47,6 +44,7 @@ function Profile() {
     const newUserData = { email: user.email, uid: user.uid, name: name, age: age, avatar: avatar }
     setUser(newUserData)
     updateUser(user.email, newUserData)
+    navigate("/library")
   };
 
   return (

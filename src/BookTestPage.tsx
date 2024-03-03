@@ -20,43 +20,51 @@ const BookTestPage = () => {
   const [generatingBook, setGeneratingBook] = useState(false);
   const [bg_color, setBgColor] = useState();
   const [complementaryColor, setComplementaryColor] = useState();
+  const [hasMounted, setHasMounted] = useState(false);
   const { user, setUser } = useContext(CurrentUserContext)
   const { bookId } = useParams();
 
   useEffect(() => {
-    const initializeBook = async () => {
-      const bookData = await getBook(user.email, bookId)
-      setBook(bookData)
-      console.log(bookData)
+    if (hasMounted) {
+      const initializeBook = async () => {
+        const bookData = await getBook(user.email, bookId)
+        setBook(bookData)
+        console.log(bookData)
 
-      setComplementaryColor(bookData?.complementaryColor ?? 'white')
-      setBgColor(bookData?.color || 'white')
+        setComplementaryColor(bookData?.complementaryColor ?? 'white')
+        setBgColor(bookData?.color || 'white')
+      }
+      initializeBook()
     }
+  }, [hasMounted])
 
-    initializeBook()
+  useEffect(() => {
+    setHasMounted(true)
   }, [])
 
 
-  return (
-    <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center overflow-hidden" style={{ backgroundColor: bg_color }}>
-      <HomeBar expand={false} />
-      <div className="w-full h-full flex justify-center items-center">
-        <div className="w-[800px] h-[580px] justify-center" style={{ zIndex: 1 }}>
-          {book ? (
-           <Book bookData={book} coverImage={book.coverImage} coverColor={book.color} />
-          ) : generatingBook ? (
-            <div className="flex justify-center items-center" style={{ backgroundColor: complementaryColor }}>
-              Generating book...
-            </div>
-          ) : (
-            <div className="flex justify-center items-center">Generate a book to start!!</div>
-          )}
+  if (hasMounted) {
+
+    return (
+      <div className="h-screen w-screen relative p-4 flex flex-col justify-center items-center overflow-hidden" style={{ backgroundColor: bg_color }}>
+        <HomeBar expand={false} />
+        <div className="w-full h-full flex justify-center items-center">
+          <div className="w-[800px] h-[580px] justify-center" style={{ zIndex: 1 }}>
+            {book ? (
+              <Book bookData={book} coverImage={book.coverImage} coverColor={book.color} />
+            ) : generatingBook ? (
+              <div className="flex justify-center items-center" style={{ backgroundColor: complementaryColor }}>
+                Generating book...
+              </div>
+            ) : (
+              <div className="flex justify-center items-center">Generate a book to start!!</div>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
-        {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 4)}
-      </div>
-      {/* <div className="absolute bottom-20 w-full z-10">
+        <div className="absolute scale-50" style={{ top: '50%', left: '50%', transform: 'translate(-75%, -75%)', width: '1000px', height: '600px', zIndex: '0' }}>
+          {RenderShakingImages([squiggleImage, starImage, triangleImage, swirlyImage], 4)}
+        </div>
+        {/* <div className="absolute bottom-20 w-full z-10">
         <div className="w-full flex justify-center">
           <div className="w-1/3 min-w-min bg-gray-200 h-[50px] flex items-center justify-end rounded-full p-2 gap-10">
             <Button className="rounded-full" variant="outline" >
@@ -68,7 +76,7 @@ const BookTestPage = () => {
           </div>
         </div>
       </div> */}
-      <style>{`
+        <style>{`
         .shaking-image {
           animation: shake 1.5s ease-in-out infinite;
         }
@@ -113,8 +121,9 @@ const BookTestPage = () => {
           }
         }
       `}</style>
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 export default BookTestPage;

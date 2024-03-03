@@ -74,8 +74,7 @@ const Library = () => {
           <HomeBar onSearchChange={handleSearchChange} expand={true} />
         </div>
       </div>
-      <div className="h-1/6"></div>
-      <div className="w-3/4 h-screen flex flex-col overflow-y-scroll">
+      <div className="w-3/4 h-screen flex flex-col overflow-y-scroll p-20 mt-[60px]">
         {/* <ScrollArea> */}
 
         {Object.keys(categories).map(category => {
