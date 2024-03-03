@@ -2,31 +2,15 @@ import React from "react";
 import { useEffect, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Page from "./Page";
+import "./BookTestPage.css"
 
 
-
-const Book = (props: { bookData }) => {
+const Book = (props: { bookData, coverImage?, coverColor?}) => {
   const [pageRefs, setPageRefs] = useState(undefined)
-  const [book, setBook] = useState(props.bookData)
 
   useEffect(() => {
-    setPageRefs(Array.from({ length: props.bookData?.pages?.length + 2 }, () => React.createRef()));
-
-    const newBook = { ...book, pages: [...book.pages] };
-    if (newBook.pages[0]?.type !== "front_cover") {
-      newBook.pages.unshift({ type: "front_cover", text: newBook.title });
-    }
-
-    if (newBook.pages[newBook.pages.length - 1]?.type !== "back_cover") {
-      if (newBook.pages.length % 2 != 0) {
-        newBook.pages.push({ type: "back_cover", text: "" });
-      }
-    }
-
-    if (newBook !== book) {
-      setBook(newBook);
-    }
-
+    console.log("PROPS BOOKDATA", props.bookData)
+    setPageRefs(Array.from({ length: props.bookData?.pages?.length }, () => React.createRef()));
   }, [props.bookData]);
 
   if (pageRefs) {
@@ -38,13 +22,17 @@ const Book = (props: { bookData }) => {
         clickEventForward={false}
         maxShadowOpacity={0.0}
         disableFlipByClick={true}
-        // pageFlip="single" 
         data-density="hard"
         showCover={true}
       >
         {pageRefs?.map((ref, index) => (
-          <Page key={index} number={index + 1} ref={ref} page={book.pages[index]}
-            images={[]}
+          <Page key={index}
+            number={index + 1}
+            ref={ref}
+            page={props.bookData.pages[index]}
+            complementaryColor={props.bookData.complementaryColor}
+            coverImage={props.coverImage}
+            coverColor={props.coverColor}
           />
         ))}
       </HTMLFlipBook>

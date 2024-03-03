@@ -2,8 +2,63 @@
   background-color: #C7E4EA;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.search-bar {
+  margin-top: 130px;
+  width: 1600px; 
+  padding: 120px 0 100px; 
+  text-align: center;
+  box-sizing: border-box; 
+  transition: all 0.5s ease; 
+}
+
+.search-bar.move-to-top {
+  padding: 20px 0;
+  
+}
+
+
+.search-container {
+  
+  position: relative; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.initial-fade-in {
+  animation: fadeIn 1500ms forwards;
+}
+
+.search-icon {
+  position: absolute; 
+  top: 50%; 
+  right: 60px; 
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px; 
+}
+
+.search-input {
+  width: calc(100% - 80px); 
+  padding-right: 40px; 
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  border-radius: 40px; 
+  border: none;
+  outline: none;
+  font-size: 90px;
 }
 
 .image-container {
@@ -11,8 +66,51 @@
 }
 
 .book-image {
-  width: 500px; /* Adjust as needed */
+  width: 500px;
   padding: 40px;
-  height: 650px; /* Adjust as needed */
-  margin: 0 10px; /* Add spacing between images */
+  height: 700px;
+  margin: 0 21px;
+  transition: transform 0.3s ease; 
+  filter: drop-shadow(7px 9px 6px rgba(0, 0, 0, 0.2)); 
 }
+
+.book-image:hover {
+  transform: scale(1.1); 
+  filter: drop-shadow(13px 17px 12px rgba(0, 0, 0, 0.4));
+}
+.search-input.shrink {
+  font-size: 30px;
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  
+}
+
+.generate-button {
+  background-color: #BF67A6; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  width: 500px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 70px;
+  margin-left: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 180px;
+  z-index: 1; 
+}
+
+.blue-book-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  width: 1700px; 
+  height: 1100px; 
+  opacity: 0.2; 
+}
+
+

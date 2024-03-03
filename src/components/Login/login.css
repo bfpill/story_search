@@ -5,99 +5,96 @@
   font-weight: normal;
 }
 
-
 .container {
   display: flex;
-  height: 100vh; /* Set height to 100% of the viewport height */
+  height: 100vh; 
 }
 
 .img_container {
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  height: 100vh; /* Make sure the container covers the entire viewport height */
-}
-
-.centered-image {
-  width: 900px;
-  height: 600px;
 }
 
 
-.left,
-.right {
-  flex: 1; /* Each div takes up half of the container */
-  height: 100%; /* Take full height of the container */
+
+.left {
+  flex: 1; 
+  height: 100%; 
+  width: 1000px;
 }
 
 .left {
-  background-color: #C7E4EA; /* Left half is blue */
-  justify-content: center;
-  align-items: center;
+  background-color: #C7E4EA; 
   display: flex;
 }
 
 
-.right {
-  background-color: white; /* Right half is white */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .form-container {
-  width: 300px; /* Set a specific width for the form container */
-  width: 500px; /* Set a specific width for the form container */
+  width: 300px;
+  width: 500px; 
 }
 
 .input-wrapper {
   margin-bottom: 35px;
+  text-align: left;
 }
 
 .input-wrapper label {
   display: block;
   margin-bottom: 5px;
-  color: #555; /* Grey color for the label */
+  color: #555; 
+  text-align: left; 
 }
+
 
 .input-wrapper input[type="email"],
 .input-wrapper input[type="password"] {
-  font-size: 24px; /* Adjust size as needed */
-  max-width: 500px; /* Set max-width to 500px */
-  width: 100%; /* Take full width of the container */
-  padding: 10px; /* Add padding for spacing */
-  background-color: #f0f0f0; /* Grey background for the input */
-  border: none; /* Remove border */
-  border-radius: 10px; /* Rounded corners */
-  margin: 0 auto; /* Center horizontally */
-  display: block; /* Ensure it takes the full width */
+  font-size: 24px; 
+  max-width: 500px;
+  width: 100%; 
+  padding: 10px; 
+  background-color: #f0f0f0; 
+  border: none; 
+  border-radius: 10px; 
+  display: block; 
+  text-align: left;
 }
 
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+
+
+.left-aligned-label {
+  text-align: left;
+  font-size: 28px; 
+}
 
 .sign-in-button {
   width: 100%;
   padding: 10px;
-  background-color: #BF67A6; /* Green */
+  background-color: #BF67A6;
   color: white;
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
   cursor: pointer;
 }
 
 button:hover,
 .sign-in-button:hover {
-  background-color: #BF67A6; /* Darker green */
+  background-color: #BF67A6; 
 }
 
 .my-login {
   font-family: 'Cherry Bomb', cursive;
-  font-size: 110px; /* Adjust size as needed */
-  text-align: center; /* Center align the text */
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  font-size: 110px; 
+  display: flex; 
+
   padding-bottom: 50px; 
-  /* Add any other styling properties you desire */
+  
 }
 
 .forget-password {
@@ -109,8 +106,8 @@ button:hover,
   margin-top: 20px;
   color: #555;
   font-size: 24px;
-  text-decoration: underline; /* Add underline to the text */
-  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+  text-decoration: underline; 
+  cursor: pointer;
 }
 
 
@@ -121,8 +118,8 @@ button:hover,
 
 .no-account p {
   color: #555;
-  font-size: 24px; /* Adjust size as needed */
-  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+  font-size: 24px; 
+  cursor: pointer; 
 }
 
 
@@ -133,17 +130,17 @@ button:hover,
 .create-account p {
   color: #FFAE42;
   font-size: 24px;
-  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+  cursor: pointer; 
 }
 
 .sign-in-button {
   width: 100%;
   padding: 10px;
-  background-color: #BF67A6; /* Green */
+  background-color: #BF67A6;
   color: white;
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px; 
   cursor: pointer;
-  font-family: 'Cherry Bomb', cursive; /* Set font family */
-  font-size: 24px; /* Set font size */
+  font-family: 'Cherry Bomb', cursive; 
+  font-size: 24px; 
 }
