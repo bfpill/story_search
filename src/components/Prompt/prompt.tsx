@@ -32,6 +32,7 @@ const OptionCard = ({ title, handleSetChosenBook }) => {
     </div>
   );
 }
+
 function Prompt() {
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState<boolean>(false)
@@ -212,3 +213,4 @@ function Prompt() {
 }
 
 export default Prompt;
+

@@ -32,20 +32,15 @@
   height: 100%; /* Take full height of the container */
 }
 
+
 .left {
-  background-color: #C7E4EA; /* Left half is blue */
+  background-color: #e7f0fe; /* Left half is blue */
   justify-content: center;
   align-items: center;
   display: flex;
 }
 
 
-.right {
-  background-color: white; /* Right half is white */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .form-container {
   width: 300px; /* Set a specific width for the form container */
@@ -148,6 +143,7 @@ button:hover,
   border: none;
   border-radius: 10px; /* Rounded corners */
   cursor: pointer;
+  text-align: center;
   font-family: 'Cherry Bomb', cursive; /* Set font family */
   font-size: 24px; /* Set font size */
 }
