@@ -1,5 +1,5 @@
 export const BASE_URL = "http://127.0.0.1:8000";
-// export const BASE_URL = "https://fierce-tundra-54523-41672735afc5.herokuapp.com/";
+// export const BASE_URL = "https://fierce-tundra-54523-41672735afc5.herokuapp.com";
 
 export async function makeAuthenticatedRequest(url, method, data = null) {
   try {
