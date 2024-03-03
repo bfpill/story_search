@@ -14,7 +14,11 @@
     overflow: hidden;
 }
 .navbar-landing{
-    left: 40%;
+    position: block;
+    left: 31vw;
+    
+
+
 }
 .statement {
     color: #2c2c2c;
