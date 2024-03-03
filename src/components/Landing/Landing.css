@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Arial, sans-serif; /* Use Arial font */
+  font-family: Arial, sans-serif; 
   src: local("GilroyRegular"),
       url("../fonts/formular-black-trial.otf") format("truetype");
     font-weight: bold;
@@ -48,7 +48,7 @@
     height: 20vh;
     width: 40vw;
     font-size: 1.5vw;
-    font-weight: normal; /* Normal weight */
+    font-weight: normal; 
     
     padding-top: 20vh;
 

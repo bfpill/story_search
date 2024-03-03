@@ -2,29 +2,29 @@
   background-color: #C7E4EA;
   height: 100vh;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
   flex-direction: column;
 }
 
 .search-bar {
   margin-top: 130px;
-  width: 1600px; /* Check parent container width */
-  padding: 120px 0 100px; /* Adjust top padding as needed */
+  width: 1600px; 
+  padding: 120px 0 100px; 
   text-align: center;
-  box-sizing: border-box; /* Ensure padding is included in width */
-  transition: all 0.5s ease; /* Add transition for smooth animation */
+  box-sizing: border-box; 
+  transition: all 0.5s ease; 
 }
 
 .search-bar.move-to-top {
-  padding: 20px 0; /* Move to top */
+  padding: 20px 0;
   
 }
 
 
 .search-container {
   
-  position: relative; /* Set position relative for absolute positioning of the icon */
+  position: relative; 
 }
 
 @keyframes fadeIn {
@@ -41,21 +41,21 @@
 }
 
 .search-icon {
-  position: absolute; /* Position the icon absolutely */
-  top: 50%; /* Position vertically at the center */
-  right: 60px; /* Add padding to the right of the icon */
-  transform: translateY(-50%); /* Center the icon vertically */
-  width: 30px; /* Adjust as needed */
-  height: 30px; /* Adjust as needed */
+  position: absolute; 
+  top: 50%; 
+  right: 60px; 
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px; 
 }
 
 .search-input {
-  width: calc(100% - 80px); /* Adjusted width considering padding and icon */
-  padding-right: 40px; /* Adjust to accommodate the icon */
+  width: calc(100% - 80px); 
+  padding-right: 40px; 
   padding-top: 20px;
   padding-left: 40px;
   padding-bottom: 20px;
-  border-radius: 40px; /* Make the input box rounded */
+  border-radius: 40px; 
   border: none;
   outline: none;
   font-size: 90px;
@@ -70,23 +70,23 @@
   padding: 40px;
   height: 700px;
   margin: 0 21px;
-  transition: transform 0.3s ease; /* Add transition for smooth animation */
-  filter: drop-shadow(7px 9px 6px rgba(0, 0, 0, 0.2)); /* Add drop shadow */
+  transition: transform 0.3s ease; 
+  filter: drop-shadow(7px 9px 6px rgba(0, 0, 0, 0.2)); 
 }
 
 .book-image:hover {
-  transform: scale(1.1); /* Enlarge the image on hover */
+  transform: scale(1.1); 
   filter: drop-shadow(13px 17px 12px rgba(0, 0, 0, 0.4));
 }
 .search-input.shrink {
-  font-size: 30px; /* Adjust the font size to make it smaller */
-  padding-top: 10px; /* Adjusted padding for smaller input */
-  padding-bottom: 10px; /* Adjusted padding for smaller input */
+  font-size: 30px;
+  padding-top: 10px; 
+  padding-bottom: 10px; 
   
 }
 
 .generate-button {
-  background-color: #BF67A6; /* Green */
+  background-color: #BF67A6; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -108,31 +108,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  width: 1700px; /* Adjust width as needed */
-  height: 1100px; /* Adjust height as needed */
+  width: 1700px; 
+  height: 1100px; 
   opacity: 0.2; 
 }
-.lds-dual-ring {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
-.lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  border-color: #fff transparent #fff transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
+

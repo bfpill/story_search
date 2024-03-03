@@ -30,7 +30,7 @@ function SignUp() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault(); 
 
     if (password !== confirmPassword) {
       setPasswordMismatchError("Passwords do not match");

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import './login.css'; // Import the CSS file
+import './login.css'; 
 import bookAnimation from '../../assets/bookAnimation.gif'; 
 import { auth } from '../../firebase-config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -10,7 +10,7 @@ import { CurrentUserContext } from '@/UserProvider';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // State to hold the error message
+  const [error, setError] = useState(null); 
   const { user, setUser } = useContext(CurrentUserContext)
   const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ function Login() {
             </form>
             <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }} onClick={handleSubmit}>Sign In</button>
             
-            {/* Display error message if it exists */}
+            {/* error  */}
             {error && <div className="error-message">{error}</div>}
 
             <div className="forget-password">
