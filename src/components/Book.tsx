@@ -23,7 +23,12 @@ const Book = (props: { bookData, coverImage?, coverColor?}) => {
         maxShadowOpacity={0.0}
         disableFlipByClick={true}
         data-density="hard"
-        showCover={true}
+        showCover={true} className={""} style={undefined} size={"fixed"}
+        startPage={0} minWidth={0} maxWidth={0} minHeight={0} maxHeight={0}
+        drawShadow={false} usePortrait={false} startZIndex={0}
+        autoSize={false} mobileScrollSupport={false}
+        useMouseEvents={false} swipeDistance={0}
+        showPageCorners={false}
       >
         {pageRefs?.map((ref, index) => (
           <Page key={index}

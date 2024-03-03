@@ -21,8 +21,6 @@ export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boo
   const { user } = useContext(CurrentUserContext)
   const { theme } = useTheme()
 
-
-
   return (
     <div className="p-1 flex items-center" style={{ justifyContent: "space-between" }}>
       

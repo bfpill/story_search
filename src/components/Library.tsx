@@ -49,10 +49,10 @@ const Library = () => {
     const [isHovered, setIsHovered] = useState(false);
 
     const baseStyle = "h-32 w-24 text-xs leading-1 cursor-pointer transition-all duration-300 ease-in-out";
-    const hoverStyle = "scale-105 shadow-sm";
+    const hoverStyle = "scale-105 shadow-xs";
 
     return (
-      <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-md'}`}
+      <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-sm'}`}
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
         onClick={() => navigate(`books/${book.bookId}`)}
@@ -75,7 +75,7 @@ const Library = () => {
         </div>
       </div>
       <div className="h-1/6"></div>
-      <div className="w-2/3 h-screen flex flex-col overflow-y-scroll">
+      <div className="w-3/4 h-screen flex flex-col overflow-y-scroll">
         {/* <ScrollArea> */}
 
         {Object.keys(categories).map(category => {

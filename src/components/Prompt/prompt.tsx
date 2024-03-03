@@ -14,6 +14,7 @@ import { CardBody, CardContainer } from '../ui/3dCard';
 import { Toaster } from '../ui/toaster';
 import { ToastAction } from '../ui/toast';
 import { useToast } from "../ui/use-toast"
+import { useNavigate } from 'react-router-dom';
 
 
 const OptionCard = ({ title, handleSetChosenBook }) => {
@@ -52,6 +53,7 @@ function Prompt() {
   const { toast } = useToast()
 
   const searchBarRef = useRef()
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     console.log("searching for ", search)
@@ -133,6 +135,7 @@ function Prompt() {
 
     addBookToUser(user.email, newBookId, newBook)
 
+    navigate(`/books/${newBook.bookId}`)
     setGeneratingBook(false);
   }
 
