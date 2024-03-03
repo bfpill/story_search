@@ -45,6 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Router>
         <Routes>
           <Route path="/" element={<MobileWrapper component={Landing} />} />
+          <Route path="/library" element={<MobileWrapper component={Home} />} />
           <Route path="/book_test" element={<BookTestPage />} />
           <Route path="/books/:bookId" element={<BookTestPage />} />
           <Route path="/sign_up" element={<SignUp />} />
@@ -52,8 +53,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/create_book' element={<Prompt />} />
           <Route path='/signup' element={<MobileWrapper component={SignUp} />} />
           <Route path='/profile' element={<Profile />} />
-       
-          <Route path='/library' element={<Library />} />
+
+          <Route path='/all_books' element={<Library />} />
         </Routes>
       </Router>
     </UserProvider>
