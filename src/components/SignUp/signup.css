@@ -17,6 +17,10 @@
   justify-content: center; 
   height: 100vh; 
 }
+.error-message {
+  color: red;
+}
+
 
 .centered-image {
   max-width: 1000px; 
@@ -34,7 +38,7 @@
 
 
 .left {
-  background-color: #e7f0fe; 
+  background-color: #C7E4EA; 
   justify-content: center;
   align-items: center;
   display: flex;
@@ -73,14 +77,18 @@
 
 
 
+
 .sign-in-button {
   width: 100%;
   padding: 10px;
-  background-color: #BF67A6; /* Green */
+  background-color: #BF67A6;
   color: white;
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px; 
   cursor: pointer;
+  text-align: center;
+  font-family: 'Cherry Bomb', cursive; 
+  font-size: 24px; 
 }
 
 button:hover,

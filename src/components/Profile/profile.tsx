@@ -56,7 +56,7 @@ function Profile() {
           <div className="form-container">
             <div className="my-name">About me</div>
             <form onSubmit={(e) => e.preventDefault()}>
-              <div className="input-wrapper">
+              <div className="input-wrapper1">
                 <label style={{ fontSize: "22px" }}>What is your name?</label>
                 <input
                   type="text"
@@ -65,7 +65,7 @@ function Profile() {
                   required
                 />
               </div>
-              <div className="input-wrapper">
+              <div className="input-wrapper1">
                 <label style={{ fontSize: "22px" }}>How old are you?</label>
                 <div className="age-slider">
                   <div className="slider">
@@ -79,7 +79,7 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="input-wrapper">
+              <div className="input-wrapper1">
                 <label style={{ fontSize: "22px" }}>Choose your avatar:</label>
                 <div className="avatar-options">
                   <img
@@ -102,7 +102,7 @@ function Profile() {
                   />
                 </div>
               </div>
-              <div className="input-wrapper">
+              <div className="input-wrapper1">
                 <button
                   className="generate-profile-button"
                   type="button"

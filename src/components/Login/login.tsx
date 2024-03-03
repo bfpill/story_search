@@ -5,12 +5,12 @@ import { auth } from '../../firebase-config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '@/UserProvider';
-import { HomeBar } from '../NavBar';
 
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null); // State to hold the error message
   const { user, setUser } = useContext(CurrentUserContext)
   const navigate = useNavigate();
 
@@ -25,17 +25,13 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log("User signed in:", userCredential.user, userCredential);
       setUser(userCredential.user)
-
       navigate("/")
     } catch (error) {
-      console.log("couldn't login")
+      setError('Invalid email or password');
     }
   };
 
@@ -73,6 +69,10 @@ function Login() {
               </div>
             </form>
             <button className="sign-in-button" style={{ fontFamily: 'Cherry Bomb', fontSize: '44px', borderRadius: '20px' }} onClick={handleSubmit}>Sign In</button>
+            
+            {/* Display error message if it exists */}
+            {error && <div className="error-message">{error}</div>}
+
             <div className="forget-password">
               <p>Forgot Password?</p>
             </div>
