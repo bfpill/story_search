@@ -27,7 +27,7 @@ function Landing() {
 
     return (
         <div className="h-screen w-screen relative">
-            <div className="z-20 absolute absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full">
+            <div className="z-20 absolute absolute top-1.5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full">
                 <HomeBar expand={false} />
             </div>
             <div className="flex flex-col mt-10">

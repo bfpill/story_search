@@ -24,7 +24,7 @@ const OptionCard = ({ title, handleSetChosenBook }) => {
   const hoverStyle = "scale-105 shadow-xl";
 
   return (
-    <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'} h-[360px] ${title !== "" ? "cursor-pointer": 'cursor-n'}
+    <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'} h-[360px] ${title !== "" ? "cursor-pointer" : 'cursor-n'}
     max-w-[270px] flex text-xl items-center justify-center bg-blue-300 col-span-1 shadow-md`}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
@@ -105,7 +105,7 @@ function Prompt() {
     // setBook(DummyBook);
 
     // REAL 
-    const gendBook = await getGenerateBook(user.email, search);
+    const gendBook = await getGenerateBook(user.email, search, title);
 
     const newBookId = uuid4()
 
@@ -196,16 +196,16 @@ function Prompt() {
         <div className="flex">
           <CardContainer className="inter-var">
             <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] w-auto h-auto p-3">
-              <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] flex">
-                <BookTitlePage complementaryColor={() => getRandomColor()} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor} />
+              <div className="transition-all duration-2000 initial-fade-in h-[720px] w-[490px] flex text-4xl">
+                <BookTitlePage complementaryColor={() => getRandomColor()} page={{ text: chosenTitle }} coverImage={coverImage} coverColor={coverImageColor}
+                showLoading={true} />
               </div>
             </CardBody>
           </CardContainer>
-          <div>Loading...</div>
         </div>
-      ) : (
-        <div ></div>
-
+      ) : ( 
+        <>
+        </>
       )
       }
       <div>
