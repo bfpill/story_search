@@ -9,14 +9,14 @@
   .container {
     background-color: #FAF9F6;
     display: flex;
-    height: 100vh; /* Set height to 100% of the viewport height */
+    height: 100vh; 
   }
   
   .img_container {
     display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    height: 100vh; /* Make sure the container covers the entire viewport height */
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
   }
   
   .centered-image {
@@ -27,12 +27,12 @@
   
   .left,
   .right {
-    flex: 1; /* Each div takes up half of the container */
-    height: 100%; /* Take full height of the container */
+    flex: 1; 
+    height: 100%;
   }
   
   .left {
-    background-color: #C7E4EA; /* Left half is blue */
+    background-color: #C7E4EA; 
     justify-content: center;
     align-items: center;
     display: flex;
@@ -40,15 +40,15 @@
   
   
   .right {
-    background-color: #FAF9F6; /* Right half is white */
+    background-color: #FAF9F6; 
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .form-container {
-    width: 300px; /* Set a specific width for the form container */
-    width: 500px; /* Set a specific width for the form container */
+    width: 300px; 
+    width: 500px; 
   }
   
   .input-wrapper {
@@ -58,19 +58,19 @@
   .input-wrapper label {
     display: block;
     margin-bottom: 5px;
-    color: #555; /* Grey color for the label */
+    color: #555; 
   }
   
   .input-wrapper input[type="text"] {
-    font-size: 24px; /* Adjust size as needed */
-    max-width: 500px; /* Set max-width to 500px */
-    width: 100%; /* Take full width of the container */
-    padding: 10px; /* Add padding for spacing */
-    background-color: #f0f0f0; /* Grey background for the input */
-    border: none; /* Remove border */
-    border-radius: 10px; /* Rounded corners */
-    margin: 0 auto; /* Center horizontally */
-    display: block; /* Ensure it takes the full width */
+    font-size: 24px;
+    max-width: 500px; 
+    width: 100%; 
+    padding: 10px; 
+    background-color: #f0f0f0; 
+    border: none; 
+    border-radius: 10px; 
+    margin: 0 auto; 
+    display: block; 
 }
 
   .input-wrapper output {
@@ -81,8 +81,8 @@
   }
   
   .age-slider {
-    width: 200px; /* Adjust width as needed */
-    margin: 50px auto 20px auto; /* Updated margin for slight lowering */
+    width: 200px; 
+    margin: 50px auto 20px auto; 
   }
   
   .slider {
@@ -92,9 +92,9 @@
   
   .slider .decrease,
   .slider .increase {
-    width: 60px; /* Adjust width as needed */
-    height: 60px; /* Adjust height as needed */
-    background-color: #BF67A6; /* Pink color */
+    width: 60px; 
+    height: 60px; 
+    background-color: #BF67A6; 
     color: #FAF9F6;
     
     font-size: 36px;
@@ -109,16 +109,16 @@
   
   .slider .decrease:hover,
   .slider .increase:hover {
-    background-color: #8d4378; /* Darker pink on hover */
+    background-color: #8d4378; 
 
   }
   
   .slider .age {
     flex: 1;
     text-align: center;
-    font-size: 36px; /* Adjust font size */
+    font-size: 36px;
     font-weight: bold;
-    font-family: 'Comic Sans MS', cursive; /* Fun font */
+    font-family: 'Comic Sans MS', cursive; 
   }
   
   .avatar-options {
@@ -141,48 +141,38 @@
   }
   
   .avatar-options img.selected {
-    filter: brightness(65%); /* Darken the selected image */
-    transition: filter 0.2s ease; /* Smooth transition effect */
+    filter: brightness(65%);
+    transition: filter 0.2s ease; 
   }
 
   .avatar-options img.selected:hover {
-    transform: scale(1.1); /* Add scale effect on hover */
+    transform: scale(1.1);
   }
   
 
 
-  /* button {
-    width: 30px;
-    padding: 10px;
-    background-color: #C7E4EA;
-    color: white;
-    border: none;
-    border-radius: 10px; 
-    cursor: pointer;
-  } */
 
-  
   button:hover,
   .sign-in-button:hover {
-    background-color: #BF67A6; /* Darker green */
+    background-color: #BF67A6; 
   }
   
   .my-name {
     font-family: 'Cherry Bomb', cursive;
-    font-size: 80px; /* Adjust size as needed */
-    text-align: center; /* Center align the text */
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    font-size: 80px; 
+    text-align: center; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
     padding-bottom: 50px; 
-    /* Add any other styling properties you desire */
+    
   }
   
   .input-wrapper {
     margin-bottom: 35px;
     display: flex;
-    flex-direction: column; /* Align children vertically */
-    align-items: center; /* Center children horizontally */
+    flex-direction: column; 
+    align-items: center; 
   }
   
   .generate-profile-button {

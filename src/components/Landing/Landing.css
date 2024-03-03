@@ -95,7 +95,7 @@
     top: 68vh; 
 }
 .container {
-    width: 90vw;
+    width: 100vw;
     height: max-content;
     margin: 0 auto;
     
@@ -108,7 +108,7 @@
     padding: 40px;
     height: max-content;
     padding: 10vh 10vw;
-    margin-left: -18vw;
+    margin-left: -16vw;
     font-family:"Formular";
 
     

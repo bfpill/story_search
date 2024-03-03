@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import bookImage from '../../assets/book.png';
 import './library.css'; 
 import profilelogo from"./dog_profile.png"
-// import addImage from './add_story.jpg'
+
 class Library extends Component {
   state = {
     goToSlide: 0,
@@ -46,7 +46,7 @@ class Library extends Component {
               showNavigation={this.state.showNavigation}
               animationConfig={this.state.config}
             >
-              {/* Render each slide with a className */}
+             
               {this.slides.map((slide, index) => (
                 <div key={slide.key} className="carousel-slide" onMouseEnter={() => this.handleMouseEnter(index)} onMouseLeave={() => this.handleMouseLeave()}>
                   {slide.content}

@@ -8,19 +8,19 @@
 
 .container {
   display: flex;
-  height: 100vh; /* Set height to 100% of the viewport height */
+  height: 100vh; 
 }
 
 .img_container {
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  height: 100vh; /* Make sure the container covers the entire viewport height */
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
 }
 
 .centered-image {
-  max-width: 1000px; /* Set the maximum width */
-  height: 700px; /* Maintain aspect ratio */
+  max-width: 1000px; 
+  height: 700px;
   padding-right: 40px; 
   padding-bottom: 50px;
 }
@@ -28,13 +28,13 @@
 
 .left,
 .right {
-  flex: 1; /* Each div takes up half of the container */
-  height: 100%; /* Take full height of the container */
+  flex: 1; 
+  height: 100%;
 }
 
 
 .left {
-  background-color: #e7f0fe; /* Left half is blue */
+  background-color: #e7f0fe; 
   justify-content: center;
   align-items: center;
   display: flex;
@@ -132,18 +132,18 @@ button:hover,
 .create-account p {
   color: #FFAE42;
   font-size: 24px;
-  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+  cursor: pointer; 
 }
 
 .sign-in-button {
   width: 100%;
   padding: 10px;
-  background-color: #BF67A6; /* Green */
+  background-color: #BF67A6;
   color: white;
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px; 
   cursor: pointer;
   text-align: center;
-  font-family: 'Cherry Bomb', cursive; /* Set font family */
-  font-size: 24px; /* Set font size */
+  font-family: 'Cherry Bomb', cursive; 
+  font-size: 24px; 
 }
