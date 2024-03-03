@@ -22,7 +22,7 @@ export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boo
   const { theme } = useTheme()
 
   return (
-    <div className="p-1 flex items-center" style={{ justifyContent: "space-between" }}>
+    <div className="p-1 flex items-center z-10" style={{ justifyContent: "space-between" }}>
       
       <div className={`h-full w-full flex items-center justify-center transition-all duration-500 ease-in-out`}>
         <div className={`h-full flex items-center rounded-full bg-white justify-center transition-all duration-500 ease-in-out shadow-border
