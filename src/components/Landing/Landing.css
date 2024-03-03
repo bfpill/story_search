@@ -15,7 +15,7 @@
 }
 .navbar-landing{
     position: block;
-    left: 31vw;
+    left: 32%;
     
 
 
@@ -102,18 +102,18 @@
     width: 100vw;
     height: max-content;
     margin: 0 auto;
-    
-  }
+}
   
   .content {
     background-color: #C7E4EA;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 40px;
-    height: max-content;
+    height: 150vh;
     padding: 10vh 10vw;
-    margin-left: -16vw;
+    margin-left: -26vw;
     font-family:"Formular";
+    width: 100vw;
 
     
   }
@@ -179,4 +179,10 @@
   .community p {
     margin-bottom: 20px;
   }
-  
+  .top-level {
+    background-color:#C7E4EA ;
+    overflow: hidden;
+    height: 200vh;
+    padding: 10vh 10vw;
+    font-family:"Formular";
+  }
