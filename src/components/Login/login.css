@@ -1,0 +1,146 @@
+@font-face {
+  font-family: "Cherry bomb";
+  src: local("GilroyRegular"),
+    url("../fonts/cherrybombone-regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+.container {
+  display: flex;
+  height: 100vh; 
+}
+
+.img_container {
+  display: flex;
+}
+
+
+
+.left {
+  flex: 1; 
+  height: 100%; 
+  width: 1000px;
+}
+
+.left {
+  background-color: #C7E4EA; 
+  display: flex;
+}
+
+
+
+
+.form-container {
+  width: 300px;
+  width: 500px; 
+}
+
+.input-wrapper {
+  margin-bottom: 35px;
+  text-align: left;
+}
+
+.input-wrapper label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555; 
+  text-align: left; 
+}
+
+
+.input-wrapper input[type="email"],
+.input-wrapper input[type="password"] {
+  font-size: 24px; 
+  max-width: 500px;
+  width: 100%; 
+  padding: 10px; 
+  background-color: #f0f0f0; 
+  border: none; 
+  border-radius: 10px; 
+  display: block; 
+  text-align: left;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+
+
+.left-aligned-label {
+  text-align: left;
+  font-size: 28px; 
+}
+
+.sign-in-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #BF67A6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover,
+.sign-in-button:hover {
+  background-color: #BF67A6; 
+}
+
+.my-login {
+  font-family: 'Cherry Bomb', cursive;
+  font-size: 110px; 
+  display: flex; 
+
+  padding-bottom: 50px; 
+  
+}
+
+.forget-password {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.forget-password p {
+  margin-top: 20px;
+  color: #555;
+  font-size: 24px;
+  text-decoration: underline; 
+  cursor: pointer;
+}
+
+
+.no-account {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.no-account p {
+  color: #555;
+  font-size: 24px; 
+  cursor: pointer; 
+}
+
+
+.create-account {
+  text-align: center;
+}
+
+.create-account p {
+  color: #FFAE42;
+  font-size: 24px;
+  cursor: pointer; 
+}
+
+.sign-in-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #BF67A6;
+  color: white;
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-family: 'Cherry Bomb', cursive; 
+  font-size: 24px; 
+}

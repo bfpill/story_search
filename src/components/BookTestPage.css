@@ -1,0 +1,99 @@
+@font-face {
+    font-family: "Andika-Regular";
+    src: url("./fonts/Andika/Andika-Regular.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: "Andika-Bold";
+    src: url("./fonts/Andika/Andika-Bold.ttf") format("truetype");
+    font-weight: normal;
+  }
+  
+  .bookcover{
+    font-family:"Andika-Bold"; 
+  }
+  .bookpages{
+    font-family:"Andika-Regular"; 
+  }
+  .squiggly-image {
+    animation: shake 1.5s ease-in-out infinite;
+  }
+
+  
+ 
+@keyframes shake {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+
+@keyframes swing {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes swirly {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@font-face {
+    font-family: "Andika-Regular";
+    src: url("./fonts/Andika/Andika-Regular.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: "Andika-Bold";
+    src: url("./fonts/Andika/Andika-Bold.ttf") format("truetype");
+    font-weight: normal;
+  }
+  
+  .bookcover{
+    font-family:"Andika-Bold"; 
+    
+  }
+  .bookpages{
+    font-family:"Andika-Regular"; 
+  }

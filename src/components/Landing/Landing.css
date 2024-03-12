@@ -1,0 +1,186 @@
+@font-face {
+  font-family: Arial, sans-serif; 
+  src: local("GilroyRegular"),
+      url("../fonts/formular-black-trial.otf") format("truetype");
+    font-weight: bold;
+  }
+  
+
+
+.full-pages{
+    height: 100vh;
+    width: 100vw;
+    background-color: #FAF9F6;
+    overflow: hidden;
+}
+.navbar-landing{
+    position: block;
+    left: 32%;
+}
+
+.statement {
+    color: #2c2c2c;
+    padding-top: 10vh;
+    font-family: "Formular";
+    padding-left: 6vw;
+    display: block; 
+    width: 42vw;
+    font-size: 3vw;
+    font-weight: bold;
+    
+    white-space: pre-wrap; 
+}
+
+.statement span {
+    display: block; 
+}
+
+.statement:hover{
+    transform:scale(1.1);
+}
+
+.under-statement{
+    color: #2c2c2c;
+
+    font-family: "Roboto", sans-serif;
+    padding-left: 6vw;
+    display: block;
+    height: 20vh;
+    width: 40vw;
+    font-size: 1.5vw;
+    font-weight: normal; 
+    
+    padding-top: 20vh;
+
+}
+.img-container1{
+    display: block;
+    height: 25vh;
+    width: 30vw;
+    opacity: 0.9;
+    position: absolute;
+    left: 67vw; 
+    top: 15vh; 
+    border-radius: "10%";
+}
+.img-container2{
+    display: block;
+
+    height: 30vh;
+    width: 30vw;
+    z-index: 1;
+    position: absolute;
+    left: 50vw; 
+    top: 25vh; 
+    border-radius: "10%";
+}
+
+.img-container3{
+    display: block;
+    height: 30vh;
+
+   
+    width: 30vw;
+    
+    position: absolute;
+    left: 60vw; 
+    top: 55vh; 
+}
+.img-container4{
+    display: block;
+    height: 10vh;
+    width: 15vw;
+    z-index: 2;
+    opacity: 0.9;
+    position: absolute;
+    left: 55svw; 
+    top: 68vh; 
+}
+.container {
+    width: 100vw;
+    height: max-content;
+    margin: 0 auto;
+}
+  
+  .content {
+    background-color: #C7E4EA;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    height: 150vh;
+    padding: 10vh 10vw;
+    margin-left: -26vw;
+    font-family:"Formular";
+    width: 100vw;
+
+    
+  }
+  
+  .h1 {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .mission {
+    margin-top: 40px;
+  }
+  
+  .mission h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .mission p {
+    margin-bottom: 20px;
+  }
+  
+  .how-it-works,
+  .development-journey,
+  .user-experience,
+  .future-endeavors {
+    margin-top: 40px;
+  }
+  
+  .how-it-works h2,
+  .development-journey h2,
+  .user-experience h2,
+  .future-endeavors h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .how-it-works p,
+  .development-journey p,
+  .user-experience p,
+  .future-endeavors p {
+    margin-bottom: 20px;
+  }
+  
+  .community {
+    margin-top: 40px;
+  }
+  
+  .community h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .community p {
+    margin-bottom: 20px;
+  }
+  .top-level {
+    background-color:#C7E4EA ;
+    overflow: hidden;
+    height: 200vh;
+    padding: 10vh 10vw;
+    font-family:"Formular";
+  }

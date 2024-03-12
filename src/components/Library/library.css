@@ -1,45 +1,92 @@
 @font-face {
-    font-family: "Cherry bomb";
+    font-family: "Cherry Bomb";
     src: local("GilroyRegular"),
       url("../fonts/cherrybombone-regular.ttf") format("truetype");
     font-weight: normal;
   }
-
-.library-container {
+  
+  .library-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20vh; /* Set height to viewport height for vertical centering */
-}
-
-.my-library {
+  
+  }
+  
+  .my-library {
     font-family: 'Cherry Bomb', cursive;
-    font-size: 74px; /* Adjust size as needed */
-    /* Add any other styling properties you desire */
-}
-.full-page{
+    font-size: 5.5vw; 
+    padding-bottom:1px;
+    
+    padding-left: 12vw;
+  }
+  
+  .carousel-slide {
+    margin-right: 0.5vw; 
+  }
+  
+  .full-page {
     background-color: #C7E4EA;
     width: 100vw;
-    height: 100vh    ;
-}
-.create-story {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .create-story {
     position: absolute;
-    top: 50%; /* Adjust top position as needed */
-    right: 10%; /* Position it to the right of the page */
-    transform: translateY(-50%); /* Center vertically */
+    top: 60%;
+    right: 10%;
+    transform: translateY(-50%);
     background-color: white;
-    /* Add any other styling properties you desire */
     height: 45vh;
     width: 15vw;
     border-radius: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.inside-create-story{
-    font-family: 'CherryBomb', cursive;
-    font-size: 20px;
-    font-weight: bold;  
-   
+  }
+  
+  .inside-create-story {
+    font-family: 'Cherry Bomb', cursive;
+    font-size: 2vw;
+    font-weight: bold;
+    align-items: center;
+    padding-left: 30px;
+    
+  }
+  
+  .book-images {
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transition for smooth hover effect */
+  }
+  
+  .book-images:hover {
+    opacity: 1.1;
+    transform: scale(1.2); 
+  }
+  
+  .carousel-container {
+    margin: 0 auto;
+  }
+  
+  .carousel-content {
+    overflow: hidden;
+  }
+  
+  .image-containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -15vw;
+    width: 60%; 
+  }
 
-}
+  .profile-pic{
+    padding-top: 5vh;
+    padding-left: 30vw;
+    height: 100px;
+
+  }
+  .profile-pic:hover{
+    transform: scale(1.2);
+  }

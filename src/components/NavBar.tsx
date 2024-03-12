@@ -8,38 +8,55 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 
 const handleImageClick = (navigate) => {
+  console.log("clicked")
   navigate('/');
 };
 const handleLoginClick = (navigate) => {
+  console.log("clicked")
   navigate('/login');
 };
 
-export function HomeBar(props: { onSearchChange: (event) => unknown }) {
+export function HomeBar(props: { onSearchChange: (event) => unknown, expand: boolean }) {
   const navigate = useNavigate();
   const { user } = useContext(CurrentUserContext)
   const { theme } = useTheme()
 
   return (
-    <div className="h-10 items-center justify-center">
-      <div className="flex ml-4 mr-2 mt-2 md:relative">
-        <div className="flex w-full flex-row justify-between items-center">
-          <div onClick={() => handleImageClick(navigate)} className="cursor-pointer">
+    <div className="p-1 flex items-center z-10" style={{ justifyContent: "space-between" }}>
+      
+      <div className={`h-full w-full flex items-center justify-center transition-all duration-500 ease-in-out`}>
+        <div className={`h-full flex items-center rounded-full bg-white justify-center transition-all duration-500 ease-in-out shadow-border
+           ${props.expand ? 'w-[80%] border' : 'w-[490px] border'}`}
+        >
+          <div onClick={() => navigate('/')} className="cursor-pointer mt-1.5 ml-2">
             <LogoSVG theme={theme} />
           </div>
-          <div className="flex w-full flex-row justify-end items-center gap-10">
-            <Input className="h-8 mr-2 w-80 text-s tracking-tight" placeholder="Search..." onChange={props.onSearchChange} />
-            <Button onClick={() => navigate('/book_test')}>book page (dummy)</Button>
+          <div className="flex w-full flex-row justify-end items-center gap-3 mr-2 p-2">
+            <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/create_book')}>
+              New Book
+            </Button>
+            <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/library')}>
+              Library
+            </Button>
+            <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/all_books')}>
+              All Books
+            </Button>
+            {props.onSearchChange &&
+              <Input className="h-8 mr-2 w-80 text-s tracking-tight rounded-full" placeholder="Search..." onChange={props.onSearchChange} />
+            }
             {
               user ?
                 <ReactiveAvatar />
                 :
-                <Button variant="ghost" className="text-s" onClick={() => handleLoginClick(navigate)}>Login</Button>
+                <Button variant="ghost" className="rounded-full h-full" onClick={() => navigate('/login')}>
+                  Login
+                </Button>
             }
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export function DefaultBar() {
@@ -48,27 +65,23 @@ export function DefaultBar() {
   const { theme } = useTheme()
 
   return (
-    <div className="h-12 p-3 items-center justify-center border border-transparent">
-      <div className="h-10 items-center justify-center">
-        <div className="flex ml-4 mr-4 mt-2 md:relative">
-          <div className="flex w-full flex-row justify-between items-center">
-            <div onClick={() => handleImageClick(navigate)} className="cursor-pointer">
-              <LogoSVG theme={theme} />
-            </div>
-            <div className="flex w-full flex-row justify-end items-center">
-              {/* <Button variant="ghost" className="text-s mr-4" onClick={() => handleLockerroomClick(navigate)}>
-                Dashboard
-              </Button> */}
-
-              {
-                user ?
-                  <ReactiveAvatar />
-                  :
-                  <Button variant="ghost" className="text-s" onClick={() => handleLoginClick(navigate)}>Login</Button>
-              }
-            </div>
-          </div>
-        </div>
+    <div className="flex w-full h-min flex-row justify-between items-center px-8 py-3 justify-center">
+      <div onClick={() => handleImageClick(navigate)} className="cursor-pointer mt-2">
+        <LogoSVG theme={theme} />
+      </div>
+      <div className="flex w-full flex-row justify-end items-center gap-3 mr-2 p-2">
+        <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/create_book')}>
+          New Book
+        </Button>
+        <Button className="rounded-full h-full" variant='ghost' onClick={() => navigate('/library')}>
+          Library
+        </Button>
+        {
+          user ?
+            <ReactiveAvatar />
+            :
+            <Button variant="ghost" className="rounded-full h-full" onClick={() => handleLoginClick(navigate)}>Login</Button>
+        }
       </div>
     </div >
   )

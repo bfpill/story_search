@@ -1,62 +1,96 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { HomeBar } from "./components/NavBar"
 import { CurrentUserContext } from "./UserProvider"
-
-const dummyUser = {
-  id: 123,
-  name: "John Doe",
-  books: [
-    { title: "Book One", id: 1 },
-    { title: "Book Two", id: 2 },
-    { title: "Book Three", id: 3 },
-    { title: "Book Four", id: 4 },
-    { title: "Book Five", id: 5 },
-    { title: "Book Six", id: 6 },
-    { title: "Book Seven", id: 7 },
-    { title: "Book Eight", id: 8 },
-  ]
-};
-
-const UserLibraryDummy = () => {
-  const { user } = useContext(CurrentUserContext)
-
-  useEffect(() => {
-    console.log(user)
-  }, [user])
-
-  return (
-    <div className="w-full h-full flex justify-center items-center">
-      {dummyUser ?
-        <div className="grid grid-cols-4 grid-rows-2 gap-10">
-          {dummyUser.books.map(book => {
-            return (
-              <div className="h-64 w-48 bg-blue-300">
-                {book.title}
-              </div>
-            )
-
-          })
-          }
-        </div> :
-        <div className="">
-          Login to see your books!
-        </div>
-      }
-
-    </div>
-  )
-}
+import { getAllUserBooks } from "./api";
+import BookTitlePage from "./components/BookTitlePage";
+import { useNavigate } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
 
 const Home = (props: {}) => {
+  const { user } = useContext(CurrentUserContext)
+  const [userBooks, setUserBooks] = useState([])
+  const [hoveredColor, setHoveredColor] = useState("")
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const initializeBooks = async () => {
+      const allBooks = await getAllUserBooks(user.email)
+      setHoveredColor(allBooks?.[0].color)
+      if (allBooks) {
+        setUserBooks(allBooks)
+        console.log(allBooks)
+      }
+    }
+
+    initializeBooks()
+  }, [user])
+
+  const BookCard = ({ book }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const baseStyle = "h-96 w-64 text-3xl leading-1 cursor-pointer transition-all duration-300 ease-in-out";
+    const hoverStyle = "scale-105 shadow-2xl";
+
+    return (
+      <div className={`${baseStyle} ${isHovered ? hoverStyle : 'shadow-xl'}`}
+        onMouseOver={() => setIsHovered(true)}
+        onMouseOut={() => setIsHovered(false)}
+        onClick={() => navigate(`/books/${book.bookId}`)}
+      >
+        <BookTitlePage complementaryColor={undefined} page={book.pages[0]} coverImage={book.coverImage} coverColor={book.color} />
+      </div>
+    );
+  };
 
   return (
-    <div className="h-screen w-screen bg-neutral-100 relative p-10 flex justify-center items-center">
-      <div className="absolute top-0 right-0 w-full">
-        <HomeBar onSearchChange={function (event: any): unknown {
-          throw new Error("Function not implemented.")
-        }} />
+    <div
+      className="transition-colors duration-300 h-screen w-screen relative p-4 flex flex-col justify-center items-center"
+      style={{ backgroundColor: hoveredColor }}
+    >
+      <div className="w-full flex items-center justify-center">
+        <div className={`z-50 transition-all duration-500 top-4 absolute w-full rounded-full`}
+          style={{ "zIndex": "9999" }}
+        >
+          <HomeBar expand={false} />
+        </div>
       </div>
-      <UserLibraryDummy />
+      <div className="w-screen h-full flex justify-center items-center">
+        <div className="w-screen h-full flex justify-center items-center z-50">
+          {
+            user ?
+              <Carousel
+                opts={{
+                  align: "center",
+                  dragFree: true,
+                }}
+                className="w-3/4"
+              >
+                <CarouselContent className="w-full h-full p-20">
+                  {userBooks?.map((book, index) => {
+                    return (
+                      <div
+                        onMouseOver={() => setHoveredColor(book.color)}
+                      >
+
+                        <CarouselItem key={index} className="basis-1/3">
+                          <BookCard book={book} />
+                        </CarouselItem>
+                      </div>
+                    )
+                  })}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+              :
+              <div className="">
+                Login to see your books!
+              </div>
+          }
+
+        </div>
+      </div>
     </div>
   )
 

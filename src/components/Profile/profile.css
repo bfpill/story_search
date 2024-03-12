@@ -1,0 +1,157 @@
+@font-face {
+    font-family: "Cherry bomb";
+    src: local("GilroyRegular"),
+      url("../fonts/cherrybombone-regular.ttf") format("truetype");
+    font-weight: normal;
+  }
+  
+  
+  .centered-image {
+    width: 500px;
+    height: 500px;
+  }
+  
+
+  .form-container {
+    width: 300px; 
+    width: 500px; 
+  }
+  
+  .input-wrapper1 {
+    margin-bottom: 35px;
+  }
+  
+  .input-wrapper1 label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555; 
+  }
+  
+  .input-wrapper1 input[type="text"] {
+    font-size: 24px;
+    max-width: 500px; 
+    width: 100%; 
+    padding: 10px; 
+    background-color: #f0f0f0; 
+    border: none; 
+    border-radius: 10px; 
+    margin: 0 auto; 
+    display: block; 
+}
+
+  .input-wrapper1 output {
+    display: block;
+    font-size: 18px;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .age-slider {
+    width: 200px; 
+    margin: 50px auto 20px auto; 
+  }
+  
+  .slider {
+    display: flex;
+    align-items: center;
+  }
+  
+  .slider .decrease,
+  .slider .increase {
+    width: 60px; 
+    height: 60px; 
+    background-color: #BF67A6; 
+    color: #FAF9F6;
+    
+    font-size: 36px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slider .decrease:hover,
+  .slider .increase:hover {
+    background-color: #8d4378; 
+
+  }
+  
+  .slider .age {
+    flex: 1;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', cursive; 
+  }
+  
+  .avatar-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .avatar-options img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+  }
+  
+  .avatar-options img:hover {
+    transform: scale(1.1);
+    filter: brightness(90%);
+  }
+  
+  .avatar-options img.selected {
+    filter: brightness(65%);
+    transition: filter 0.2s ease; 
+  }
+
+  .avatar-options img.selected:hover {
+    transform: scale(1.1);
+  }
+  
+
+
+
+  button:hover,
+  .sign-in-button:hover {
+    background-color: #BF67A6; 
+  }
+  
+  .my-name {
+    font-family: 'Cherry Bomb', cursive;
+    font-size: 80px; 
+    text-align: center; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding-bottom: 50px; 
+    
+  }
+  
+  .input-wrapper1 {
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+  }
+  
+  .generate-profile-button {
+    width: 200px;
+    padding: 10px;
+    background-color: #BF67A6;
+    color: #FAF9F6;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .generate-profile-button:hover {
+    background-color: #853d71;
+  }
